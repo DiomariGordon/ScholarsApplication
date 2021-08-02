@@ -7,6 +7,17 @@
 
 <script>
 export default {
-  name: "home"
+  name: "home",
+  components: {},
+    data() {
+        return {
+            home: {
+                flashcards: '',
+                deck: '',
+                deck_list: '',
+                session: ''
+            }
+        }
+    }
 };
 </script>
