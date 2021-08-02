@@ -1,6 +1,6 @@
 <template>
   <div>
-      <button>Create flashcard</button>
+      <button @click="addNewFlashcard">Create flashcard</button>
       <form></form>
       <input
       placeholder="Question"
@@ -14,6 +14,13 @@
       v-model="flashcard.answer"
       required
       />
+      <input
+      placeholder="Enter keywords seperated by '/'"
+      type="text"
+      size="30"
+      v-model="flashcard.keywords"
+      required
+      />
   </div>
 </template>
 
@@ -24,18 +31,17 @@ export default {
     data() {
         return {
             flashcard: {
-                flashcard_id: this.$store.state.user.user_id,
+                creatorID: this.$store.state.user.id,
                 question: '',
-                answer: ''
+                answer: '',
+                keywords: ''
             }
         }
     },
     methods: {
         addNewFlashcard() {
-            const flashcardID = this.$route.params.flashcard_id;
-            this.flashcard.flashcardID = flashcardID;
             this.$store.commit("ADD_FLASHCARD", this.flashcard);
-            this.$router.push( {name: 'editflashcard'})
+            this.$router.push( {name: 'home'});
         }
     }
 
