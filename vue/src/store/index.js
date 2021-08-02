@@ -19,7 +19,24 @@ if(currentToken != null) {
 export default new Vuex.Store({
   state: {
     token: currentToken || '',
-    user: currentUser || {}
+    user: currentUser || {},
+    flashcards: [
+      {
+        id: 1,
+        question: "2 + 2",
+        answer: "4"
+      },
+      {
+        id: 2,
+        question: "What is pi?",
+        answer: "3.14159"
+      },
+      {
+        id: 3,
+        question: "What color does blue mixed with red make?",
+        answer: "Purple"
+      }
+    ]
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -37,6 +54,15 @@ export default new Vuex.Store({
       state.token = '';
       state.user = {};
       axios.defaults.headers.common = {};
+    },
+    ADD_FLASHCARD(state, flash) {
+      const card = this.state.flashcards.find(c => c.id === flash.flashcardID);
+      let maxID = card.id * 1000;
+      maxID = card.flash.reduce( (maxID, flash) => {
+        return Math.max(maxID, flash.id);
+      }, maxID);
+      flash.id = maxID + 1;
+      card.flash.unshift(flash);
     }
   }
 })

@@ -5,6 +5,7 @@ import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
+import ViewFlashcards from '../views/ViewFlashcards'
 
 Vue.use(Router)
 
@@ -53,6 +54,11 @@ const router = new Router({
         requiresAuth: false
       }
     },
+    {
+      path: "/editflashcard",
+      name: "editflashcard",
+      component: ViewFlashcards
+    }
   ]
 })
 
