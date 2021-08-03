@@ -1,6 +1,8 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.FlashCard;
+import com.techelevator.model.FlashCardKeyword;
+import com.techelevator.model.FlashCardUser;
 
 public interface FlashCardDao {
 
@@ -11,4 +13,8 @@ public interface FlashCardDao {
     void updateFlashCard(FlashCard flashCard);
 
      FlashCard getFlashCardById(Integer flashCardId);
+
+    boolean addFlashCardUser(FlashCard flashCardUser);
+
+    boolean addFlashCardKeywords(FlashCard flashCardKeyword);
 }

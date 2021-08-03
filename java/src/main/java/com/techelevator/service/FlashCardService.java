@@ -3,6 +3,7 @@ package com.techelevator.service;
 import com.techelevator.Exception.BadRequestException;
 import com.techelevator.dao.FlashCardDao;
 import com.techelevator.model.FlashCard;
+import com.techelevator.model.FlashCardUser;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -22,6 +23,9 @@ public class FlashCardService {
                 throw new BadRequestException("Flash Card Already Exist");
             }
             flashCardDao.createFlashCard(flashCard);
+            flashCardDao.addFlashCardUser(flashCard);
+            flashCardDao.addFlashCardKeywords(flashCard);
+
             return true;
         }
 
