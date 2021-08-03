@@ -37,6 +37,7 @@ export default {
         return {
             flashcard: {
                 userId: this.$store.state.user.id,
+                token: this.$store.state.token,
                 question: '',
                 answer: '',
                 keywords: []
