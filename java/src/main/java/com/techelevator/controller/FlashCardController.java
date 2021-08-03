@@ -1,15 +1,15 @@
 package com.techelevator.controller;
 
 import com.techelevator.model.FlashCard;
-import com.techelevator.model.FlashCardKeyword;
-import com.techelevator.model.FlashCardUser;
 import com.techelevator.service.FlashCardService;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+
 @RestController
 @CrossOrigin
 @PreAuthorize("isAuthenticated()")
+
 public class FlashCardController {
 
     private FlashCardService flashCardService;
