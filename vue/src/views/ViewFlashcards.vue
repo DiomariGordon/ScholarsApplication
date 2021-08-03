@@ -22,7 +22,7 @@
       <button @click.prevent="addNewKeyword">+Keyword</button>
       <div>
           <h4 v-show="this.flashcard.keywords.length === 0">At least 1 keyword required</h4>
-          <input v-show="this.flashcard.keywords.length !== 0" type="submit" v-on:submit.prevent="addNewFlashcard" />
+          <button v-show="this.flashcard.keywords.length !== 0" v-on:click.prevent="addNewFlashcard">Finished</button>
       </div>
       </form>
   </div>
@@ -53,6 +53,9 @@ export default {
                     this.$router.push('/editFlashcard');
                 }
             });
+            this.flashcard.question = '';
+            this.flashcard.answer ='';
+            this.flashcard.keywords = [];
             this.toggleForm();
             
 
