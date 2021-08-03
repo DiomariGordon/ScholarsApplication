@@ -1,6 +1,6 @@
 <template>
   <div>
-      <button v-show="!showForm" v-on:click="toggleForm">Create New Card</button>
+      <button v-on:click="toggleForm(); clearForm()" v-text="showForm ? 'Cancel' : 'Create New Card'"></button>
       <form v-if="showForm">
       <input
       placeholder="Question"
@@ -22,8 +22,14 @@
       <button @click.prevent="addNewKeyword">+Keyword</button>
       <div>
           <h4 v-show="this.flashcard.keywords.length === 0">At least 1 keyword required</h4>
-          <input v-show="this.flashcard.keywords.length !== 0" type="submit" v-on:submit.prevent="addNewFlashcard" />
+          <button v-show="this.flashcard.keywords.length !== 0" v-on:click.prevent="addNewFlashcard">Finished</button>
       </div>
+      <table v-show="this.flashcard.keywords.length !== 0">
+          <th>Keywords</th>
+          <tr v-for="keyword in this.flashcard.keywords" v-bind:key="keyword.id">
+              <td>{{keyword}}</td>
+          </tr>
+      </table>
       </form>
   </div>
 </template>
@@ -53,6 +59,7 @@ export default {
                     this.$router.push('/editFlashcard');
                 }
             });
+            this.clearForm();
             this.toggleForm();
             
 
@@ -65,6 +72,11 @@ export default {
         },
         toggleForm() {
             this.showForm = !this.showForm;
+        },
+        clearForm() {
+            this.flashcard.question = '';
+            this.flashcard.answer ='';
+            this.flashcard.keywords = [];
         }
     }
 }
