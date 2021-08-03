@@ -4,12 +4,10 @@ import com.techelevator.model.FlashCard;
 import com.techelevator.model.FlashCardKeyword;
 import com.techelevator.model.FlashCardUser;
 import com.techelevator.service.FlashCardService;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
+@CrossOrigin
 public class FlashCardController {
 
     private FlashCardService flashCardService;
