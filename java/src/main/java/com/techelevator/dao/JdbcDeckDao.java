@@ -5,7 +5,9 @@ import com.techelevator.model.DeckUser;
 import com.techelevator.model.FlashCard;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.stereotype.Component;
 
+@Component
 public class JdbcDeckDao implements DeckDao{
 
     private JdbcTemplate jdbcTemplate;
