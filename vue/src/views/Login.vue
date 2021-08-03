@@ -33,7 +33,9 @@
         v-model="user.password"
         required
       />
+      <div>
       <router-link :to="{ name: 'register' }" class="rLink">Need an account?</router-link>
+      </div>
       <button class="btnSubmit" type="submit">Sign in</button>
     </form>
   </div>
@@ -83,7 +85,6 @@ export default {
     padding: 5px;
   }
   .rLink {
-    display: block;
     padding: 10px;
   }
   .btnSubmit {

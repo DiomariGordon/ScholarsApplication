@@ -1,7 +1,7 @@
 <template>
   <div>
-      <button @click="addNewFlashcard">Create flashcard</button>
-      <form></form>
+      <button v-show="!showForm" v-on:click="toggleForm">Create New Card</button>
+      <form v-if="showForm">
       <input
       placeholder="Question"
       type="text"
@@ -15,36 +15,58 @@
       required
       />
       <input
-      placeholder="Enter keywords seperated by '/'"
+      placeholder="Enter keyword"
       type="text"
-      size="30"
-      v-model="flashcard.keywords"
-      required
+      v-model="keywordToAdd"
       />
+      <button @click.prevent="addNewKeyword">+Keyword</button>
+      <div>
+          <h4 v-show="this.flashcard.keywords.length === 0">At least 1 keyword required</h4>
+          <input v-show="this.flashcard.keywords.length !== 0" type="submit" v-on:submit.prevent="addNewFlashcard" />
+      </div>
+      </form>
   </div>
 </template>
 
 <script>
+import FlashcardService from '@/services/FlashcardService'
 export default {
     name: "create-flashcard",
     components: {},
     data() {
         return {
             flashcard: {
-                creatorID: this.$store.state.user.id,
+                userId: this.$store.state.user.id,
                 question: '',
                 answer: '',
-                keywords: ''
-            }
+                keywords: []
+            },
+            keywordToAdd: '',
+            showForm: false
         }
     },
     methods: {
         addNewFlashcard() {
-            this.$store.commit("ADD_FLASHCARD", this.flashcard);
-            this.$router.push( {name: 'home'});
+            this.addNewKeyword();
+            FlashcardService.addCard(this.flashcard).then((response) =>{
+                if(response.status === 201) {
+                    this.$router.push('/editFlashcard');
+                }
+            });
+            this.toggleForm();
+            
+
+        },
+        addNewKeyword() {
+            if(this.keywordToAdd != '') {
+            this.flashcard.keywords.push(this.keywordToAdd);
+            this.keywordToAdd = '';
+            }
+        },
+        toggleForm() {
+            this.showForm = !this.showForm;
         }
     }
-
 }
 </script>
 
