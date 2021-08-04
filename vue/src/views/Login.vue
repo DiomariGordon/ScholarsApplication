@@ -2,6 +2,7 @@
   <div id="login" class="text-center">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Monoton">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Gentium+Book+Basic">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta">
     <h1 class="title">Scholars</h1>
     <img class="imgHat" src="@/images/hat.png" alt="An image of a graduation cap">
     <h2 class="h3 mb-3 font-weight-normal">Please Sign In</h2>
@@ -109,7 +110,7 @@ export default {
     height: 200px;
   }
   body {
-    background: url(../images/notebook.jpg);
+    background-color: #f77f00;
   }
   h1 {
     font-family: "Monoton", sans-serif;
@@ -119,7 +120,6 @@ export default {
   h2 {
     position: relative;
     display: inline-block;
-    border: 3px solid #fcbf49;
     font-family: "Gentium Book Basic", sans-serif;
     color: #eae2b7;
     padding-top: 10px;
@@ -127,6 +127,13 @@ export default {
     background-color: #d62828;
   }
   div {
+    color: #eae2b7;
+  }
+
+  .rLink:link {
+    font-family: "Mukta", sans-serif;
+  }
+  .rLink:visited {
     color: #eae2b7;
   }
 </style>

@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta">
     <div id="nav">
       <h1>
       <router-link class="home" v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;&nbsp;
@@ -12,10 +13,13 @@
 
 <style>
   .home {
-    background-color: #d62828;
+    font-family: "Mukta", sans-serif;
     font-size: 25px;
-    border: 2px solid #eae2b7;
     display: inline-block;
+  }
+
+  .home:visited {
+    color: #eae2b7;
   }
 </style>
 
