@@ -8,6 +8,8 @@
         v-model="deck.name"
         required
       />
+
+      <button @click.prevent="addNewDeck">Submit</button>
       </form>
   </div>
 </template>
@@ -26,7 +28,16 @@ export default {
       //showForm: false
     };
 
-}
+    },
+    methods: {
+   
+    addNewDeck() {
+    //   if (this.keywordToAdd != "" && !this.flashcard.keywords.includes(this.keywordToAdd)) {
+    //     this.flashcard.keywords.push(this.keywordToAdd);
+    //     this.keywordToAdd = "";
+    //   }
+    }
+    }
 }
 </script>
 
