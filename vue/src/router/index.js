@@ -6,6 +6,7 @@ import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
 import MyFlashcards from '../views/MyFlashcards'
+import Deck from '../views/Deck'
 
 Vue.use(Router)
 
@@ -58,7 +59,13 @@ const router = new Router({
       path: "/myflashcards",
       name: "myflashcards",
       component: MyFlashcards
+    },
+    {
+      path: "/deck",
+      name: "deck",
+      component: Deck
     }
+
   ]
 })
 
