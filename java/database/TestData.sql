@@ -1,3 +1,6 @@
+
+INSERT INTO users (username,password_hash,role) VALUES ('final_capstone_appuser', '$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
+
 INSERT INTO flashcard VALUES (default, '2+2', '4');
 INSERT INTO flashcard VALUES (default, '5+1', '6');
 
