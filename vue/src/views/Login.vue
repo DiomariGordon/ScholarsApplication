@@ -1,10 +1,12 @@
 <template>
   <div id="login" class="text-center">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
-    <h1 class="title">Welcome to Scholars!</h1>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Monoton">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Gentium+Book+Basic">
+    <h1 class="title">Scholars</h1>
     <img class="imgHat" src="@/images/hat.png" alt="An image of a graduation cap">
-    <form class="form-signin" @submit.prevent="login">
-      <h2 class="h3 mb-3 font-weight-normal">Please Sign In</h2>
+    <h2 @mouseover="hover = true" v-show="!hover" class="h3 mb-3 font-weight-normal">Please Sign In</h2>
+    <form v-if="hover" @mouseleave="hover = false" class="form-signin" submit.prevent="login">
+    
       <div
         class="alert alert-danger"
         role="alert"
@@ -54,7 +56,8 @@ export default {
         username: '',
         password: ''
       },
-      invalidCredentials: false
+      invalidCredentials: false,
+      hover: false
     };
   },
   methods: {
@@ -92,7 +95,7 @@ export default {
     text-align: center;
     margin: 10px;
     background-color: #513b56;
-    color: palegoldenrod;
+    color: #eae2b7;
   }
   .form-signin {
     text-align: center;
@@ -106,18 +109,24 @@ export default {
     height: 200px;
   }
   body {
-    background-color: #bce784;
+    background-color:#003049;
   }
   h1 {
-    font-family: "Lobster", sans-serif;
-    color: #513b56;
+    font-family: "Monoton", sans-serif;
+    color: #003049;
     font-size: 75px;
   }
   h2 {
-    font-family: "Lobster", sans-serif;
-    color: white;
+    position: relative;
+    display: inline-block;
+    border: 3px solid #fcbf49;
+    font-family: "Gentium Book Basic", sans-serif;
+    color: #eae2b7;
     padding-top: 10px;
     padding-bottom: 10px;
-    background-color: #348aa7;
+    background-color: #d62828;
+  }
+  div {
+    color: #eae2b7;
   }
 </style>
