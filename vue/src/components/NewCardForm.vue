@@ -6,7 +6,7 @@
         toggleForm();
         clearForm();
       "
-      v-text="showForm ? 'Cancel' : 'Create New Card'"
+      v-text="showForm ? 'Cancel' : 'CREATE NEW CARD'"
     ></button>
     <form v-if="showForm">
       <input

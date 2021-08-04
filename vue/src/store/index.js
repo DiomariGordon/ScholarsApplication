@@ -25,6 +25,9 @@ export default new Vuex.Store({
     }
   },
   mutations: {
+    SET_FLASHCARDS(state, flashcards) {
+      this.state.flashcards = flashcards;
+    },
     SET_AUTH_TOKEN(state, token) {
       state.token = token;
       localStorage.setItem('token', token);
