@@ -11,7 +11,8 @@
 
 <script>
 export default {
-    name: 'my-cards',
+    name: "my-cards-list",
+    components: {},
     data() {
         return {
             myCards: this.$store.flashcards
