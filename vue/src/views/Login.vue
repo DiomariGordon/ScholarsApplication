@@ -4,8 +4,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Gentium+Book+Basic">
     <h1 class="title">Scholars</h1>
     <img class="imgHat" src="@/images/hat.png" alt="An image of a graduation cap">
-    <h2 @mouseover="hover = true" v-show="!hover" class="h3 mb-3 font-weight-normal">Please Sign In</h2>
-    <form v-if="hover" @mouseleave="hover = false" class="form-signin" submit.prevent="login">
+    <h2 class="h3 mb-3 font-weight-normal">Please Sign In</h2>
+    <form class="form-signin" @submit.prevent="login">
     
       <div
         class="alert alert-danger"
@@ -109,7 +109,7 @@ export default {
     height: 200px;
   }
   body {
-    background-color:#003049;
+    background: url(../images/notebook.jpg);
   }
   h1 {
     font-family: "Monoton", sans-serif;
