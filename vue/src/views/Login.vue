@@ -1,5 +1,6 @@
 <template>
   <div id="login" class="text-center">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
     <h1 class="title">Welcome to Scholars!</h1>
     <img class="imgHat" src="@/images/hat.png" alt="An image of a graduation cap">
     <form class="form-signin" @submit.prevent="login">
@@ -90,6 +91,8 @@ export default {
   .btnSubmit {
     text-align: center;
     margin: 10px;
+    background-color: #513b56;
+    color: palegoldenrod;
   }
   .form-signin {
     text-align: center;
@@ -103,6 +106,18 @@ export default {
     height: 200px;
   }
   body {
-    background-color: aqua;
+    background-color: #bce784;
+  }
+  h1 {
+    font-family: "Lobster", sans-serif;
+    color: #513b56;
+    font-size: 75px;
+  }
+  h2 {
+    font-family: "Lobster", sans-serif;
+    color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #348aa7;
   }
 </style>
