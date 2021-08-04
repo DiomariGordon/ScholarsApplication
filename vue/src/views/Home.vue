@@ -5,8 +5,10 @@
     <p>You must be authenticated to see this</p>
     <router-link :to="{name: 'myflashcards'}" class="editCards">Flashcards</router-link>
     <router-link :to="{name: 'deck'}">Create Decks</router-link>
+
     <!--<router-link>View Decks</router-link>
     <router-link>Study Session</router-link>-->
+
   </div>
 </template>
 
@@ -30,7 +32,7 @@ export default {
 <style>
 div {
   text-align: center;
-  background-color: #5dd39e;
+  background-color: #f77f00;
   color: #513b56;
 }
 
