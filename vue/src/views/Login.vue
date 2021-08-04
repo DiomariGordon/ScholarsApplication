@@ -9,7 +9,7 @@
         class="alert alert-danger"
         role="alert"
         v-if="invalidCredentials"
-      >Invalid username and password!</div>
+      >Invalid username and/or password!</div>
       <div
         class="alert alert-success"
         role="alert"
@@ -35,7 +35,7 @@
         required
       />
       <div>
-      <router-link :to="{ name: 'register' }" class="rLink">Need an account?</router-link>
+      <router-link :to="{ name: 'register' }" class="rLink">CREATE ACCOUNT</router-link>
       </div>
       <button class="btnSubmit" type="submit">Sign in</button>
     </form>
