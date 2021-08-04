@@ -21,4 +21,6 @@ public interface FlashCardDao {
     boolean addFlashCardKeywords(FlashCard flashCardKeyword);
 
     List<FlashCard> getFlashcardsByUserId(Integer id);
+
+    List<FlashCard> getFlashCardByKeyword( Integer userId , String keyword);
 }

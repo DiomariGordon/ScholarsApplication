@@ -35,4 +35,9 @@ public class FlashCardController {
        return flashCardService.getFlashCards(id);
     }
 
+    @RequestMapping(path ="/flashCards/keyword/{userId}", method= RequestMethod.GET)
+    public List<FlashCard> getFlashCardsByKeywords(@PathVariable Integer userId, @RequestParam String keyword) throws Exception{
+        return flashCardService.getFlashCardsByKeyword(userId, keyword);
+    }
+
 }

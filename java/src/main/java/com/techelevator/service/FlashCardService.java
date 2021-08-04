@@ -1,6 +1,7 @@
 package com.techelevator.service;
 
 import com.techelevator.Exception.BadRequestException;
+import com.techelevator.Exception.NotFoundException;
 import com.techelevator.dao.FlashCardDao;
 import com.techelevator.model.FlashCard;
 import org.springframework.stereotype.Service;
@@ -70,6 +71,15 @@ public class FlashCardService {
             }
             flashCardDao.updateFlashCard(flashCard);
 
+        }
+
+
+       public List <FlashCard> getFlashCardsByKeyword(Integer userId, String keyword) throws NotFoundException {
+            List<FlashCard> flashCards = flashCardDao.getFlashCardByKeyword(userId, keyword);
+            if(flashCards.size() == 0){
+                throw new NotFoundException("Flash Card for the key word Not Found");
+            }
+            return flashCards;
         }
 
 }
