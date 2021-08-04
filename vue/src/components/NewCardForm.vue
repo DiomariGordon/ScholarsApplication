@@ -73,7 +73,7 @@ export default {
       this.toggleForm();
     },
     addNewKeyword() {
-      if (this.keywordToAdd != "") {
+      if (this.keywordToAdd != "" && !this.flashcard.keywords.includes(this.keywordToAdd)) {
         this.flashcard.keywords.push(this.keywordToAdd);
         this.keywordToAdd = "";
       }
