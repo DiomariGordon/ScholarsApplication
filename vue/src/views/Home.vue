@@ -30,7 +30,7 @@ export default {
 <style>
 div {
   text-align: center;
-  background-color: #5dd39e;
+  background-color: #f77f00;
   color: #513b56;
 }
 
