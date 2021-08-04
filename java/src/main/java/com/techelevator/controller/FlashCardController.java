@@ -5,14 +5,15 @@ import com.techelevator.service.FlashCardService;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @RestController
 @CrossOrigin
 @PreAuthorize("isAuthenticated()")
-
 public class FlashCardController {
 
-    private FlashCardService flashCardService;
+    private final FlashCardService flashCardService;
 
     public FlashCardController(FlashCardService flashCardService) {
         this.flashCardService = flashCardService;
@@ -27,6 +28,11 @@ public class FlashCardController {
     @RequestMapping(path ="/flashCards", method= RequestMethod.PUT)
     public void updateFlashCard(@RequestBody FlashCard flashCard) throws Exception{
          flashCardService.updateExistingFlashCard((flashCard));
+    }
+
+    @RequestMapping(path ="/flashCards/{id}", method= RequestMethod.GET)
+    public List<FlashCard> getFlashCards(@PathVariable Integer id) throws Exception{
+       return flashCardService.getFlashCards(id);
     }
 
 }

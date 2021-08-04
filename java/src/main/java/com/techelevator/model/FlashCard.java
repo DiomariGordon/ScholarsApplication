@@ -1,11 +1,17 @@
 package com.techelevator.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
+import javax.validation.constraints.NotNull;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class FlashCard {
 
     private Integer flashCardId;
     private String question;
     private String answer;
     private Integer userId;
+    private String keyword;
     private String [] keywords;
 
 
@@ -36,10 +42,6 @@ public class FlashCard {
         this.keywords = keywords;
     }
 
-
-
-
-
     public Integer getFlashCardId() {
         return flashCardId;
     }
@@ -62,5 +64,13 @@ public class FlashCard {
 
     public void setAnswer(String answer) {
         this.answer = answer;
+    }
+
+    public String getKeyword() {
+        return keyword;
+    }
+
+    public void setKeyword(String keyword) {
+        this.keyword = keyword;
     }
 }

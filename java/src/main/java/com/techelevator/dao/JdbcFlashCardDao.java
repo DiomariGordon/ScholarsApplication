@@ -69,18 +69,34 @@ public class JdbcFlashCardDao implements FlashCardDao{
     @Override
     public boolean addFlashCardKeywords(FlashCard flashCard){
 
-        //Integer rowCount = 0;
         String [] keywords = flashCard.getKeywords();
         for (int i = 0; i < keywords.length; i++ ){
 
             String sql = "INSERT INTO flashcard_keyword( flashcard_id, keyword)  " +
                     "VALUES( ?, ?) RETURNING flashcard_id;";
-            // rowCount +=
             Integer flashcardId = jdbcTemplate.queryForObject(sql, Integer.class,flashCard.getFlashCardId(), keywords[i]);
 
         }
 
         return true;
+    }
+
+    public List<FlashCard> getFlashcardsByUserId(Integer userId) {
+        List<FlashCard> flashCards = new ArrayList<>();
+
+        String sql = "SELECT f.flashcard_id, f.question, f.answer, ck.keyword FROM Flashcard f " +
+                "JOIN flashcard_keyword ck ON  f.flashcard_id = ck.flashcard_id " +
+                "JOIN flashcard_user fu ON fu.flashcard_id = f.flashcard_id  " +
+                "WHERE user_id = ?; ";
+
+        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, userId);
+        while(rowSet.next()) {
+           FlashCard flashCard = mapRowToUserFlashCard(rowSet);
+           if(flashCard != null) {
+               flashCards.add(flashCard);
+           }
+        }
+        return flashCards;
     }
 
     @Override
@@ -97,6 +113,15 @@ public class JdbcFlashCardDao implements FlashCardDao{
         flashCard.setQuestion(rowSet.getString("question"));
         flashCard.setAnswer(rowSet.getString("answer"));
 
+        return flashCard;
+    }
+
+    private FlashCard mapRowToUserFlashCard(SqlRowSet rowSet) {
+        FlashCard flashCard = new FlashCard();
+        flashCard.setFlashCardId(rowSet.getInt("flashcard_id"));
+        flashCard.setQuestion(rowSet.getString("question"));
+        flashCard.setAnswer(rowSet.getString("answer"));
+        flashCard.setKeyword(rowSet.getString("keyword"));
         return flashCard;
     }
 

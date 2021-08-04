@@ -5,6 +5,11 @@ import com.techelevator.dao.FlashCardDao;
 import com.techelevator.model.FlashCard;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 @Service
 public class FlashCardService {
 
@@ -14,7 +19,36 @@ public class FlashCardService {
         this.flashCardDao = flashCardDao;
     }
 
+       public List<FlashCard> getFlashCards(Integer id){
+            Map<Integer, List<String>> flashCardMap = new HashMap();
+            List<String> keywordList = null;
+            List<FlashCard> flashCards = flashCardDao.getFlashcardsByUserId(id);
 
+            for(FlashCard flashCard : flashCards){
+                if(flashCardMap.containsKey(flashCard.getFlashCardId())){
+                    flashCardMap.get(flashCard.getFlashCardId()).add(flashCard.getKeyword());
+                }else{
+                    keywordList = new ArrayList<>();
+                    keywordList.add(flashCard.getKeyword());
+                    flashCardMap.put(flashCard.getFlashCardId(), keywordList);
+                }
+            }
+
+            List<FlashCard> flashCardList = new ArrayList<>();
+            for(Map.Entry<Integer,List<String>> entry : flashCardMap.entrySet()) {
+                FlashCard flashCardNew = new FlashCard();
+                for (FlashCard flashCard : flashCards) {
+                    if(entry.getKey().compareTo(flashCard.getFlashCardId()) == 0){
+                        flashCardNew.setFlashCardId(entry.getKey());
+                        flashCardNew.setQuestion(flashCard.getQuestion());
+                        flashCardNew.setAnswer(flashCard.getAnswer());
+                        flashCardNew.setKeywords(entry.getValue().toArray(String[]::new));
+                    }
+                }
+                flashCardList.add(flashCardNew);
+            }
+            return flashCardList;
+       }
 
        public boolean  createNewFlashCard( FlashCard flashCard) throws Exception {
             FlashCard existingFlashCard =  flashCardDao.getFlashCardByQuestion(flashCard.getQuestion());
