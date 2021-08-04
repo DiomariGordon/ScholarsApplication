@@ -23,7 +23,7 @@ export default {
     },
     data() {
         return {
-            myCards: this.$store.flashcards
+            myCards: this.$store.state.flashcards
         }
     }
 }
