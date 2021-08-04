@@ -3,7 +3,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
     <h1>Home</h1>
     <p>You must be authenticated to see this</p>
-    <router-link :to="{name: 'editflashcard'}" class="editCards">Flashcards</router-link>
+    <router-link :to="{name: 'myflashcards'}" class="editCards">Flashcards</router-link>
     <router-link>Create Decks</router-link>
     <router-link>View Decks</router-link>
     <router-link>Study Session</router-link>

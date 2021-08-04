@@ -47,7 +47,7 @@
 <script>
 import FlashcardService from "@/services/FlashcardService";
 export default {
-  name: "create-flashcard",
+  name: "new-card-form",
   components: {},
   data() {
     return {
