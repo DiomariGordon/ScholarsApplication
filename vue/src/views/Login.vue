@@ -1,7 +1,7 @@
 <template>
   <div id="login" class="text-center">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Monoton">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Gentium+Book+Basic">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Homemade+Apple">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta">
     <h1 class="title">Scholars</h1>
     <img class="imgHat" src="@/images/hat.png" alt="An image of a graduation cap">
@@ -95,8 +95,8 @@ export default {
   .btnSubmit {
     text-align: center;
     margin: 10px;
-    background-color: #513b56;
-    color: #eae2b7;
+    background-color: white;
+    color: black;
   }
   .form-signin {
     text-align: center;
@@ -110,30 +110,29 @@ export default {
     height: 200px;
   }
   body {
-    background-color: #f77f00;
+    background: url(../images/chalkboard.jpg);
   }
   h1 {
-    font-family: "Monoton", sans-serif;
-    color: #003049;
+    font-family: "Homemade Apple", sans-serif;
+    color:white;
     font-size: 75px;
   }
   h2 {
     position: relative;
     display: inline-block;
-    font-family: "Gentium Book Basic", sans-serif;
-    color: #eae2b7;
+    font-family: "Love Ya Like A Sister", sans-serif;
+    color: white;
     padding-top: 10px;
     padding-bottom: 10px;
-    background-color: #d62828;
   }
   div {
-    color: #eae2b7;
+    color: white;
   }
 
   .rLink:link {
-    font-family: "Mukta", sans-serif;
+    font-family: "Love Ya Like A Sister", sans-serif;
   }
   .rLink:visited {
-    color: #eae2b7;
+    color: white;
   }
 </style>

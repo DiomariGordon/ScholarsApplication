@@ -1,6 +1,6 @@
 `<template>
   <div class="home">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta">
     <!-- <p>You must be authenticated to see this</p> -->
     <nav>
@@ -34,11 +34,11 @@ export default {
 <style>
 div {
   text-align: center;
-  color: #F2CC65;
+  color: white;
 }
 
 h1 {
-  font-family: "Lobster", sans-serif;
+  font-family: "Love Ya Like A Sister", sans-serif;
 }
 
 .editCards {
@@ -51,33 +51,33 @@ ul {
   padding: 0;
 }
 li {
-  font-family: "Mukta", sans-serif;
+  font-family: "Love Ya Like A Sister", sans-serif;
   font-size: 2rem;
   font-weight: 400;
   text-transform: uppercase;
-  border-bottom: 1px solid#F2CC65;
+  border-bottom: 1px solid white;
   padding-top: 30px
 }
 .editCards:link {
-  color: #F2CC65;
+  color: white;
   text-decoration: none;
 }
 .createDeck:link {
-  color: #F2CC65;
+  color: white;
   text-decoration: none;
 }
 .createDeck:visited {
-  color: #F2CC65;
+  color: white;
 }
 .editCards:visited {
-  color: #F2CC65;
+  color: white;
 }
 .editCards:hover {
-  color: #003049;
+  color: red;
   padding-left: 5px;
 }
 .createDeck:hover {
-  color: #003049;
+  color: red;
   padding-left: 5px;
 }
 
