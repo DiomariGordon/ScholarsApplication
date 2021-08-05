@@ -4,6 +4,7 @@ public class Deck {
     private Integer deckId;
     private Integer userId;
     private String deckName;
+    private String description;
 
     public Deck() {
     }
@@ -12,6 +13,13 @@ public class Deck {
         this.deckId = deckId;
         this.userId = userId;
         this.deckName = deckName;
+    }
+
+    public Deck(Integer deckId, Integer userId, String deckName, String description) {
+        this.deckId = deckId;
+        this.userId = userId;
+        this.deckName = deckName;
+        this.description = description;
     }
 
     public Integer getDeckId() {
@@ -36,6 +44,14 @@ public class Deck {
 
     public void setDeckName(String deckName) {
         this.deckName = deckName;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
 
