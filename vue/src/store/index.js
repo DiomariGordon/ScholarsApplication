@@ -20,9 +20,7 @@ export default new Vuex.Store({
   state: {
     token: currentToken || '',
     user: currentUser || {},
-    flashcards: {
-      
-    }
+    flashcards: []
   },
   mutations: {
     SET_FLASHCARDS(state, flashcards) {

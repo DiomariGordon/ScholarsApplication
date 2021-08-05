@@ -7,6 +7,9 @@ addCard(flashcard) {
   },
   getMyCards(id) {
     return axios.get(`/flashCards/${id}`);
+  },
+  deleteCard(id) {
+    return axios.delete(`/flashCards/${id}`);
   }
 }
 

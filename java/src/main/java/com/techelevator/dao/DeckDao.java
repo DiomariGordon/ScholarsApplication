@@ -7,7 +7,7 @@ public interface DeckDao {
 
     boolean createDeck(Deck Deck);
 
-    boolean addDeckUser(DeckUser deckUser);
+    boolean addDeckUser(Deck deck);
 
     Deck getDeckByDeckId(Integer deckId);
 

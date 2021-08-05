@@ -29,11 +29,11 @@ public class JdbcDeckDao implements DeckDao{
     }
 
     @Override
-    public boolean addDeckUser(DeckUser deckUser){
+    public boolean addDeckUser(Deck deck){
 
         String sql = "INSERT INTO deck_user( deck_id, user_id)" +
                 "VALUES( ?, ?)RETURNING deck_id ;";
-        Integer deckId = jdbcTemplate.queryForObject(sql, Integer.class, deckUser.getDeckId(), deckUser.getUserId());
+        Integer deckId = jdbcTemplate.queryForObject(sql, Integer.class, deck.getDeckId(), deck.getUserId());
         return true;
     }
 

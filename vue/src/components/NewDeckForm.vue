@@ -15,9 +15,10 @@
 </template>
 
 <script>
+import DeckService from "@/services/DeckService";
 export default {
     name: "new-deck-form",
-    components: {},
+    components: {    },
     data() {
     return {
       deck: {
@@ -25,6 +26,8 @@ export default {
         deckName: ""
 
       },
+      deckCreated: false
+
       //showForm: false
     };
 
@@ -32,6 +35,11 @@ export default {
     methods: {
    
     addNewDeck() {
+
+      DeckService.addDeck(this.deck).then((response) =>{
+           this.deckCreated = response.data;
+        });
+
     //   if (this.keywordToAdd != "" && !this.flashcard.keywords.includes(this.keywordToAdd)) {
     //     this.flashcard.keywords.push(this.keywordToAdd);
     //     this.keywordToAdd = "";
