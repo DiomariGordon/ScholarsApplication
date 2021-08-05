@@ -99,26 +99,27 @@ export default {
         display: inline-block;
         border-radius: 5px;
     }
-.body {
-  background: #e2e1e0;
-  text-align: center;
-  color: black;
-}
 
-.card {
-    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-  background: #fff;
-  border-radius: 2px;
-  display: inline-block;
-  margin: 1rem;
-  position: relative;
-  color: black;
-  font-weight: bold;
-  font-family: 'Courier New', Courier, monospace;
-  text-justify: center;
-  padding: 100px;
-  font-size: 20px;
-}
+    .body {
+    background: #e2e1e0;
+    text-align: center;
+    color: black;
+    }
+
+    .card {
+        box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    background: #fff;
+    border-radius: 2px;
+    display: inline-block;
+    margin: 1rem;
+    position: relative;
+    color: black;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+    text-justify: center;
+    padding: 100px;
+    font-size: 20px;
+    }
    
 
     
