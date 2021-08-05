@@ -7,6 +7,7 @@ import Register from '../views/Register.vue'
 import store from '../store/index'
 import MyFlashcards from '../views/MyFlashcards'
 import Deck from '../views/Deck'
+import ModifyThisCard from '../views/ModifyThisCard'
 
 Vue.use(Router)
 
@@ -58,12 +59,23 @@ const router = new Router({
     {
       path: "/myflashcards",
       name: "myflashcards",
-      component: MyFlashcards
+      component: MyFlashcards,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: "/deck",
       name: "deck",
       component: Deck
+    },
+    {
+      path: "/myFlashcards/:id",
+      name: "editFlashcard",
+      component: ModifyThisCard,
+      meta: {
+        requiresAuth: true
+      }
     }
 
   ]

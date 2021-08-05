@@ -1,7 +1,7 @@
 <template>
   <div>
       <h2>My Flashcards</h2>
-      <router-link class="cardList" :to="{name: 'home'}" v-for="card in this.$store.state.flashcards" v-bind:key="card.id">
+      <router-link class="cardList" :to="{path: `/myFlashcards/${card.flashCardId}`}" v-for="card in this.$store.state.flashcards" v-bind:key="card.id">
           {{card.question}}
       </router-link>
   </div>
@@ -21,9 +21,7 @@ export default {
        
     },
     data() {
-        return {
-            myCards: this.$store.state.flashcards
-        }
+        return { }
     }
 }
 </script>
