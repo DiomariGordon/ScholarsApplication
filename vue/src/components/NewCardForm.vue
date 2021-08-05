@@ -71,6 +71,7 @@ export default {
       });
       this.clearForm();
       this.toggleForm();
+      location.reload();
     },
     addNewKeyword() {
       if (this.keywordToAdd != "" && !this.flashcard.keywords.includes(this.keywordToAdd)) {
