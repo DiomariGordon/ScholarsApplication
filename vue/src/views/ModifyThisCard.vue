@@ -72,7 +72,7 @@ export default {
     },
     deleteThisCard() {
       FlashcardService.deleteCard(this.flashcard.flashCardId).then((response) =>{
-        if(response.status === 200) {
+        if(response.status === 200 || response.status === 204) {
           this.$router.push("/myflashcards");
         }
       });
