@@ -15,11 +15,12 @@ export default {
     name: "my-cards-list",
     components: {},
     created() {
-        const cards = FlashcardService.getMyCards(this.$store.state.user.id).then((response) =>{
-            return response.data;
+        FlashcardService.getMyCards(this.$store.state.user.id).then((response) =>{
+            const cards = response.data;
+            this.$store.commit("SET_FLASHCARDS", cards);
+            return cards;
         });
-        this.$store.commit("SET_FLASHCARDS", cards);
-        console.log('Working');
+       
     },
     data() {
         return {
