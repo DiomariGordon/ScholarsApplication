@@ -33,8 +33,14 @@
         >
           Finished
         </button>
+        <button
+          v-show="this.flashcard.keywords.length !== 0"
+          v-on:click.prevent="resetKeywords"
+        >
+          Reset Keywords
+        </button>
       </div>
-      <table v-show="this.flashcard.keywords.length !== 0">
+      <table class="keywordTable" v-show="this.flashcard.keywords.length !== 0">
         <th>Keywords</th>
         <tr v-for="keyword in this.flashcard.keywords" v-bind:key="keyword.id">
           <td>{{ keyword }}</td>
@@ -66,7 +72,7 @@ export default {
       this.addNewKeyword();
       FlashcardService.addCard(this.flashcard).then((response) => {
         if (response.status === 201) {
-          this.$router.push("/editFlashcard");
+          this.$router.push("/myflashcards");
         }
       });
       this.clearForm();
@@ -74,7 +80,10 @@ export default {
       location.reload();
     },
     addNewKeyword() {
-      if (this.keywordToAdd != "" && !this.flashcard.keywords.includes(this.keywordToAdd)) {
+      if (
+        this.keywordToAdd != "" &&
+        !this.flashcard.keywords.includes(this.keywordToAdd)
+      ) {
         this.flashcard.keywords.push(this.keywordToAdd);
         this.keywordToAdd = "";
       }
@@ -82,10 +91,13 @@ export default {
     toggleForm() {
       this.showForm = !this.showForm;
     },
+    resetKeywords() {
+      this.flashcard.keywords = [];
+    },
     clearForm() {
       this.flashcard.question = "";
       this.flashcard.answer = "";
-      this.flashcard.keywords = [];
+      this.resetKeywords();
     },
   },
 };

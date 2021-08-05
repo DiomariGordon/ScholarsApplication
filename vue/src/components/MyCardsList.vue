@@ -1,40 +1,91 @@
 <template>
   <div>
-      <h2>My Flashcards</h2>
-      <router-link class="cardList" :to="{path: `/myFlashcards/${card.flashCardId}`}" v-for="card in this.$store.state.flashcards" v-bind:key="card.id">
-          {{card.question}}
+    <h2>My Flashcards</h2>
+    <div>
+        <input type="text" placeholder="Enter a Keyword" v-model="keywordToAdd">
+        <button v-on:click.prevent="addSearchKeyword">+Keyword</button>
+        <button v-on:click.prevent="clearFilters">Reset Search Parameters</button>
+    </div>
+    <div class="miniCardContainer">
+      <router-link
+        class="miniCard"
+        :to="{ path: `/myFlashcards/${card.flashCardId}` }"
+        v-for="card in this.filteredList"
+        v-bind:key="card.id"
+      >
+        {{ card.question }} ~ {{card.answer}}
       </router-link>
+    </div>
+    <table class="keywordTable" v-show="this.filters.length != 0">
+        <th>Search Parameters</th>
+        <tr v-for="param in this.filters" v-bind:key="param.id">
+            <td>{{param}}</td>
+        </tr>
+    </table>
   </div>
 </template>
 
 <script>
-import FlashcardService from '@/services/FlashcardService'
+import FlashcardService from "@/services/FlashcardService";
 export default {
-    name: "my-cards-list",
-    components: {},
-    created() {
-        FlashcardService.getMyCards(this.$store.state.user.id).then((response) =>{
-            const cards = response.data;
-            this.$store.commit("SET_FLASHCARDS", cards);
-            return cards;
-        });
-       
-    },
-    data() {
-        return { }
-    }
-}
+  name: "my-cards-list",
+  components: {},
+  created() {
+    FlashcardService.getMyCards(this.$store.state.user.id).then((response) => {
+      const cards = response.data;
+      this.$store.commit("SET_FLASHCARDS", cards);
+      return cards;
+    });
+  },
+  data() {
+    return {
+        filters: [],
+        keywordToAdd: ''
+
+    };
+  },
+  computed: {
+      filteredList() {
+          let newList = this.$store.state.flashcards;
+          if(this.filters.length != 0) {
+              for(let i = 0; i < this.filters.length; i++) {
+              newList = this.$store.state.flashcards.filter((card) =>{return card.keywords.includes(this.filters[i]);});
+              }
+
+                  }
+          return newList;
+      }
+  },
+  methods: {
+      addSearchKeyword() {
+          if(this.keywordToAdd != '' && !this.filters.includes(this.keywordToAdd)) {
+              this.filters.push(this.keywordToAdd);
+              this.keywordToAdd = '';
+          }
+      },
+      clearFilters() {
+          this.filters = [];
+      }
+  }
+};
 </script>
 
 <style>
-.cardList {
-    display: block;
-    padding: 3px;
-    border: 1px solid black;
-    border-radius: 25px;
-    width: 10vw;
-    margin: 0 auto;
-    
+.miniCard {
+  margin: 5px;
+  padding: 5px;
+  border: 1px solid black;
+  border-radius: 25px;
+  background-color: antiquewhite;
+  color: navy;
+  font-family: "Monoton", sans-serif;
+  text-decoration: none;
 }
-
+.miniCardContainer {
+  display: flex;
+  flex-wrap: wrap;
+  border: 1px solid black;
+  width: 50vw;
+  margin: 0 auto;
+}
 </style>

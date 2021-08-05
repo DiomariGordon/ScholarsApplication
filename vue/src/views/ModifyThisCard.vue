@@ -32,7 +32,7 @@
       <h1 class="cardText">{{ this.flashcard.answer }}</h1>
     </div>
     <div>
-      <button>Delete This Card</button>
+      <button v-on:click="deleteThisCard">Delete This Card</button>
     </div>
     <table class="keywordTable">
       <th>Keywords</th>
@@ -44,6 +44,7 @@
 </template>
 
 <script>
+import FlashcardService from '@/services/FlashcardService'
 export default {
   name: "modifyThisCard",
   data() {
@@ -69,6 +70,13 @@ export default {
     flipCard() {
       this.showFront = !this.showFront;
     },
+    deleteThisCard() {
+      FlashcardService.deleteCard(this.flashcard.flashCardId).then((response) =>{
+        if(response.status === 200) {
+          this.$router.push("/myflashcards");
+        }
+      });
+    }
   },
 };
 </script>
@@ -89,6 +97,7 @@ export default {
 }
 .keywordTable {
   margin: 0 auto;
+  color: black;
 }
 .cardHead {
     color: black;
