@@ -10,6 +10,10 @@ addCard(flashcard) {
   },
   deleteCard(id) {
     return axios.delete(`/flashCards/${id}`);
+  },
+  getCardsByKeyWord(id, key) {
+    return axios.get(`/flashCards/search/${id}`, {params : {keyword : key}});
   }
+
 }
 

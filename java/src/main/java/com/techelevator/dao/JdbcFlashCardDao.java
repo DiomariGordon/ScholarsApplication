@@ -109,7 +109,12 @@ public class JdbcFlashCardDao implements FlashCardDao{
                 "JOIN flashcard_user fu ON f.flashcard_id = fu.flashcard_id " +
                 "WHERE ck.keyword  LIKE  ? AND fu.user_id = ?; ";
 
-        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, '%'+keyword+'%', userId );
+        SqlRowSet rowSet = null;
+        if(keyword == null || keyword.length() == 0){
+            rowSet = jdbcTemplate.queryForRowSet(sql, keyword, userId );
+        } else {
+            rowSet = jdbcTemplate.queryForRowSet(sql, '%' + keyword + '%', userId);
+        }
         while(rowSet.next()){
             FlashCard flashCard = mapRowToFlashCard(rowSet);
             if(flashCard != null) {

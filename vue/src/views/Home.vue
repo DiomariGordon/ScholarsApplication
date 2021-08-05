@@ -8,6 +8,7 @@
         <li><a><router-link :to="{name: 'myflashcards'}" class="editCards">Flashcards</router-link></a></li>
         <li><a><router-link :to="{name: 'deck'}" class="createDeck">Create Decks</router-link></a></li>
         <li><a><router-link :to="{name: 'mydecks'}" class="viewDecks">View Decks</router-link></a></li>
+        <li><a><router-link :to="{name: 'searchCard'}" class="viewDecks">Search Cards</router-link></a></li>
         <!-- <li><a><router-link>Study Session</router-link></a></li> -->
       </ul>
     </nav>
