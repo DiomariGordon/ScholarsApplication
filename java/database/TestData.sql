@@ -12,8 +12,10 @@ INSERT INTO flashcard_keyword VALUES (2, 'Addition');
 
 INSERT INTO deck VALUES (default, 'Addition Problems');
 
+
 ALTER TABLE deck
-ADD descriptioni varchar(500);
+ADD description varchar(500);
+
 
 
 
