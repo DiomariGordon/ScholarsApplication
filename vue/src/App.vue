@@ -1,11 +1,11 @@
 <template>
   <div id="app">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister">
     <div id="nav">
-      <h1>
-      <router-link class="home" v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;&nbsp;
-      </h1>
-      <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
+      <div class="main">
+        <div><router-link class="home" v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;&nbsp;</div>
+        <div><router-link class="logout" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link></div>
+      </div>
     </div>
     <router-view />
   </div>
@@ -13,13 +13,38 @@
 
 <style>
   .home {
-    font-family: "Mukta", sans-serif;
+    font-family: "Love Ya Like A Sister", sans-serif;
     font-size: 25px;
     display: inline-block;
   }
 
   .home:visited {
-    color: #eae2b7;
+    color: turquoise;
+  }
+
+  .logout {
+    font-family: "Love Ya Like A Sister", sans-serif;
+    font-size: 25px;
+    display: inline-block;
+  }
+
+  .logout:visited {
+    color: yellowgreen;
+  }
+
+  .home:hover {
+    color: yellowgreen;
+  }
+
+  .logout:hover {
+    color: turquoise;
+  }
+
+  .main {
+    list-style-type: none;
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
   }
 </style>
 

@@ -3,9 +3,16 @@
       <!-- <form v-if="showForm"> -->
         <form>
       <input
-        placeholder="DeckName"
+        placeholder="Deck Name"
         type="text"
         v-model="deck.name"
+        required
+      />
+
+      <input
+        placeholder="Deck Description"
+        type="text"
+        v-model="deck.description"
         required
       />
 
@@ -23,7 +30,8 @@ export default {
     return {
       deck: {
         userId: this.$store.state.user.id,
-        deckName: ""
+        deckName: "",
+        deckDescription: ""
 
       },
       deckCreated: false
