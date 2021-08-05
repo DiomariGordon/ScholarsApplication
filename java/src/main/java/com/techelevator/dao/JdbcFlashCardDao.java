@@ -5,6 +5,7 @@ import com.techelevator.model.FlashCardKeyword;
 import com.techelevator.model.FlashCardUser;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -125,6 +126,26 @@ public class JdbcFlashCardDao implements FlashCardDao{
                 " WHERE flashcard_id = ?";
         jdbcTemplate.update(sql, flashCard.getQuestion(),flashCard.getAnswer(),
                 flashCard.getFlashCardId());
+    }
+    @Override
+    public void deleteAllFlashcardKeywords(int cardId) {
+        String sql = "DELETE FROM flashcard_keyword WHERE flashcard_id = ?";
+        jdbcTemplate.update(sql, cardId);
+    }
+    @Override
+    public void deleteFlashcard(int cardId) {
+        String sql = "DELETE FROM flashcard WHERE flashcard_id = ?";
+        jdbcTemplate.update(sql, cardId);
+    }
+    @Override
+    public void deleteFlashcardUser(int cardId) {
+        String sql = "DELETE FROM flashcard_user WHERE flashcard_id = ?";
+        jdbcTemplate.update(sql, cardId);
+    }
+    @Override
+    public void deleteFlashcardFromDeck(int cardId) {
+        String sql = "DELETE FROM flashcard_deck WHERE flashcard_id = ?";
+        jdbcTemplate.update(sql, cardId);
     }
 
     private FlashCard mapRowToFlashCard(SqlRowSet rowSet) {

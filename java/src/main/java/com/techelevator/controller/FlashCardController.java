@@ -40,4 +40,9 @@ public class FlashCardController {
         return flashCardService.getFlashCardsByKeyword(userId, keyword);
     }
 
+    @RequestMapping(path = "/flashCards/{cardId}", method = RequestMethod.DELETE)
+    public void deleteFlashcard(@PathVariable int cardId) {
+        flashCardService.deleteFlashcardById(cardId);
+    }
+
 }
