@@ -1,11 +1,9 @@
 <template>
   <div>
-      <table>
-          <th>My Flashcards</th>
-          <tr v-for="card in myCards" v-bind:key="card.id">
-              <td>{{card.question}}</td>
-          </tr>
-      </table>
+      <h2>My Flashcards</h2>
+      <router-link class="cardList" :to="{name: 'home'}" v-for="card in this.$store.state.flashcards" v-bind:key="card.id">
+          {{card.question}}
+      </router-link>
   </div>
 </template>
 
@@ -31,5 +29,14 @@ export default {
 </script>
 
 <style>
+.cardList {
+    display: block;
+    padding: 3px;
+    border: 1px solid black;
+    border-radius: 25px;
+    width: 10vw;
+    margin: 0 auto;
+    
+}
 
 </style>
