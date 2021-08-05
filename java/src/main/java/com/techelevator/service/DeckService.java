@@ -19,6 +19,7 @@ public class DeckService {
 
     public boolean createDeck( Deck deck) {
         deckDao.createDeck(deck);
+        deckDao.addDeckUser(deck);
 
         return true;
     }
