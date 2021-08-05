@@ -2,7 +2,7 @@
   <div>
     <h2>My Flashcards</h2>
     <div>
-        <input type="text" placeholder="Enter a Keyword" v-model="keywordToAdd">
+        <input type="text" placeholder="Search by Keywords" v-model="keywordToAdd">
         <button v-on:click.prevent="addSearchKeyword">+Keyword</button>
         <button v-on:click.prevent="clearFilters">Reset Search Parameters</button>
     </div>

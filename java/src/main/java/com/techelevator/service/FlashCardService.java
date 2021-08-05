@@ -52,10 +52,13 @@ public class FlashCardService {
        }
 
        public boolean  createNewFlashCard( FlashCard flashCard) throws Exception {
-            FlashCard existingFlashCard =  flashCardDao.getFlashCardByQuestion(flashCard.getQuestion());
+
+        // Should only compare cards created by the current user
+
+            /*FlashCard existingFlashCard =  flashCardDao.getFlashCardByQuestion(flashCard.getQuestion());
             if(existingFlashCard != null) {
                 throw new BadRequestException("Flash Card Already Exist");
-            }
+            }*/
             flashCardDao.createFlashCard(flashCard);
             flashCardDao.addFlashCardUser(flashCard);
             flashCardDao.addFlashCardKeywords(flashCard);
@@ -80,6 +83,13 @@ public class FlashCardService {
                 throw new NotFoundException("Flash Card for the key word Not Found");
             }
             return flashCards;
+        }
+
+        public void deleteFlashcardById(int cardId) {
+            flashCardDao.deleteAllFlashcardKeywords(cardId);
+            flashCardDao.deleteFlashcardFromDeck(cardId);
+            flashCardDao.deleteFlashcardUser(cardId);
+            flashCardDao.deleteFlashcard(cardId);
         }
 
 }
