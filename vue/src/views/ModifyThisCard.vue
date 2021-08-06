@@ -2,15 +2,11 @@
   <div>
     <h2>Edit This Card</h2>
     <div>
-      <input
-        type="text"
-        v-show="this.showFront"
-        v-model="this.flashcard.question"
-      />
-      <input
-        type="text"
-        v-show="!this.showFront"
-        v-model="this.flashcard.answer"
+      <edit-flashcard-form
+        :question="flashcard.question"
+        :cardId="flashcard.flashCardId"
+        :answer="flashcard.answer"
+        :keywords="flashcard.keywords"
       />
     </div>
     <div
@@ -34,19 +30,18 @@
     <div>
       <button v-on:click="deleteThisCard">Delete This Card</button>
     </div>
-    <table class="keywordTable">
-      <th>Keywords</th>
-      <tr v-for="keyword in this.flashcard.keywords" v-bind:key="keyword.id">
-        <td>{{ keyword }}</td>
-      </tr>
-    </table>
+    
   </div>
 </template>
 
 <script>
-import FlashcardService from '@/services/FlashcardService'
+import FlashcardService from "@/services/FlashcardService";
+import EditFlashcardForm from "@/components/EditFlashcardForm";
 export default {
   name: "modifyThisCard",
+  components: {
+    EditFlashcardForm,
+  },
   data() {
     return {
       flashcard: {
@@ -71,12 +66,14 @@ export default {
       this.showFront = !this.showFront;
     },
     deleteThisCard() {
-      FlashcardService.deleteCard(this.flashcard.flashCardId).then((response) =>{
-        if(response.status === 200 || response.status === 204) {
-          this.$router.push("/myflashcards");
+      FlashcardService.deleteCard(this.flashcard.flashCardId).then(
+        (response) => {
+          if (response.status === 200 || response.status === 204) {
+            this.$router.push("/myflashcards");
+          }
         }
-      });
-    }
+      );
+    },
   },
 };
 </script>
@@ -101,6 +98,6 @@ export default {
   color: antiquewhite;
 }
 .cardHead {
-    color: black;
+  color: black;
 }
 </style>
