@@ -10,11 +10,11 @@ public interface FlashCardDao {
 
     boolean createFlashCard(FlashCard flashCard);
 
-    FlashCard getFlashCardByQuestion(String question);
+    FlashCard getFlashCardByQuestion(String question, Integer userId);
 
     void updateFlashCard(FlashCard flashCard);
 
-     FlashCard getFlashCardById(Integer flashCardId);
+     FlashCard getFlashCardById(Integer flashCardId, Integer userId);
 
     boolean addFlashCardUser(FlashCard flashCardUser);
 

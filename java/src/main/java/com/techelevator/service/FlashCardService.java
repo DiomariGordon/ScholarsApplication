@@ -53,12 +53,10 @@ public class FlashCardService {
 
        public boolean  createNewFlashCard( FlashCard flashCard) throws Exception {
 
-        // Should only compare cards created by the current user
-
-            /*FlashCard existingFlashCard =  flashCardDao.getFlashCardByQuestion(flashCard.getQuestion());
+            FlashCard existingFlashCard =  flashCardDao.getFlashCardByQuestion(flashCard.getQuestion(), flashCard.getUserId());
             if(existingFlashCard != null) {
                 throw new BadRequestException("Flash Card Already Exist");
-            }*/
+            }
             flashCardDao.createFlashCard(flashCard);
             flashCardDao.addFlashCardUser(flashCard);
             flashCardDao.addFlashCardKeywords(flashCard);
@@ -68,7 +66,7 @@ public class FlashCardService {
 
         public void updateExistingFlashCard(FlashCard flashCard) throws Exception{
 
-            FlashCard existingFlashCard =  flashCardDao.getFlashCardById(flashCard.getFlashCardId());
+            FlashCard existingFlashCard =  flashCardDao.getFlashCardById(flashCard.getFlashCardId(), flashCard.getUserId());
             if(existingFlashCard == null){
                 throw new BadRequestException("Flash Card does not Exist");
             }

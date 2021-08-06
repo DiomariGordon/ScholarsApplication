@@ -22,10 +22,13 @@ public class JdbcFlashCardDao implements FlashCardDao{
     }
 
     @Override
-    public FlashCard getFlashCardByQuestion(String question){
+    public FlashCard getFlashCardByQuestion(String question, Integer userId){
         FlashCard flashCard = null;
-        String sql = "SELECT * FROM flashcard WHERE question = ?;";
-        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, question);
+        String sql = "SELECT f.flashcard_id , f.question, f.answer FROM flashcard f " +
+                "JOIN flashcard_user fu ON f.flashcard_id = fu.flashcard_id " +
+                "JOIN users u ON  u.user_id = fu.user_id " +
+                " WHERE question = ?  AND u.user_id = ? ;";
+        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, question, userId);
         if(rowSet.next()){
              flashCard = mapRowToFlashCard(rowSet);
         }
@@ -33,11 +36,14 @@ public class JdbcFlashCardDao implements FlashCardDao{
     }
 
     @Override
-    public FlashCard getFlashCardById(Integer flashCardId){
+    public FlashCard getFlashCardById(Integer flashCardId, Integer userId){
 
         FlashCard flashCard = null;
-        String sql = "SELECT * FROM flashcard WHERE flashcard_id = ?;";
-        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, flashCardId);
+        String sql = "SELECT f.flashcard_id , f.question, f.answer FROM flashcard f " +
+                "JOIN flashcard_user fu ON f.flashcard_id = fu.flashcard_id " +
+                "JOIN users u ON  u.user_id = fu.user_id " +
+                " WHERE f.flashcard_id = ?  AND u.user_id = ? ;";
+        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, flashCardId, userId);
         if(rowSet.next()){
             flashCard = mapRowToFlashCard(rowSet);
         }
