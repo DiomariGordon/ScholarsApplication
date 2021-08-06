@@ -53,15 +53,16 @@ CREATE TABLE flashcard_deck (
         CONSTRAINT fk_flashcard_deck_flashcard_id FOREIGN KEY (flashcard_id) REFERENCES flashcard(flashcard_id) 
 );
 
-/*CREATE TABLE session (
+/*CREATE TABLE sessions(
         session_id serial,
         deck_id Integer,
         user_id Integer,
         attempted_quiz  Integer,
         mark_right Integer,
         mark_wrong Integer,
-        total_right Integer
-        session_date Date
+        total_right Integer,
+        session_date Date,
+       
         
         CONSTRAINT pk_session_id PRIMARY KEY (session_id),
         CONSTRAINT fk_deck_id FOREIGN KEY (deck_id) REFERENCES deck(deck_id),
