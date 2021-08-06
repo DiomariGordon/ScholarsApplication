@@ -21,10 +21,10 @@ public class JdbcDeckDao implements DeckDao{
     @Override
     public boolean createDeck(Deck deck) {
 
-        String sql = "INSERT INTO deck(deck_name) " +
-                "VALUES( ?) RETURNING deck_id;";
+        String sql = "INSERT INTO deck (deck_name, description) " +
+                "VALUES(?, ?) RETURNING deck_id;";
         Integer deckId = jdbcTemplate.queryForObject(sql, Integer.class,
-                deck.getDeckName());
+                deck.getName(), deck.getDescription());
         deck.setDeckId(deckId);
 
         return true;
@@ -58,7 +58,7 @@ public class JdbcDeckDao implements DeckDao{
 
         String sql = "UPDATE deck SET deck_name = ? " +
                 " WHERE deck_id = ?";
-        jdbcTemplate.update(sql, deck.getDeckName(),
+        jdbcTemplate.update(sql, deck.getName(),
                 deck.getDeckId());
         return true;
 
@@ -77,7 +77,7 @@ public class JdbcDeckDao implements DeckDao{
     private Deck mapRowToDeck(SqlRowSet rowSet) {
         Deck deck = new Deck();
         deck.setDeckId(rowSet.getInt("deck_id"));
-        deck.setDeckName(rowSet.getString("deck_name"));
+        deck.setName(rowSet.getString("deck_name"));
         deck.setDescription(rowSet.getString("description"));
 
         return deck;

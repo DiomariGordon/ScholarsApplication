@@ -23,4 +23,12 @@ public interface FlashCardDao {
     List<FlashCard> getFlashcardsByUserId(Integer id);
 
     List<FlashCard> getFlashCardByKeyword( Integer userId , String keyword);
+
+    void deleteAllFlashcardKeywords(int cardId);
+
+    void deleteFlashcard(int cardId);
+
+    void deleteFlashcardUser(int cardId);
+
+    void deleteFlashcardFromDeck(int cardId);
 }

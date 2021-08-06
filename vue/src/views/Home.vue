@@ -7,10 +7,11 @@
       <ul>
         <li><a><router-link :to="{name: 'myflashcards'}" class="editCards">Flashcards</router-link></a></li>
         <li><a><router-link :to="{name: 'deck'}" class="createDeck">Create Decks</router-link></a></li>
+        <li><a><router-link :to="{name: 'mydecks'}" class="viewDecks">View Decks</router-link></a></li>
+        <li><a><router-link :to="{name: 'searchCard'}" class="viewDecks">Search Cards</router-link></a></li>
+        <!-- <li><a><router-link>Study Session</router-link></a></li> -->
       </ul>
     </nav>
-    <!-- <router-link>View Decks</router-link>
-    <router-link>Study Session</router-link> -->
   </div>
 </template>
 
@@ -66,10 +67,17 @@ li {
   color: white;
   text-decoration: none;
 }
+.viewDecks:link {
+  color: white;
+  text-decoration: none;
+}
 .createDeck:visited {
   color: white;
 }
 .editCards:visited {
+  color: white;
+}
+.viewDecks:visited {
   color: white;
 }
 .editCards:hover {
@@ -77,6 +85,11 @@ li {
   padding-left: 5px;
 }
 .createDeck:hover {
+  color: red;
+  padding-left: 5px;
+}
+
+.viewDecks:hover {
   color: red;
   padding-left: 5px;
 }

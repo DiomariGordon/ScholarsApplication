@@ -71,13 +71,12 @@ export default {
     addNewFlashcard() {
       this.addNewKeyword();
       FlashcardService.addCard(this.flashcard).then((response) => {
-        if (response.status === 201) {
-          this.$router.push("/myflashcards");
+        if (response.status === 201 || response.status === 200) {
+          this.clearForm();
+          this.toggleForm();
+          location.reload();
         }
       });
-      this.clearForm();
-      this.toggleForm();
-      location.reload();
     },
     addNewKeyword() {
       if (
