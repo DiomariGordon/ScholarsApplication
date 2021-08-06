@@ -53,7 +53,8 @@ export default {
                  }    
             })
             .catch(error => {
-                if (error.response && error.response.status === 404) {
+                if ((error.response && error.response.status === 404) 
+                || (error.response && error.response.status === 400) ) {
               this.errorMsg =
                 "No Flashcard found with entered keyword: " + this.searchKeyword ;
             }

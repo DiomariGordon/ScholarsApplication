@@ -108,12 +108,12 @@ public class JdbcFlashCardDao implements FlashCardDao{
 
     @Override
     public List<FlashCard> getFlashCardByKeyword(Integer userId, String keyword) {
-
+        
         List<FlashCard> flashCards = new ArrayList<>();
         String sql = "SELECT f.flashcard_id, f.question, f.answer FROM flashcard f  " +
                 "JOIN flashcard_keyword ck ON f.flashcard_id = ck.flashcard_id " +
                 "JOIN flashcard_user fu ON f.flashcard_id = fu.flashcard_id " +
-                "WHERE ck.keyword  LIKE  ? AND fu.user_id = ?; ";
+                "WHERE ck.keyword  ILIKE  ? AND fu.user_id = ?; ";
 
         SqlRowSet rowSet = null;
         if(keyword == null || keyword.length() == 0){
