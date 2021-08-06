@@ -22,7 +22,7 @@ INSERT INTO deck_user VALUES (1, 1);
 INSERT INTO flashcard_user VALUES (1, 1);
 INSERT INTO flashcard_user VALUES (1, 2);
 
-ALTER TABLE deck ADD C description varchar(500);
+ALTER TABLE deck ADD  description varchar(500);
 
 
 SELECT * FROM deck;
