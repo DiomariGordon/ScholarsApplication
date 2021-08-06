@@ -31,7 +31,7 @@ export default new Vuex.Store({
     flashcards: []
   },
   // import to make data persistance between reload
- // plugins: [createPersistedState()],
+  //plugins: [createPersistedState()],
   mutations: {  
     SET_FLASHCARDS(state, flashcards) {
       this.state.flashcards = flashcards;

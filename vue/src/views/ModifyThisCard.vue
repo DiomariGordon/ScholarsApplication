@@ -94,10 +94,11 @@ export default {
 .cardText {
   margin: 0 auto;
   font-size: 50px;
+  color: navy;
 }
 .keywordTable {
   margin: 0 auto;
-  color: black;
+  color: antiquewhite;
 }
 .cardHead {
     color: black;

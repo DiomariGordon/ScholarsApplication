@@ -22,13 +22,13 @@ public class JdbcFlashCardDao implements FlashCardDao{
     }
 
     @Override
-    public FlashCard getFlashCardByQuestion(String question, Integer userId){
+    public FlashCard getFlashCardByQuestion(String question, String answer, Integer userId){
         FlashCard flashCard = null;
         String sql = "SELECT f.flashcard_id , f.question, f.answer FROM flashcard f " +
                 "JOIN flashcard_user fu ON f.flashcard_id = fu.flashcard_id " +
                 "JOIN users u ON  u.user_id = fu.user_id " +
-                " WHERE question = ?  AND u.user_id = ? ;";
-        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, question, userId);
+                " WHERE question = ? AND answer = ?  AND u.user_id = ? ;";
+        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, question, answer, userId);
         if(rowSet.next()){
              flashCard = mapRowToFlashCard(rowSet);
         }
