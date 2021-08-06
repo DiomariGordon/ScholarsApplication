@@ -13,7 +13,10 @@
         v-for="card in this.filteredList"
         v-bind:key="card.id"
       >
+      <div class = "miniCard.display">
         {{ card.question }} ~ {{card.answer}}
+      </div>
+
       </router-link>
     </div>
     <table class="keywordTable" v-show="this.filters.length != 0">
@@ -71,7 +74,7 @@ export default {
 </script>
 
 <style>
-.miniCard {
+ .miniCard {
   margin: 5px;
   padding: 5px;
   border: 1px solid black;
@@ -87,5 +90,8 @@ export default {
   border: 1px solid black;
   width: 50vw;
   margin: 0 auto;
-}
+} 
+
+
+
 </style>
