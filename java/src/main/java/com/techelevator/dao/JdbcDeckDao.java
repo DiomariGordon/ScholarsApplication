@@ -76,13 +76,13 @@ public class JdbcDeckDao implements DeckDao{
     public List<Deck> getDeckByUserId(Integer userId) {
         List<Deck> decks = new ArrayList<>();
 
-        String sql = "SELECT d.deck_name, d.description FROM deck d" +
-                "JOIN deck_user du ON du.deck_id = d.deck_id" +
-                "JOIN users u ON u.user_id = du.user_id" +
-                "WHERE du.user_id = ?; ";
+        String sql = "SELECT d.deck_name, d.description FROM deck d " +
+                "JOIN deck_user du ON du.deck_id = d.deck_id " +
+                "JOIN users u ON u.user_id = du.user_id " +
+                "WHERE u.user_id = ?; ";
         SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, userId);
         while (rowSet.next()){
-            Deck deck = mapRowToDeck(rowSet);
+            Deck deck = mapRowToDeck2(rowSet);
             if (deck != null) {
                 decks.add(deck);
             }
@@ -93,6 +93,14 @@ public class JdbcDeckDao implements DeckDao{
     private Deck mapRowToDeck(SqlRowSet rowSet) {
         Deck deck = new Deck();
         deck.setDeckId(rowSet.getInt("deck_id"));
+        deck.setName(rowSet.getString("deck_name"));
+        deck.setDescription(rowSet.getString("description"));
+
+        return deck;
+    }
+
+    private Deck mapRowToDeck2(SqlRowSet rowSet) {
+        Deck deck = new Deck();
         deck.setName(rowSet.getString("deck_name"));
         deck.setDescription(rowSet.getString("description"));
 
