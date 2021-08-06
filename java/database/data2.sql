@@ -49,3 +49,29 @@ CREATE TABLE flaschard_deck (
         CONSTRAINT fk_flashcard_deck_deck_id FOREIGN KEY (deck_id) REFERENCES deck(deck_id),
         CONSTRAINT fk_flashcard_deck_flashcard_id FOREIGN KEY (flashcard_id) REFERENCES flashcard(flashcard_id) 
 );
+
+
+
+
+
+
+
+
+CREATE TABLE session (
+        session_id serial,
+        user_id Integer,
+        deck_id Integer,
+        attempted_quiz Integer,
+        mark_right Integer,
+        mark_wrong Integer,
+        total_right Integer
+        session_date Date
+       
+        CONSTRAINT pk_session_id PRIMARY KEY (session_id, keyword),
+        CONSTRAINT fk_deck_id FOREIGN KEY (deck_id) REFERENCES deck(deck_id),
+        CONSTRAINT fk_user_id FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+
+        
+        
+        
