@@ -8,6 +8,8 @@ import com.techelevator.model.Deck;
 import com.techelevator.model.FlashCard;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class DeckService {
 
@@ -24,6 +26,10 @@ public class DeckService {
         return true;
     }
 
+    public List<Deck> getDeckByUser(Integer userId){
+        return deckDao.getDeckByUserId(userId);
+    }
+
     public void updateExistingDeck(Deck deck) throws Exception{
 
         Deck existingDeck =  deckDao.getDeckByDeckId(deck.getDeckId());
@@ -33,6 +39,7 @@ public class DeckService {
         deckDao.updateDeckName(deck);
 
     }
+
 
 
 }

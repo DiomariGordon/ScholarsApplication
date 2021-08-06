@@ -7,6 +7,8 @@ import com.techelevator.service.FlashCardService;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @RestController
 @CrossOrigin
@@ -23,6 +25,10 @@ public class DeckController {
     @RequestMapping(path ="/deck", method= RequestMethod.POST)
     public boolean createDeck(@RequestBody Deck deck) throws Exception{
         return deckService.createDeck((deck));
+    }
+    @RequestMapping(path = "/deck/{userId}", method= RequestMethod.GET)
+    public List<Deck> getDeckByUser(@PathVariable Integer userId) throws Exception{
+        return deckService.getDeckByUser(userId);
     }
 
     @RequestMapping(path ="/deck", method= RequestMethod.PUT)
