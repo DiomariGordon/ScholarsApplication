@@ -22,7 +22,12 @@ INSERT INTO deck_user VALUES (1, 1);
 INSERT INTO flashcard_user VALUES (1, 1);
 INSERT INTO flashcard_user VALUES (1, 2);
 
-
+ALTER TABLE deck ADD  description varchar(500);
 
 
 SELECT * FROM deck;
+
+SELECT f.flashcard_id, f.question, f.answer FROM flashcard f  
+                JOIN flashcard_keyword ck ON f.flashcard_id = ck.flashcard_id 
+                JOIN flashcard_user fu ON f.flashcard_id = fu.flashcard_id 
+                WHERE ck.keyword  LIKE  '%null%' AND fu.user_id = 1;

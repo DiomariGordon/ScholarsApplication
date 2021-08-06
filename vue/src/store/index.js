@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
+// import to make data persistance between reload
+import createPersistedState from "vuex-persistedstate"
 
 Vue.use(Vuex)
 
@@ -22,7 +24,9 @@ export default new Vuex.Store({
     user: currentUser || {},
     flashcards: []
   },
-  mutations: {
+  // import to make data persistance between reload
+  plugins: [createPersistedState()],
+  mutations: {  
     SET_FLASHCARDS(state, flashcards) {
       this.state.flashcards = flashcards;
     },

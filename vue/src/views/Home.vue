@@ -9,6 +9,10 @@
         <li><a><router-link :to="{name: 'myflashcards'}" class="editCards">Flashcards</router-link></a></li>
         <li><a><router-link :to="{name: 'deck'}" class="createDeck">Create Decks</router-link></a></li>
         <li><a><router-link :to="{name: 'mydecks'}" class="viewDecks">View Decks</router-link></a></li>
+<<<<<<< HEAD
+=======
+        <li><a><router-link :to="{name: 'searchCard'}" class="viewDecks">Search Cards</router-link></a></li>
+>>>>>>> 70e64ed22a6ddcce800e2d115f8458e4e3d38c00
         <!-- <li><a><router-link>Study Session</router-link></a></li> -->
       </ul>
       <!-- <img src="../images/fournotes.png"> -->
@@ -89,11 +93,19 @@ li {
   color: red;
   padding-left: 5px;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 70e64ed22a6ddcce800e2d115f8458e4e3d38c00
 .viewDecks:hover {
   color: red;
   padding-left: 5px;
 }
+<<<<<<< HEAD
 /* img {
   width: 100%;
 } */
+=======
+
+>>>>>>> 70e64ed22a6ddcce800e2d115f8458e4e3d38c00
 </style>

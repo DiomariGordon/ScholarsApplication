@@ -7,6 +7,7 @@ import Register from '../views/Register.vue'
 import store from '../store/index'
 import MyFlashcards from '../views/MyFlashcards'
 import Deck from '../views/Deck'
+import CardSearch from '../views/CardSearch'
 import ModifyThisCard from '../views/ModifyThisCard'
 
 Vue.use(Router)
@@ -76,6 +77,11 @@ const router = new Router({
       meta: {
         requiresAuth: true
       }
+    },
+    {
+      path: "/searchCard",
+      name: "searchCard",
+      component: CardSearch
     }
 
   ]
