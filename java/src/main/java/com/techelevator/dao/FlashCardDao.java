@@ -31,4 +31,6 @@ public interface FlashCardDao {
     void deleteFlashcardUser(int cardId);
 
     void deleteFlashcardFromDeck(int cardId);
+
+    Integer getFlashcardIdByUserId(Integer userId);
 }
