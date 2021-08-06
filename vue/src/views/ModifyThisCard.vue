@@ -82,8 +82,8 @@ export default {
 .flashcardDisplay {
   border: 2px solid black;
   border-radius: 10px;
-  width: 450px;
-  height: 150px;
+  width: 650px;
+  height: 300px;
   margin: 0 auto;
   background-image: url("../images/noteCard.jpg");
   background-size: cover;
