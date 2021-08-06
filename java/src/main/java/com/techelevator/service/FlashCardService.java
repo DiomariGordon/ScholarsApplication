@@ -66,8 +66,9 @@ public class FlashCardService {
 
         public void updateExistingFlashCard(FlashCard flashCard) throws Exception{
 
-            FlashCard existingFlashCard =  flashCardDao.getFlashCardById(flashCard.getFlashCardId(), flashCard.getUserId());
-            if(existingFlashCard == null){
+        Integer FlachCardId = flashCardDao.getFlashcardIdByUserId(flashCard.getUserId());
+
+            if(FlachCardId == null){
                 throw new BadRequestException("Flash Card does not Exist");
             }
             flashCardDao.updateFlashCard(flashCard);
