@@ -1,6 +1,9 @@
 <template>
   <div>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister">
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister"
+    />
     <h2>Edit This Card</h2>
     <div>
       <edit-flashcard-form
@@ -29,9 +32,17 @@
       <h1 class="cardText">{{ this.flashcard.answer }}</h1>
     </div>
     <div>
-      <button v-on:click="deleteThisCard">Delete This Card</button>
+      <button v-show="!showDelConfirm" v-on:click="toggleDelConfirm">
+        Delete This Card
+      </button>
+      <div v-show="showDelConfirm">
+        <h2>Are you sure you want to delete this card?</h2>
+        <div>
+          <button v-on:click="deleteThisCard">Yes</button>
+          <button v-on:click="toggleDelConfirm">No</button>
+        </div>
+      </div>
     </div>
-    
   </div>
 </template>
 
@@ -52,6 +63,7 @@ export default {
         keywords: [],
       },
       showFront: true,
+      showDelConfirm: false,
     };
   },
   created() {
@@ -65,6 +77,9 @@ export default {
   methods: {
     flipCard() {
       this.showFront = !this.showFront;
+    },
+    toggleDelConfirm() {
+      this.showDelConfirm = !this.showDelConfirm;
     },
     deleteThisCard() {
       FlashcardService.deleteCard(this.flashcard.flashCardId).then(
