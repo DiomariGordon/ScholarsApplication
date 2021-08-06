@@ -52,12 +52,7 @@ CREATE TABLE flaschard_deck (
 
 
 
-
-
-
-
-
-CREATE TABLE session (
+/*CREATE TABLE session (
         session_id serial,
         user_id Integer,
         deck_id Integer,
@@ -70,7 +65,7 @@ CREATE TABLE session (
         CONSTRAINT pk_session_id PRIMARY KEY (session_id, keyword),
         CONSTRAINT fk_deck_id FOREIGN KEY (deck_id) REFERENCES deck(deck_id),
         CONSTRAINT fk_user_id FOREIGN KEY (user_id) REFERENCES users(user_id)
-);
+);*/
 
         
         
