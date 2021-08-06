@@ -13,10 +13,7 @@
         v-for="card in this.filteredList"
         v-bind:key="card.id"
       >
-      <div class = "miniCard.display">
         {{ card.question }} ~ {{card.answer}}
-      </div>
-
       </router-link>
     </div>
     <table class="keywordTable" v-show="this.filters.length != 0">
@@ -52,7 +49,7 @@ export default {
           let newList = this.$store.state.flashcards;
           if(this.filters.length != 0) {
               for(let i = 0; i < this.filters.length; i++) {
-              newList = this.$store.state.flashcards.filter((card) =>{return card.keywords.includes(this.filters[i]);});
+              newList = newList.filter((card) =>{return card.keywords.includes(this.filters[i]);});
               }
 
                   }
@@ -61,8 +58,8 @@ export default {
   },
   methods: {
       addSearchKeyword() {
-          if(this.keywordToAdd != '' && !this.filters.includes(this.keywordToAdd)) {
-              this.filters.push(this.keywordToAdd);
+          if(this.keywordToAdd != '' && !this.filters.includes(this.keywordToAdd.toLocaleLowerCase())) {
+              this.filters.push(this.keywordToAdd.toLocaleLowerCase());
               this.keywordToAdd = '';
           }
       },
@@ -87,11 +84,9 @@ export default {
 .miniCardContainer {
   display: flex;
   flex-wrap: wrap;
-  border: 1px solid black;
-  width: 50vw;
+  border: 3px solid antiquewhite;
+  border-radius: 25px;
+  width: 75vw;
   margin: 0 auto;
 } 
-
-
-
 </style>

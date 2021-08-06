@@ -57,7 +57,7 @@ export default {
       let newList = this.$store.state.flashcards;
       if (this.filters.length != 0) {
         for (let i = 0; i < this.filters.length; i++) {
-          newList = this.$store.state.flashcards.filter((card) => {
+          newList = newList.filter((card) => {
             return card.keywords.includes(this.filters[i]);
           });
         }
@@ -94,9 +94,9 @@ export default {
     addSearchKeyword() {
       if (
         this.keywordToAdd != "" &&
-        !this.filters.includes(this.keywordToAdd)
+        !this.filters.includes(this.keywordToAdd.toLocaleLowerCase())
       ) {
-        this.filters.push(this.keywordToAdd);
+        this.filters.push(this.keywordToAdd.toLocaleLowerCase());
         this.keywordToAdd = "";
       }
     },
