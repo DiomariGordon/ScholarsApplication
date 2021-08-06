@@ -3,14 +3,16 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta">
     <!-- <p>You must be authenticated to see this</p> -->
+
     <nav>
       <ul>
         <li><a><router-link :to="{name: 'myflashcards'}" class="editCards">Flashcards</router-link></a></li>
         <li><a><router-link :to="{name: 'deck'}" class="createDeck">Create Decks</router-link></a></li>
+        <li><a><router-link :to="{name: 'mydecks'}" class="viewDecks">View Decks</router-link></a></li>
+        <!-- <li><a><router-link>Study Session</router-link></a></li> -->
       </ul>
+      <!-- <img src="../images/fournotes.png"> -->
     </nav>
-    <!-- <router-link>View Decks</router-link>
-    <router-link>Study Session</router-link> -->
   </div>
 </template>
 
@@ -66,10 +68,17 @@ li {
   color: white;
   text-decoration: none;
 }
+.viewDecks:link {
+  color: white;
+  text-decoration: none;
+}
 .createDeck:visited {
   color: white;
 }
 .editCards:visited {
+  color: white;
+}
+.viewDecks:visited {
   color: white;
 }
 .editCards:hover {
@@ -80,5 +89,11 @@ li {
   color: red;
   padding-left: 5px;
 }
-
+.viewDecks:hover {
+  color: red;
+  padding-left: 5px;
+}
+/* img {
+  width: 100%;
+} */
 </style>
