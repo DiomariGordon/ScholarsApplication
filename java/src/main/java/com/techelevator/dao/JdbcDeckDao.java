@@ -7,6 +7,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -66,12 +67,27 @@ public class JdbcDeckDao implements DeckDao{
 
     @Override
     public boolean updateDeckContents(FlashCard flashCard) {
+
+//        String sql
         return false;
     }
 
     @Override
     public List<Deck> getDeckByUserId(Integer userId) {
-        return null;
+        List<Deck> decks = new ArrayList<>();
+
+        String sql = "SELECT d.deck_name, d.description FROM deck d" +
+                "JOIN deck_user du ON du.deck_id = d.deck_id" +
+                "JOIN users u ON u.user_id = du.user_id" +
+                "WHERE du.user_id = ?; ";
+        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, userId);
+        while (rowSet.next()){
+            Deck deck = mapRowToDeck(rowSet);
+            if (deck != null) {
+                decks.add(deck);
+            }
+        }
+        return decks;
     }
 
     private Deck mapRowToDeck(SqlRowSet rowSet) {
