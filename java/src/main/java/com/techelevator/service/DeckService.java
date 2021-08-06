@@ -30,7 +30,7 @@ public class DeckService {
         if(existingDeck == null){
             throw new BadRequestException("Deck does not Exist");
         }
-        deckDao.updateDeck(deck);
+        deckDao.updateDeckName(deck);
 
     }
 
