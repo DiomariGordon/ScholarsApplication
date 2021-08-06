@@ -17,6 +17,8 @@
       />
 
       <button @click.prevent="addNewDeck">Submit</button>
+
+      <div v-show="deckCreated">{{deck.name}} created successfully</div>
       </form>
   </div>
 </template>
@@ -43,9 +45,10 @@ export default {
     methods: {
    
     addNewDeck() {
-
+      this.deckCreated = false;
       DeckService.addDeck(this.deck).then((response) =>{
            this.deckCreated = response.data;
+           console.log( this.deckCreated);
         });
 
     //   if (this.keywordToAdd != "" && !this.flashcard.keywords.includes(this.keywordToAdd)) {
