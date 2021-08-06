@@ -1,5 +1,6 @@
 <template>
   <div>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister">
     <h2>My Flashcards</h2>
     <div>
         <input type="text" placeholder="Search by Keywords" v-model="keywordToAdd">
@@ -13,7 +14,7 @@
         v-for="card in this.filteredList"
         v-bind:key="card.id"
       >
-        {{ card.question }} ~ {{card.answer}}
+        {{ card.question }} &lt;=&gt; {{card.answer}}
       </router-link>
     </div>
     <table class="keywordTable" v-show="this.filters.length != 0">
@@ -80,6 +81,7 @@ export default {
   color: navy;
   font-family: "Monoton", sans-serif;
   text-decoration: none;
+  font-family: "Love Ya Like A Sister", sans-serif;
 }
 .miniCardContainer {
   display: flex;

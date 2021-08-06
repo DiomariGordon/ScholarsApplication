@@ -19,7 +19,7 @@
         v-for="card in this.filteredList"
         v-bind:key="card.id"
       >
-        {{ card.question }} ~ {{ card.answer }}
+        {{ card.question }} &lt;=&gt; {{ card.answer }}
       </span>
     </div>
     <button v-on:click="addAll">Select All</button>

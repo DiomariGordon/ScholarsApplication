@@ -1,5 +1,6 @@
 <template>
   <div>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister">
     <h2>Edit This Card</h2>
     <div>
       <edit-flashcard-form
@@ -92,12 +93,15 @@ export default {
   margin: 0 auto;
   font-size: 50px;
   color: navy;
+  font-family: "Love Ya Like A Sister", sans-serif;
 }
 .keywordTable {
   margin: 0 auto;
-  color: antiquewhite;
+  color: white;
+  font-family: "Love Ya Like A Sister", sans-serif;
 }
 .cardHead {
   color: black;
+  font-family: "Love Ya Like A Sister", sans-serif;
 }
 </style>
