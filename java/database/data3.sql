@@ -1,3 +1,5 @@
+         
+               
 DROP TABLE IF EXISTS flashcard;
 DROP TABLE IF EXISTS deck;
 DROP TABLE IF EXISTS flashcard_deck;
@@ -19,22 +21,6 @@ CREATE TABLE flashcard_keyword (
         CONSTRAINT pk_flashcard_keyword PRIMARY KEY (flashcard_id, keyword),
         CONSTRAINT fk_flashcard_id FOREIGN KEY (flashcard_id) REFERENCES flashcard(flashcard_id)
 );
-
-
-/*CREATE TABLE session (
-        session_id serial,
-        deck_id Integer,
-        user_id Integer,
-        attempted_quiz_count Integer,
-        mark_right Integer,
-        mark_wrong Integer,
-        total_mark_right_quizInteger
-        session_date Date
-        
-        CONSTRAINT pk_flashcard_keyword PRIMARY KEY (session_id, keyword),
-        CONSTRAINT fk_deck_id FOREIGN KEY (deck_id) REFERENCES deck(deck_id),
-        CONSTRAINT fk_user_id FOREIGN KEY (user_id) REFERENCES users(user_id)
-);*/
 
 
 CREATE TABLE flashcard_user (
@@ -66,3 +52,21 @@ CREATE TABLE flashcard_deck (
         CONSTRAINT fk_flashcard_deck_deck_id FOREIGN KEY (deck_id) REFERENCES deck(deck_id),
         CONSTRAINT fk_flashcard_deck_flashcard_id FOREIGN KEY (flashcard_id) REFERENCES flashcard(flashcard_id) 
 );
+
+// below script is error free.
+
+/*CREATE TABLE sessions(
+        session_id serial,
+        deck_id Integer,
+        user_id Integer,
+        attempted_quiz  Integer,
+        mark_right Integer,
+        mark_wrong Integer,
+        total_right Integer,
+        session_date Date,
+       
+        
+        CONSTRAINT pk_session_id PRIMARY KEY (session_id),
+        CONSTRAINT fk_deck_id FOREIGN KEY (deck_id) REFERENCES deck(deck_id),
+        CONSTRAINT fk_user_id FOREIGN KEY (user_id) REFERENCES users(user_id)
+);*/

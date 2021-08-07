@@ -10,7 +10,7 @@ public interface FlashCardDao {
 
     boolean createFlashCard(FlashCard flashCard);
 
-    FlashCard getFlashCardByQuestion(String question, Integer userId);
+    FlashCard getFlashCardByQuestion(String question, String answer, Integer userId);
 
     void updateFlashCard(FlashCard flashCard);
 
@@ -31,4 +31,6 @@ public interface FlashCardDao {
     void deleteFlashcardUser(int cardId);
 
     void deleteFlashcardFromDeck(int cardId);
+
+    Integer getFlashcardIdByUserId(Integer userId);
 }

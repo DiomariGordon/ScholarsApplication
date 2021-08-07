@@ -22,19 +22,19 @@ public class JdbcFlashCardDao implements FlashCardDao{
     }
 
     @Override
-    public FlashCard getFlashCardByQuestion(String question, Integer userId){
+    public FlashCard getFlashCardByQuestion(String question, String answer, Integer userId){
         FlashCard flashCard = null;
         String sql = "SELECT f.flashcard_id , f.question, f.answer FROM flashcard f " +
                 "JOIN flashcard_user fu ON f.flashcard_id = fu.flashcard_id " +
                 "JOIN users u ON  u.user_id = fu.user_id " +
-                " WHERE question = ?  AND u.user_id = ? ;";
-        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, question, userId);
+                " WHERE question = ? AND answer = ?  AND u.user_id = ? ;";
+        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, question, answer, userId);
         if(rowSet.next()){
              flashCard = mapRowToFlashCard(rowSet);
         }
         return flashCard;
     }
-
+//userid and flashcard id to get flashcard
     @Override
     public FlashCard getFlashCardById(Integer flashCardId, Integer userId){
 
@@ -133,10 +133,24 @@ public class JdbcFlashCardDao implements FlashCardDao{
 
     @Override
     public void updateFlashCard(FlashCard flashCard) {
-        String sql = "UPDATE flashcard SET question = ?, answer = ? " +
-                " WHERE flashcard_id = ?";
+        String sql = " UPDATE flashcard AS f  " +
+                "                SET question = ?, answer = ? " +
+                "                FROM flashcard_user AS fu, users AS u " +
+                "                where f.flashcard_id = fu.flashcard_id  " +
+                "                AND u.user_id = fu.user_id " +
+                "                AND f.flashcard_id = ? AND fu.user_id = ?;";
         jdbcTemplate.update(sql, flashCard.getQuestion(),flashCard.getAnswer(),
-                flashCard.getFlashCardId());
+                flashCard.getFlashCardId(), flashCard.getUserId());
+    }
+
+    //method to check on for update.
+    @Override
+    public Integer getFlashcardIdByUserId(Integer userId){
+        String sql = "SELECT flashcard_id from flashcard_user WHERE " +
+                "user_id = ? ;";
+        Integer flashcardId = jdbcTemplate.queryForObject(sql, Integer.class, userId);
+        return flashcardId;
+
     }
     @Override
     public void deleteAllFlashcardKeywords(int cardId) {

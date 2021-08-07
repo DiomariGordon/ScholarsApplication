@@ -1,7 +1,9 @@
 package com.techelevator.dao;
 
+import com.techelevator.model.Session;
+
 public interface SessionDao {
 
-    /*public boolean  createSession( Session session);*/
+     boolean  createSession( Session session);
 
 }

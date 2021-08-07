@@ -1,5 +1,7 @@
 <template>
   <div>
+    <!-- <div class="mainContainer"> -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister">
     <h2>My Flashcards</h2>
     <div>
         <input type="text" placeholder="Search by Keywords" v-model="keywordToAdd">
@@ -13,7 +15,7 @@
         v-for="card in this.filteredList"
         v-bind:key="card.id"
       >
-        {{ card.question }} ~ {{card.answer}}
+        {{ card.question }} &lt;=&gt; {{card.answer}}
       </router-link>
     </div>
     <table class="keywordTable" v-show="this.filters.length != 0">
@@ -22,7 +24,8 @@
             <td>{{param}}</td>
         </tr>
     </table>
-  </div>
+    </div>
+  <!-- </div> -->
 </template>
 
 <script>
@@ -49,7 +52,7 @@ export default {
           let newList = this.$store.state.flashcards;
           if(this.filters.length != 0) {
               for(let i = 0; i < this.filters.length; i++) {
-              newList = this.$store.state.flashcards.filter((card) =>{return card.keywords.includes(this.filters[i]);});
+              newList = newList.filter((card) =>{return card.keywords.includes(this.filters[i]);});
               }
 
                   }
@@ -58,8 +61,8 @@ export default {
   },
   methods: {
       addSearchKeyword() {
-          if(this.keywordToAdd != '' && !this.filters.includes(this.keywordToAdd)) {
-              this.filters.push(this.keywordToAdd);
+          if(this.keywordToAdd != '' && !this.filters.includes(this.keywordToAdd.toLocaleLowerCase())) {
+              this.filters.push(this.keywordToAdd.toLocaleLowerCase());
               this.keywordToAdd = '';
           }
       },
@@ -71,7 +74,7 @@ export default {
 </script>
 
 <style>
-.miniCard {
+ .miniCard {
   margin: 5px;
   padding: 5px;
   border: 1px solid black;
@@ -80,12 +83,42 @@ export default {
   color: navy;
   font-family: "Monoton", sans-serif;
   text-decoration: none;
+  font-family: "Love Ya Like A Sister", sans-serif;
 }
 .miniCardContainer {
   display: flex;
   flex-wrap: wrap;
-  border: 1px solid black;
-  width: 50vw;
+  border: 3px solid antiquewhite;
+  border-radius: 25px;
+  width: 75vw;
   margin: 0 auto;
 }
+
+
+/*this is changed*/
+
+/* .mainContainer {
+ display: grid;
+ grid-template-columns: 300px 1fr 250px;
+ grid-template-rows: 100px 1fr 1fr;
+ gap: 15px;
+  grid-template-areas:
+ "header header header"
+ "miniCardContainer miniCardContainer miniCardContainer"
+ "miniCardContainer miniCardContainer miniCardContainer";
+
+}
+.miniCardContainer{
+ grid-area: miniCardContainer;
+}
+
+.miniCardContainer {
+ display: flex;
+ justify-content: space-around;
+}
+
+.miniCardContainer {
+ flex-direction: column;
+} */
+
 </style>

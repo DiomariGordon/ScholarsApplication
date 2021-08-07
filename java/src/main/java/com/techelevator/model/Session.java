@@ -4,27 +4,16 @@ import java.time.LocalDate;
 
 public class Session {
     private Integer sessionId;
-    private Integer userId;
     private Integer deckId;
-    private Integer attemptedQuizCount;
-    private Integer markRightCount;
-    private Integer markWrongCount;
-    private Integer totalMarkRightCount;
+    private Integer userId;
+    private Integer attemptedQuiz;
+    private Integer markRight;
+    private Integer markWrong;
+    private Integer totalRight;
     private LocalDate sessionDate;
 
     public Session() {
 
-    }
-
-    public Session(Integer sessionId, Integer userId, Integer deckId, Integer attemptedQuizCount, Integer markRightCount, Integer markWrongCount, Integer totalMarkRightCount, LocalDate sessionDate) {
-        this.sessionId = sessionId;
-        this.userId = userId;
-        this.deckId = deckId;
-        this.attemptedQuizCount = attemptedQuizCount;
-        this.markRightCount = markRightCount;
-        this.markWrongCount = markWrongCount;
-        this.totalMarkRightCount = totalMarkRightCount;
-        this.sessionDate = sessionDate;
     }
 
     public Integer getSessionId() {
@@ -35,14 +24,6 @@ public class Session {
         this.sessionId = sessionId;
     }
 
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
-
     public Integer getDeckId() {
         return deckId;
     }
@@ -51,36 +32,44 @@ public class Session {
         this.deckId = deckId;
     }
 
-    public Integer getAttemptedQuizCount() {
-        return attemptedQuizCount;
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setAttemptedQuizCount(Integer attemptedQuizCount) {
-        this.attemptedQuizCount = attemptedQuizCount;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
-    public Integer getMarkRightCount() {
-        return markRightCount;
+    public Integer getAttemptedQuiz() {
+        return attemptedQuiz;
     }
 
-    public void setMarkRightCount(Integer markRightCount) {
-        this.markRightCount = markRightCount;
+    public void setAttemptedQuiz(Integer attemptedQuiz) {
+        this.attemptedQuiz = attemptedQuiz;
     }
 
-    public Integer getMarkWrongCount() {
-        return markWrongCount;
+    public Integer getMarkRight() {
+        return markRight;
     }
 
-    public void setMarkWrongCount(Integer markWrongCount) {
-        this.markWrongCount = markWrongCount;
+    public void setMarkRight(Integer markRight) {
+        this.markRight = markRight;
     }
 
-    public Integer getTotalMarkRightCount() {
-        return totalMarkRightCount;
+    public Integer getMarkWrong() {
+        return markWrong;
     }
 
-    public void setTotalMarkRightCount(Integer totalMarkRightCount) {
-        this.totalMarkRightCount = totalMarkRightCount;
+    public void setMarkWrong(Integer markWrong) {
+        this.markWrong = markWrong;
+    }
+
+    public Integer getTotalRight() {
+        return totalRight;
+    }
+
+    public void setTotalRight(Integer totalRight) {
+        this.totalRight = totalRight;
     }
 
     public LocalDate getSessionDate() {

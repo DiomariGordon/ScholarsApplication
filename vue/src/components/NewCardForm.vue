@@ -81,9 +81,9 @@ export default {
     addNewKeyword() {
       if (
         this.keywordToAdd != "" &&
-        !this.flashcard.keywords.includes(this.keywordToAdd)
+        !this.flashcard.keywords.includes(this.keywordToAdd.toLocaleLowerCase())
       ) {
-        this.flashcard.keywords.push(this.keywordToAdd);
+        this.flashcard.keywords.push(this.keywordToAdd.toLocaleLowerCase());
         this.keywordToAdd = "";
       }
     },
