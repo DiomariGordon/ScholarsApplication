@@ -53,6 +53,8 @@ CREATE TABLE flashcard_deck (
         CONSTRAINT fk_flashcard_deck_flashcard_id FOREIGN KEY (flashcard_id) REFERENCES flashcard(flashcard_id) 
 );
 
+// below script is error free.
+
 /*CREATE TABLE sessions(
         session_id serial,
         deck_id Integer,

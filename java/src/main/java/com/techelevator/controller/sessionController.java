@@ -1,8 +1,6 @@
 package com.techelevator.controller;
-
-
-import com.techelevator.model.FlashCard;
-import com.techelevator.service.FlashCardService;
+import com.techelevator.model.Session;
+import com.techelevator.service.SessionService;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,14 +9,14 @@ import org.springframework.web.bind.annotation.*;
 @PreAuthorize("isAuthenticated()")
 public class sessionController {
 
-//    private final SessionService sessionService;
-//
-//    public sessionController(FlashCardService flashCardService) {
-//        this.sessionService = sessionService;
-//    }
-//
-//    @RequestMapping(path ="/session", method= RequestMethod.POST)
-//    public boolean completeSession(@RequestBody Session session) throws Exception{
-//        return SessionService.completeSession((session));
-//    }
+    private final SessionService sessionService;
+
+    public sessionController(SessionService sessionService) {
+        this.sessionService = sessionService;
+    }
+
+    @RequestMapping(path ="/session", method= RequestMethod.POST)
+    public boolean completeSession(@RequestBody Session session) {
+        return sessionService.createSession((session));
+    }
 }

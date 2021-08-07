@@ -4,8 +4,8 @@ import java.time.LocalDate;
 
 public class Session {
     private Integer sessionId;
-    private Integer userId;
     private Integer deckId;
+    private Integer userId;
     private Integer attemptedQuiz;
     private Integer markRight;
     private Integer markWrong;
