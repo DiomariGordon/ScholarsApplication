@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!-- <div class="mainContainer"> -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister">
     <h2>My Flashcards</h2>
     <div>
@@ -23,7 +24,8 @@
             <td>{{param}}</td>
         </tr>
     </table>
-  </div>
+    </div>
+  <!-- </div> -->
 </template>
 
 <script>
@@ -90,5 +92,33 @@ export default {
   border-radius: 25px;
   width: 75vw;
   margin: 0 auto;
-} 
+}
+
+
+/*this is changed*/
+
+/* .mainContainer {
+ display: grid;
+ grid-template-columns: 300px 1fr 250px;
+ grid-template-rows: 100px 1fr 1fr;
+ gap: 15px;
+  grid-template-areas:
+ "header header header"
+ "miniCardContainer miniCardContainer miniCardContainer"
+ "miniCardContainer miniCardContainer miniCardContainer";
+
+}
+.miniCardContainer{
+ grid-area: miniCardContainer;
+}
+
+.miniCardContainer {
+ display: flex;
+ justify-content: space-around;
+}
+
+.miniCardContainer {
+ flex-direction: column;
+} */
+
 </style>
