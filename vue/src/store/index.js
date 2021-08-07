@@ -4,7 +4,7 @@ import axios from 'axios'
 
 //execute command below
 
-//npm install --save vuex-persistedstate
+// npm install --save vuex-persistedstate
 
 // now uncomment line below and two line above mutation.
 

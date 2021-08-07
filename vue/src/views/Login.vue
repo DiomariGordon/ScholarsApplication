@@ -102,6 +102,7 @@ export default {
     text-align: center;
   }
   .title {
+    padding-left: 18px;
     text-align: center;
   }
   .imgHat {
@@ -126,7 +127,7 @@ export default {
     padding-bottom: 10px;
   }
   div {
-    color: white;
+    color: red;
   }
 
   .rLink:link {
