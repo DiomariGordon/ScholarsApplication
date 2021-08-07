@@ -106,7 +106,7 @@ export default {
 }
 .cardText {
   margin: 0 auto;
-  font-size: 50px;
+  font-size: 70px;
   color: navy;
   font-family: "Love Ya Like A Sister", sans-serif;
 }
@@ -116,6 +116,7 @@ export default {
   font-family: "Love Ya Like A Sister", sans-serif;
 }
 .cardHead {
+  font-size: 30px;
   color: black;
   font-family: "Love Ya Like A Sister", sans-serif;
 }
