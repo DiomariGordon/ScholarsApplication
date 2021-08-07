@@ -16,17 +16,6 @@ public class Session {
 
     }
 
-    public Session(Integer sessionId, Integer userId, Integer deckId, Integer attemptedQuiz, Integer markRight, Integer markWrong, Integer totalRight, LocalDate sessionDate) {
-        this.sessionId = sessionId;
-        this.userId = userId;
-        this.deckId = deckId;
-        this.attemptedQuiz = attemptedQuiz;
-        this.markRight = markRight;
-        this.markWrong = markWrong;
-        this.totalRight = totalRight;
-        this.sessionDate = sessionDate;
-    }
-
     public Integer getSessionId() {
         return sessionId;
     }
@@ -35,20 +24,20 @@ public class Session {
         this.sessionId = sessionId;
     }
 
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
-
     public Integer getDeckId() {
         return deckId;
     }
 
     public void setDeckId(Integer deckId) {
         this.deckId = deckId;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public Integer getAttemptedQuiz() {

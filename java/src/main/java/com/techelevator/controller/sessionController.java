@@ -7,11 +7,11 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @CrossOrigin
 @PreAuthorize("isAuthenticated()")
-public class sessionController {
+public class SessionController {
 
     private final SessionService sessionService;
 
-    public sessionController(SessionService sessionService) {
+    public SessionController(SessionService sessionService) {
         this.sessionService = sessionService;
     }
 
