@@ -90,6 +90,27 @@ public class JdbcDeckDao implements DeckDao{
         return decks;
     }
 
+    @Override
+    public boolean addCardToDeck(FlashCard flashCard) {
+
+
+        String sql = "INSERT INTO flashcard_deck( deck_id, flashcard_id)" +
+                "VALUES( ?, ?)RETURNING deck_id ;";
+        Integer deckId = jdbcTemplate.queryForObject(sql, Integer.class, flashCard.getDeckId(), flashCard.getFlashCardId());
+        return true;
+
+    }
+
+
+    @Override
+    public Integer getUserIdByDeckId(Integer deckId) {
+        String sql = "SELECT user_id from deck_user WHERE " +
+                "deck_id = ? ;";
+        Integer userId = jdbcTemplate.queryForObject(sql, Integer.class, deckId);
+        return userId;
+
+    }
+
     private Deck mapRowToDeck(SqlRowSet rowSet) {
         Deck deck = new Deck();
         deck.setDeckId(rowSet.getInt("deck_id"));

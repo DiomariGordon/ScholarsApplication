@@ -144,12 +144,13 @@ public class JdbcFlashCardDao implements FlashCardDao{
     }
 
     //method to check on for update.
+    //if the flashcard belongs to user
     @Override
-    public Integer getFlashcardIdByUserId(Integer userId){
-        String sql = "SELECT flashcard_id from flashcard_user WHERE " +
-                "user_id = ? ;";
-        Integer flashcardId = jdbcTemplate.queryForObject(sql, Integer.class, userId);
-        return flashcardId;
+    public Integer getUserIdByFlashcardId(Integer flashCardId){
+        String sql = "SELECT user_id from flashcard_user WHERE " +
+                "flashcard_id = ? ;";
+        Integer userId = jdbcTemplate.queryForObject(sql, Integer.class, flashCardId);
+        return userId;
 
     }
     @Override

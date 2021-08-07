@@ -94,8 +94,7 @@ export default {
   margin: 0 auto;
 }
 
-
-/*this is changed*/
+/*this is change*/
 
 /* .mainContainer {
  display: grid;

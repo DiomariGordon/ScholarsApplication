@@ -36,4 +36,9 @@ public class DeckController {
         deckService.updateExistingDeck((deck));
     }
 
+    @RequestMapping(path ="/deck/flashCards", method= RequestMethod.POST)
+    public boolean addCardToDeck(@RequestBody FlashCard flashCard) throws Exception{
+        return deckService.addFlashCardToDeck((flashCard));
+    }
+
 }

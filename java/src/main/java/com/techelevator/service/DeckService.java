@@ -40,6 +40,19 @@ public class DeckService {
 
     }
 
+    public boolean  addFlashCardToDeck( FlashCard flashCard) throws Exception {
+
+        Integer userId = deckDao.getUserIdByDeckId(flashCard.getDeckId());
+        if(userId == null){
+            throw new BadRequestException("Deck does not Exist");
+        }
+        deckDao.addCardToDeck(flashCard);
+
+        return true;
+
+    }
+
+
 
 
 }

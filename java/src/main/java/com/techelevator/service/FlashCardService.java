@@ -5,12 +5,14 @@ import com.techelevator.Exception.NotFoundException;
 import com.techelevator.dao.FlashCardDao;
 import com.techelevator.model.FlashCard;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Transactional
 @Service
 public class FlashCardService {
 
@@ -66,12 +68,13 @@ public class FlashCardService {
 
         public void updateExistingFlashCard(FlashCard flashCard) throws Exception{
 
-        Integer FlachCardId = flashCardDao.getFlashcardIdByUserId(flashCard.getUserId());
+        Integer userId = flashCardDao.getUserIdByFlashcardId(flashCard.getFlashCardId());
 
-            if(FlachCardId == null){
+            if(userId == null){
                 throw new BadRequestException("Flash Card does not Exist");
             }
             flashCardDao.updateFlashCard(flashCard);
+            flashCardDao.addFlashCardKeywords(flashCard);
 
         }
 
@@ -90,5 +93,6 @@ public class FlashCardService {
             flashCardDao.deleteFlashcardUser(cardId);
             flashCardDao.deleteFlashcard(cardId);
         }
+
 
 }

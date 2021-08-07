@@ -1,5 +1,8 @@
 package com.techelevator.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Deck {
     private Integer deckId;
     private Integer userId;
