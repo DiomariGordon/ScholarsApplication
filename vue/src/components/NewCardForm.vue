@@ -1,5 +1,6 @@
 <template>
   <div>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister">
     <table></table>
     <button class ="btn"
       v-on:click="
@@ -109,10 +110,11 @@ export default {
         display:inline-block;
         padding:0.7em 1.7em;
         margin:0 0.3em 0.3em 0;
-        border-radius:0.2em;
+        border-radius:0.25rem;
         box-sizing: border-box;
         text-decoration:none;
-        font-family:'Roboto',sans-serif;
+        /* font-family:'Roboto',sans-serif; */
+        font-family: "Love Ya Like A Sister", sans-serif;
         font-weight:400;
         color:#FFFFFF;
         background-color:#3369ff;

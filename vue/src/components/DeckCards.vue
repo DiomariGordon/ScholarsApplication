@@ -1,5 +1,6 @@
 <template>
   <div>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister">
         <div class="status-message" v-show="errorMsg !== ''">{{errorMsg}}</div>
        
        <div class="body">
