@@ -35,6 +35,9 @@
   .home:hover {
     color: yellowgreen;
   }
+  .logout:link {
+    color: yellowgreen;
+  }
 
   .logout:hover {
     color: turquoise;

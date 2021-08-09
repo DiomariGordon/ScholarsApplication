@@ -132,6 +132,7 @@ export default {
 
   .rLink:link {
     font-family: "Love Ya Like A Sister", sans-serif;
+    color: white;
   }
   .rLink:visited {
     color: white;
