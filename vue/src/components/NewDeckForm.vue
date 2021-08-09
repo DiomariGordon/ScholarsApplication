@@ -32,8 +32,8 @@ export default {
     return {
       deck: {
         userId: this.$store.state.user.id,
-        deckName: "",
-        deckDescription: ""
+        name: "",
+        description: ""
 
       },
       deckCreated: false

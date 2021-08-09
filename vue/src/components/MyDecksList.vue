@@ -3,7 +3,7 @@
       <table>
           <th>My Decks</th>
           <tr v-for="deck in myDecks" v-bind:key="deck.id">
-              <td>{{deck}}</td>
+              <td>{{deck.name}}</td>
           </tr>
       </table>
   </div>

@@ -75,11 +75,13 @@ export default {
 
 <style>
  .miniCard {
-  margin: 5px;
-  padding: 5px;
+  margin: 7px;
+  padding: 10px;
   border: 1px solid black;
-  border-radius: 25px;
-  background-color: antiquewhite;
+  border-radius: 3px;
+  background-image: url("../images/noteCard.jpg");
+  background-size: contain;
+  background-repeat: repeat-x;
   color: navy;
   font-family: "Monoton", sans-serif;
   text-decoration: none;
@@ -90,7 +92,7 @@ export default {
   display: flex;
   flex-wrap: wrap;
   border: 3px solid antiquewhite;
-  border-radius: 25px;
+  border-radius: 20px;
   width: 75vw;
   margin: 0 auto;
 }

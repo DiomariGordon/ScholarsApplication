@@ -109,6 +109,7 @@ export default {
 
 <style>
 .inDeck {
-  background-color: darkgoldenrod;
+  background-image: none;
+  background-color: limegreen;
 }
 </style>

@@ -28,13 +28,17 @@ export default new Vuex.Store({
   state: {
     token: currentToken || '',
     user: currentUser || {},
-    flashcards: []
+    flashcards: [],
+    decks: []
   },
   // import to make data persistance between reload
   plugins: [createPersistedState()],
   mutations: {  
     SET_FLASHCARDS(state, flashcards) {
       this.state.flashcards = flashcards;
+    },
+    SET_DECKS(state, decks) {
+      this.state.decks = decks;
     },
     SET_AUTH_TOKEN(state, token) {
       state.token = token;

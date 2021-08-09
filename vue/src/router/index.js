@@ -9,6 +9,7 @@ import MyFlashcards from '../views/MyFlashcards'
 import Deck from '../views/Deck'
 import CardSearch from '../views/CardSearch'
 import ModifyThisCard from '../views/ModifyThisCard'
+import DisplayDeck from '../views/DisplayDeck.vue'
 
 Vue.use(Router)
 
@@ -69,6 +70,14 @@ const router = new Router({
       path: "/deck",
       name: "deck",
       component: Deck
+    },
+    {
+      path: "/myDecks",
+      name: "myDecks",
+      component: DisplayDeck,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: "/myFlashcards/:id",
