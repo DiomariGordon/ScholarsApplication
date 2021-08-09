@@ -74,6 +74,7 @@ public class FlashCardService {
                 throw new BadRequestException("Flash Card does not Exist");
             }
             flashCardDao.updateFlashCard(flashCard);
+            flashCardDao.deleteAllFlashcardKeywords(flashCard.getFlashCardId());
             flashCardDao.addFlashCardKeywords(flashCard);
 
         }

@@ -83,6 +83,7 @@ export default {
   color: navy;
   font-family: "Monoton", sans-serif;
   text-decoration: none;
+  font-size: 20px;
   font-family: "Love Ya Like A Sister", sans-serif;
 }
 .miniCardContainer {

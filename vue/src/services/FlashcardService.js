@@ -11,6 +11,9 @@ addCard(flashcard) {
   deleteCard(id) {
     return axios.delete(`/flashCards/${id}`);
   },
+  updateCard(flashcard) {
+    return axios.put('/flashCards/update', flashcard);
+  },
   getCardsByKeyWord(id, key) {
     return axios.get(`/flashCards/search/${id}`, {params : {keyword : key}});
   }

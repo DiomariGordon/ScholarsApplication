@@ -74,7 +74,7 @@ public class JdbcFlashCardDao implements FlashCardDao{
     }
 
     @Override
-    public boolean addFlashCardKeywords(FlashCard flashCard){
+    public void addFlashCardKeywords(FlashCard flashCard){
 
         String [] keywords = flashCard.getKeywords();
         for (int i = 0; i < keywords.length; i++ ){
@@ -85,7 +85,6 @@ public class JdbcFlashCardDao implements FlashCardDao{
 
         }
 
-        return true;
     }
 
     public List<FlashCard> getFlashcardsByUserId(Integer userId) {
@@ -154,7 +153,7 @@ public class JdbcFlashCardDao implements FlashCardDao{
 
     }
     @Override
-    public void deleteAllFlashcardKeywords(int cardId) {
+    public void deleteAllFlashcardKeywords(Integer cardId) {
         String sql = "DELETE FROM flashcard_keyword WHERE flashcard_id = ?";
         jdbcTemplate.update(sql, cardId);
     }

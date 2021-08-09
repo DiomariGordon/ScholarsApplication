@@ -25,7 +25,7 @@ public class FlashCardController {
         return flashCardService.createNewFlashCard((flashCard));
     }
 
-    @RequestMapping(path ="/flashCards", method= RequestMethod.PUT)
+    @RequestMapping(path ="/flashCards/update", method= RequestMethod.PUT)
     public void updateFlashCard(@RequestBody FlashCard flashCard) throws Exception{
          flashCardService.updateExistingFlashCard((flashCard));
     }

@@ -18,13 +18,13 @@ public interface FlashCardDao {
 
     boolean addFlashCardUser(FlashCard flashCardUser);
 
-    boolean addFlashCardKeywords(FlashCard flashCardKeyword);
+    void addFlashCardKeywords(FlashCard flashCardKeyword);
 
     List<FlashCard> getFlashcardsByUserId(Integer id);
 
     List<FlashCard> getFlashCardByKeyword( Integer userId , String keyword);
 
-    void deleteAllFlashcardKeywords(int cardId);
+    void deleteAllFlashcardKeywords(Integer cardId);
 
     void deleteFlashcard(int cardId);
 

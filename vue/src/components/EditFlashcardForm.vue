@@ -45,13 +45,14 @@
 </template>
 
 <script>
+import FlashcardService from "@/services/FlashcardService.js";
 export default {
   name: "edit-flashcard-form",
   props: ["cardId", "question", "answer", "keywords"],
   data() {
     return {
       editedFlashcard: {
-        flashcardId: this.cardId,
+        flashCardId: this.cardId,
         userId: this.$store.state.user.id,
         question: this.question,
         answer: this.answer,
@@ -71,9 +72,13 @@ export default {
     addKeyword() {
       if (
         this.keywordToAdd != "" &&
-        !this.editedFlashcard.keywords.includes(this.keywordToAdd.toLocaleLowerCase())
+        !this.editedFlashcard.keywords.includes(
+          this.keywordToAdd.toLocaleLowerCase()
+        )
       ) {
-        this.editedFlashcard.keywords.push(this.keywordToAdd.toLocaleLowerCase());
+        this.editedFlashcard.keywords.push(
+          this.keywordToAdd.toLocaleLowerCase()
+        );
         this.keywordToAdd = "";
       }
     },
@@ -82,8 +87,12 @@ export default {
         this.editedFlashcard.question != "" &&
         this.editedFlashcard.answer != ""
       ) {
-        console.log("success");
-        this.toggleForm();
+        FlashcardService.updateCard(this.editedFlashcard).then((response) => {
+          if (response.status === 200) {
+            this.toggleForm();
+            this.$router.push("/myflashcards");
+          }
+        });
       }
     },
   },
