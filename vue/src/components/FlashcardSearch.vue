@@ -1,5 +1,6 @@
 <template>
   <div>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister">
         <!-- create a search field with the id search-term -->
         <!--<label for="search-term">Search </label> -->
         <input class="search-keyword" type="text" id="search-term" v-model= searchKeyword />
@@ -83,7 +84,8 @@ export default {
         border-radius:0.2em;
         box-sizing: border-box;
         text-decoration:none;
-        font-family:'Roboto',sans-serif;
+        font-family: "Love Ya Like A Sister", sans-serif;
+        /* font-family:'Roboto',sans-serif; */
         font-weight:400;
         color:#FFFFFF;
         background-color:#3369ff;

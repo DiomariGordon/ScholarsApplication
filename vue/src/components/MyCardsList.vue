@@ -4,9 +4,9 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister">
     <h2>My Flashcards</h2>
     <div>
-        <input type="text" placeholder="Search by Keywords" v-model="keywordToAdd">
-        <button v-on:click.prevent="addSearchKeyword">+Keyword</button>
-        <button v-on:click.prevent="clearFilters">Reset Search Parameters</button>
+        <input class='field' type="text" placeholder="Search by Keywords" v-model="keywordToAdd">
+        <button class='btn' v-on:click.prevent="addSearchKeyword">+Keyword</button>
+        <button class='btn' v-on:click.prevent="clearFilters">Reset Search Parameters</button>
     </div>
     <div class="miniCardContainer">
       <router-link
@@ -95,6 +95,33 @@ export default {
   width: 75vw;
   margin: 0 auto;
 }
+
+.btn{
+        display:inline-block;
+        padding:0.7em 1.7em;
+        margin:0 0.3em 0.3em 0;
+        border-radius:0.25rem;
+        box-sizing: border-box;
+        text-decoration:none;
+        font-family: "Love Ya Like A Sister", sans-serif;
+        /* font-family:'Roboto',sans-serif; */
+        font-weight:400;
+        color:#FFFFFF;
+        background-color:#3369ff;
+        box-shadow:inset 0 -0.6em 1em -0.35em rgba(0,0,0,0.17),inset 0 0.6em 2em -0.3em rgba(255,255,255,0.15),inset 0 0 0em 0.05em rgba(255,255,255,0.12);
+        text-align:center;
+        position:relative;
+    }
+
+    .field{
+        display:inline-block;
+        height: 30px;
+        width: 300px;
+        background-color: white;
+        display: inline-block;
+        border-radius: 5px;
+    
+    }
 
 /*this is change*/
 
