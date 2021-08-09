@@ -20,7 +20,7 @@ public interface DeckDao {
 
     List<Deck> getDeckByUserId(Integer userId);
 
-    boolean addCardToDeck(FlashCard flashCard);
+    boolean addCardToDeck(Deck deck);
 
     Integer getUserIdByDeckId(Integer deckId);
 

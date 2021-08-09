@@ -22,6 +22,9 @@ public class DeckService {
     public boolean createDeck( Deck deck) {
         deckDao.createDeck(deck);
         deckDao.addDeckUser(deck);
+        deckDao.addCardToDeck(deck);
+
+
 
         return true;
     }
@@ -42,11 +45,11 @@ public class DeckService {
 
     public boolean  addFlashCardToDeck( FlashCard flashCard) throws Exception {
 
-        Integer userId = deckDao.getUserIdByDeckId(flashCard.getDeckId());
+        /*Integer userId = deckDao.getUserIdByDeckId(flashCard.getDeckId());
         if(userId == null){
             throw new BadRequestException("Deck does not Exist");
-        }
-        deckDao.addCardToDeck(flashCard);
+        }*/
+        //deckDao.addCardToDeck(flashCard);
 
         return true;
 

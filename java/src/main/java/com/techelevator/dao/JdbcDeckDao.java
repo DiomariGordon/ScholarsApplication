@@ -91,12 +91,13 @@ public class JdbcDeckDao implements DeckDao{
     }
 
     @Override
-    public boolean addCardToDeck(FlashCard flashCard) {
-
+    public boolean addCardToDeck(Deck deck) {
 
         String sql = "INSERT INTO flashcard_deck( deck_id, flashcard_id)" +
                 "VALUES( ?, ?)RETURNING deck_id ;";
-        Integer deckId = jdbcTemplate.queryForObject(sql, Integer.class, flashCard.getDeckId(), flashCard.getFlashCardId());
+        for(int i = 0; i < deck.getCards().length; i++) {
+        Integer deckId = jdbcTemplate.queryForObject(sql, Integer.class, deck.getDeckId(), deck.getCards()[i]);
+        }
         return true;
 
     }

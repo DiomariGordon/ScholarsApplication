@@ -15,7 +15,7 @@
         v-for="card in this.filteredList"
         v-bind:key="card.id"
       >
-        {{ card.question }} &lt;=&gt; {{card.answer}}
+        {{ card.question }}
       </router-link>
     </div>
     <table class="keywordTable" v-show="this.filters.length != 0">
@@ -81,7 +81,6 @@ export default {
   border-radius: 3px;
   background-image: url("../images/noteCard.jpg");
   background-size: contain;
-  background-repeat: repeat-x;
   color: navy;
   font-family: "Monoton", sans-serif;
   text-decoration: none;

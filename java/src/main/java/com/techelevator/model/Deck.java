@@ -8,21 +8,24 @@ public class Deck {
     private Integer userId;
     private String name;
     private String description;
+    private int[] cards;
 
     public Deck() {
     }
 
-    public Deck(Integer deckId, Integer userId, String name) {
+    public Deck(Integer deckId, Integer userId, String name, int[] cards) {
         this.deckId = deckId;
         this.userId = userId;
         this.name = name;
+        this.cards = cards;
     }
 
-    public Deck(Integer deckId, Integer userId, String name, String description) {
+    public Deck(Integer deckId, Integer userId, String name, String description, int[] cards) {
         this.deckId = deckId;
         this.userId = userId;
         this.name = name;
         this.description = description;
+        this.cards = cards;
     }
 
     public Integer getDeckId() {
@@ -55,6 +58,14 @@ public class Deck {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public int[] getCards() {
+        return cards;
+    }
+
+    public void setCards(int[] cards) {
+        this.cards = cards;
     }
 }
 

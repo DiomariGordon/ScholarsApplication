@@ -14,16 +14,16 @@
       <span
         v-on:click="addCardToDeck(card.flashCardId)"
         class="miniCard"
-        v-bind:class="{ inDeck: newDeck.includes(card.flashCardId) }"
+        v-bind:class="{ inDeck: deckCards.includes(card.flashCardId) }"
         v-on:click.prevent=""
         v-for="card in this.filteredList"
         v-bind:key="card.id"
       >
-        {{ card.question }} &lt;=&gt; {{ card.answer }}
+        {{ card.question }}
       </span>
     </div>
-    <button v-on:click="addAll">Select All</button>
-    <button v-on:click="removeAll">Deselect All</button>
+    <button v-on:click.prevent="addAll">Select All</button>
+    <button v-on:click.prevent="removeAll">Deselect All</button>
     <table class="keywordTable" v-show="this.filters.length != 0">
       <th>Search Parameters</th>
       <tr v-for="param in this.filters" v-bind:key="param.id">
@@ -49,7 +49,7 @@ export default {
     return {
       filters: [],
       keywordToAdd: "",
-      newDeck: [],
+      deckCards: []
     };
   },
   computed: {
@@ -67,25 +67,25 @@ export default {
   },
   methods: {
     addCardToDeck(cardId) {
-      if (!this.newDeck.includes(cardId)) {
-        this.newDeck.push(cardId);
+      if (!this.deckCards.includes(cardId)) {
+        this.deckCards.push(cardId);
       } else {
-        this.newDeck = this.newDeck.filter((card) => {
+        this.deckCards = this.deckCards.filter((card) => {
           return card != cardId;
         });
       }
     },
     addAll() {
       for (let i = 0; i < this.filteredList.length; i++) {
-        if (!this.newDeck.includes(this.filteredList[i].flashCardId)) {
-          this.newDeck.push(this.filteredList[i].flashCardId);
+        if (!this.deckCards.includes(this.filteredList[i].flashCardId)) {
+          this.deckCards.push(this.filteredList[i].flashCardId);
         }
       }
     },
     removeAll() {
       for (let i = 0; i < this.filteredList.length; i++) {
-        if (this.newDeck.includes(this.filteredList[i].flashCardId)) {
-          this.newDeck = this.newDeck.filter((card) => {
+        if (this.deckCards.includes(this.filteredList[i].flashCardId)) {
+          this.deckCards = this.deckCards.filter((card) => {
             return card != this.filteredList[i].flashCardId;
           });
         }
@@ -109,7 +109,7 @@ export default {
 
 <style>
 .inDeck {
-  background-image: none;
   background-color: limegreen;
+  background-image: none;
 }
 </style>
