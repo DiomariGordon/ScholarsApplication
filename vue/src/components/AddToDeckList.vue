@@ -16,7 +16,6 @@
         v-on:click="addCardToDeck(card.flashCardId)"
         class="miniCard"
         v-bind:class="{ inDeck: deckCards.includes(card.flashCardId) }"
-        v-on:click.prevent=""
         v-for="card in this.filteredList"
         v-bind:key="card.id"
       >

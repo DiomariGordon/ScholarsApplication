@@ -45,6 +45,11 @@ public class FlashCardController {
         flashCardService.deleteFlashcardById(cardId);
     }
 
+    @RequestMapping(path ="/flashCards/deck/{id}", method= RequestMethod.GET)
+    public List<FlashCard> getCardsInDeck(@PathVariable int id) throws Exception{
+        return flashCardService.getFlashCardsByDeckId(id);
+    }
+
 
 
 }

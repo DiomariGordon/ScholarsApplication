@@ -8,6 +8,10 @@ addDeck(deck) {
 
   getMyDecks(id) {
     return axios.get(`/deck/${id}`);
+  },
+
+  getDeckCards(deckId) {
+    return axios.get(`/flashCards/deck/${deckId}`);
   }
 }
 

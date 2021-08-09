@@ -10,6 +10,7 @@ import Deck from '../views/Deck'
 import CardSearch from '../views/CardSearch'
 import ModifyThisCard from '../views/ModifyThisCard'
 import DisplayDeck from '../views/DisplayDeck.vue'
+import DeckFlashcards from '../views/DeckFlashcards'
 
 Vue.use(Router)
 
@@ -91,6 +92,11 @@ const router = new Router({
       path: "/searchCard",
       name: "searchCard",
       component: CardSearch
+    },
+    {
+      path: "/deck/:id",
+      name: "viewDeckContents",
+      component: DeckFlashcards
     }
 
   ]

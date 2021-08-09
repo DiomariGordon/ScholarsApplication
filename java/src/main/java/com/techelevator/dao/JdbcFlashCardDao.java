@@ -86,7 +86,7 @@ public class JdbcFlashCardDao implements FlashCardDao{
         }
 
     }
-
+    @Override
     public List<FlashCard> getFlashcardsByUserId(Integer userId) {
         List<FlashCard> flashCards = new ArrayList<>();
 
@@ -104,6 +104,25 @@ public class JdbcFlashCardDao implements FlashCardDao{
         }
         return flashCards;
     }
+    @Override
+    public List<FlashCard> getFlashcardsByDeckId(Integer deckId) {
+        List<FlashCard> flashCards = new ArrayList<>();
+
+        String sql = "SELECT f.flashcard_id, f.question, f.answer, ck.keyword FROM Flashcard f " +
+                "JOIN flashcard_keyword ck ON  f.flashcard_id = ck.flashcard_id " +
+                "JOIN flashcard_deck fd ON fd.flashcard_id = f.flashcard_id  " +
+                "WHERE fd.deck_id = ?; ";
+
+        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, deckId);
+        while(rowSet.next()) {
+            FlashCard flashCard = mapRowToUserFlashCard(rowSet);
+            if(flashCard != null) {
+                flashCards.add(flashCard);
+            }
+        }
+        return flashCards;
+    }
+
 
     @Override
     public List<FlashCard> getFlashCardByKeyword(Integer userId, String keyword) {
