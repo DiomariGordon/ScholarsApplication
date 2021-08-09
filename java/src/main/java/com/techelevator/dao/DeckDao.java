@@ -24,4 +24,5 @@ public interface DeckDao {
 
     Integer getUserIdByDeckId(Integer deckId);
 
+
 }

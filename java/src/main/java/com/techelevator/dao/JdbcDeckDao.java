@@ -80,7 +80,10 @@ public class JdbcDeckDao implements DeckDao{
                 "JOIN deck_user du ON du.deck_id = d.deck_id " +
                 "JOIN users u ON u.user_id = du.user_id " +
                 "WHERE u.user_id = ?; ";
+
+
         SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, userId);
+
         while (rowSet.next()){
             Deck deck = mapRowToDeck2(rowSet);
             if (deck != null) {
@@ -89,6 +92,7 @@ public class JdbcDeckDao implements DeckDao{
         }
         return decks;
     }
+
 
     @Override
     public boolean addCardToDeck(Deck deck) {
