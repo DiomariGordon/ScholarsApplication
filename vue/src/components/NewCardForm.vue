@@ -1,7 +1,7 @@
 <template>
   <div>
     <table></table>
-    <button
+    <button class ="btn"
       v-on:click="
         toggleForm();
         clearForm();
@@ -9,31 +9,32 @@
       v-text="showForm ? 'Cancel' : 'CREATE NEW CARD'"
     ></button>
     <form v-if="showForm">
-      <input
+      <input class = "field"
         placeholder="Question"
         type="text"
         v-model="flashcard.question"
         required
       />
-      <input
+      <input class = "field"
         placeholder="Answer"
         type="text"
         v-model="flashcard.answer"
         required
       />
-      <input placeholder="Enter keyword" type="text" v-model="keywordToAdd" />
-      <button @click.prevent="addNewKeyword">+Keyword</button>
+      <input  class = "field" placeholder="Enter keyword" type="text" v-model="keywordToAdd" />
+      <button class = "btn" @click.prevent="addNewKeyword">+Keyword</button>
       <div>
         <h4 v-show="this.flashcard.keywords.length === 0">
           At least 1 keyword required
         </h4>
-        <button
+        <button class = "btn"
           v-show="this.flashcard.keywords.length !== 0"
           v-on:click.prevent="addNewFlashcard"
         >
           Finished
         </button>
         <button
+          class = "btn"
           v-show="this.flashcard.keywords.length !== 0"
           v-on:click.prevent="resetKeywords"
         >
@@ -103,4 +104,31 @@ export default {
 </script>
 
 <style>
+
+.btn{
+        display:inline-block;
+        padding:0.7em 1.7em;
+        margin:0 0.3em 0.3em 0;
+        border-radius:0.2em;
+        box-sizing: border-box;
+        text-decoration:none;
+        font-family:'Roboto',sans-serif;
+        font-weight:400;
+        color:#FFFFFF;
+        background-color:#3369ff;
+        box-shadow:inset 0 -0.6em 1em -0.35em rgba(0,0,0,0.17),inset 0 0.6em 2em -0.3em rgba(255,255,255,0.15),inset 0 0 0em 0.05em rgba(255,255,255,0.12);
+        text-align:center;
+        position:relative;
+    }
+
+    .field{
+        display:inline-block;
+        height: 30px;
+        width: 300px;
+        background-color: white;
+        display: inline-block;
+        border-radius: 5px;
+    
+    }
+
 </style>
