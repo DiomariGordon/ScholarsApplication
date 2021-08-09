@@ -7,7 +7,7 @@
     <div class="status-message" v-show="errorMsg !== ''">{{ errorMsg }}</div>
 
     <div class="body">
-      <h2>Cards in This Deck</h2>
+      <h2>Cards in this Deck:</h2>
       <div v-for="card in this.getDeckCards" v-bind:key="card.id">
         <!-- this should display  "flashcard-question"-->
         <div class="card">
