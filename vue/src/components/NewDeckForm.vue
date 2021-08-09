@@ -31,10 +31,9 @@
         </div>
         <div class="miniCardContainer">
           <span
-            v-on:click="addCardToDeck(card.flashCardId)"
+            v-on:click.prevent="addCardToDeck(card.flashCardId)"
             class="miniCard"
             v-bind:class="{ inDeck: deck.cards.includes(card.flashCardId) }"
-            v-on:click.prevent=""
             v-for="card in this.filteredList"
             v-bind:key="card.id"
           >
@@ -102,7 +101,7 @@ export default {
       if (!this.deck.cards.includes(cardId)) {
         this.deck.cards.push(cardId);
       } else {
-        this.deck.cards = this.deckCards.filter((card) => {
+        this.deck.cards = this.deck.cards.filter((card) => {
           return card != cardId;
         });
       }
