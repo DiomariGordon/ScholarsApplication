@@ -46,4 +46,11 @@ public class DeckController {
         return deckService.getFlashcardsByDeckId(deckId);
     }
 
+    @RequestMapping(path ="/decks/{id}/flashCards", method= RequestMethod.POST)
+    public boolean addCardToDeck(@PathVariable Integer deckId,@RequestBody FlashCard flashCard) throws Exception{
+       // deckService.addCardToDeck((flashCard));
+        return true;
+    }
+
+
 }

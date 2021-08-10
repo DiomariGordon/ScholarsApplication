@@ -10,6 +10,10 @@ import Deck from '../views/Deck'
 import CardSearch from '../views/CardSearch'
 import ModifyThisCard from '../views/ModifyThisCard'
 import DisplayDeck from '../views/DisplayDeck.vue'
+import DeckFlashcards from '../views/DeckFlashcards'
+import DeckBoard from '../views/DeckBoard'
+import NewCardForm from '../components/NewCardForm'
+import AddFlashcardToDeck from '../components/AddFlashcardToDeck'
 
 Vue.use(Router)
 
@@ -92,9 +96,44 @@ const router = new Router({
       name: "searchCard",
       component: CardSearch
     },
+
+    
     {
       path: "/session",
       name: "session",
+    },
+
+    {
+      path: "/deck/:id",
+      name: "viewDeckContents",
+      component: DeckFlashcards
+    },
+    {
+      path: "/deckBoard",
+      name: "deckBoard",
+      component: DeckBoard
+
+    },
+
+    {
+      path: "/deckBoard/:id",
+      name: "deckFlashcards", 
+      component: DeckFlashcards
+
+    },
+
+    {
+      path: "/addFlashcard",
+      name: "addFlashcard", 
+      component: NewCardForm
+
+     },
+
+    {
+      path: "/addFlashcardToDeck",
+      name: "addFlashcardToDeck", 
+      component: AddFlashcardToDeck
+
     }
 
   ]

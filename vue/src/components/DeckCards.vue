@@ -1,9 +1,25 @@
 <template>
   <div>
         <div class="status-message" v-show="errorMsg !== ''">{{errorMsg}}</div>
+        <h2><th>My FlashCards</th></h2>
+        <div>
+        
+         <router-link
+        tag="button"
+        class="btn addCard"
+        :to="{ name: 'addFlashcardToDeck'}" 
+        >Add New Card</router-link>
+
+        <!-- <router-link
+        tag="button"
+        class="btn addCard"
+        :to="{ name: 'addFlashcard'}"
+        >Add Existing Card</router-link> -->
+
+      </div>
        
        <div class="body">
-          <h2><th>My FlashCards</th></h2>
+         
        <div   v-for="card in this.getDeckCards" v-bind:key="card.id"  >
             <!-- this should display  "flashcard-question"-->
             <div class="card">{{ card.question }}</div>

@@ -1,5 +1,7 @@
 <template>
+<div>
   <deck-cards/>
+</div>
 </template>
 
 <script>

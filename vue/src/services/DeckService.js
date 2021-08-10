@@ -12,7 +12,12 @@ addDeck(deck) {
 
   getDeckCards(deckId) {
     return axios.get(`/flashCards/deck/${deckId}`);
-  }
+  },
+
+  addFlashCardToDeck(id,flashcard) {
+    return axios.post(`decks/${id}/flashCard`, flashcard);
+  },
+
 }
 
 

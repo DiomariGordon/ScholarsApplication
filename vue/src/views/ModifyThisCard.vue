@@ -120,4 +120,7 @@ export default {
   color: black;
   font-family: "Love Ya Like A Sister", sans-serif;
 }
+
+
+
 </style>
