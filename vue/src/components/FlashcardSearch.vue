@@ -3,7 +3,7 @@
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister">
         <!-- create a search field with the id search-term -->
         <!--<label for="search-term">Search </label> -->
-        <input class="search-keyword" type="text" id="search-term" v-model= searchKeyword />
+        <input class="search-keyword" placeholder="Enter a Keyword" type="text" id="search-term" v-model= searchKeyword />
         <button  class="flashcard-search"  v-on:click="getCardsByKeyWord">Search</button>
         <div class="status-message" v-show="errorMsg !== ''">{{errorMsg}}</div>
        
