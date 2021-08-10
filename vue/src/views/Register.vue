@@ -1,5 +1,6 @@
 <template>
   <div id="register" class="text-center">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister">
     <form class="form-register" @submit.prevent="register">
       <h1 class="h3 mb-3 font-weight-normal">Create Account</h1>
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
@@ -96,5 +97,9 @@ export default {
 <style>
 .form-register {
   text-align: center;
+}
+
+h1 {
+  font-family: "Love Ya Like A Sister", sans-serif;
 }
 </style>
