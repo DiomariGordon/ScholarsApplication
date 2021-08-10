@@ -85,12 +85,14 @@ export default {
     },
     nextCard() {
       this.currentCard = this.flashcards[this.nextIndex];
+      this.showFront = true;
       this.$router.push(
         `/session/${this.$route.params.deckId}/${this.nextIndex}`
       );
     },
     previousCard() {
       this.currentCard = this.flashcards[this.previousIndex];
+      this.showFront = true;
       this.$router.push(
         `/session/${this.$route.params.deckId}/${this.previousIndex}`
       );
