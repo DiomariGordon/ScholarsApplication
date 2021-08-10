@@ -111,7 +111,6 @@ export default {
   methods: {
       startSession(deckId) {
           this.$router.push(`/session/${deckId}/${0}`);
-          console.log('routerpush');
       },
     randomBackgroundColor() {
       return "#" + this.generateHexCode();

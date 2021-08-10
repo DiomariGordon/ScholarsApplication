@@ -1,43 +1,95 @@
 <template>
   <div>
-    <div v-show="!cardsCorrect.includes(currentCard.flashCardId) && !cardsIncorrect.includes(currentCard.flashCardId)">
-      <button v-on:click.prevent="markRight">Mark Correct</button>
-      <button v-on:click.prevent="markWrong">Mark Incorrect</button>
+    <div v-show="!sessionFinished">
+      <div
+        v-show="
+          !cardsCorrect.includes(currentCard.flashCardId) &&
+          !cardsIncorrect.includes(currentCard.flashCardId)
+        "
+      >
+        <h2 style="display: block">Mark your progress</h2>
+        <button v-on:click.prevent="markRight">Mark Correct</button>
+        <button v-on:click.prevent="markWrong">Mark Incorrect</button>
+      </div>
+      <div
+        v-show="
+          cardsCorrect.includes(currentCard.flashCardId) ||
+          cardsIncorrect.includes(currentCard.flashCardId)
+        "
+      >
+        <h2
+          class="markMsg"
+          v-text="
+            cardsCorrect.includes(currentCard.flashCardId)
+              ? 'Great job!'
+              : 'Keep practicing'
+          "
+        ></h2>
+      </div>
+      <div
+        v-bind:class="{
+          right: cardsCorrect.includes(currentCard.flashCardId),
+          wrong: cardsIncorrect.includes(currentCard.flashCardId),
+        }"
+        class="flashcardDisplay"
+        id="cardFront"
+        v-show="this.showFront"
+        @click="flipCard"
+      >
+        <h4 class="cardHead">Front</h4>
+        <h1 class="cardText">{{ currentCard.question }}</h1>
+      </div>
+      <div
+        v-bind:class="{
+          right: cardsCorrect.includes(currentCard.flashCardId),
+          wrong: cardsIncorrect.includes(currentCard.flashCardId),
+        }"
+        class="flashcardDisplay"
+        id="cardBack"
+        v-show="!this.showFront"
+        @click="flipCard"
+      >
+        <h4 class="cardHead">Back</h4>
+        <h1 class="cardText">{{ currentCard.answer }}</h1>
+      </div>
+      <button v-show="previousIndex >= 0" v-on:click.prevent="previousCard">
+        &lt;&lt;Previous Card
+      </button>
+      <button
+        v-show="nextIndex < this.flashcards.length"
+        v-on:click.prevent="nextCard"
+      >
+        Next Card&gt;&gt;
+      </button>
+      <div>
+        <button
+          v-on:click.prevent="finish"
+          v-show="studySessionInfo.attemptedQuiz != 0"
+        >
+          Finish Study Session
+        </button>
+      </div>
     </div>
-    <div
-      v-bind:class="{right: cardsCorrect.includes(currentCard.flashCardId), wrong: cardsIncorrect.includes(currentCard.flashCardId)}"
-      class="flashcardDisplay"
-      id="cardFront"
-      v-show="this.showFront"
-      @click="flipCard"
-    >
-      <h4 class="cardHead">Front</h4>
-      <h1 class="cardText">{{ currentCard.question }}</h1>
+    <div v-show="sessionFinished">
+      <h1 v-show="percentageCorrect == 1">Incredible!</h1>
+      <h1 v-show="percentageCorrect >= 0.85 && percentageCorrect < 1">
+        Well Done!
+      </h1>
+      <h1 v-show="percentageCorrect >= 0.7 && percentageCorrect < 0.85">
+        Not bad
+      </h1>
+      <h1 v-show="percentageCorrect < 0.7">Keep trying</h1>
+      <h2>
+        You scored {{ studySessionInfo.totalRight }} out of
+        {{ studySessionInfo.attemptedQuiz }} attempted.
+      </h2>
     </div>
-    <div
-      v-bind:class="{right: cardsCorrect.includes(currentCard.flashCardId), wrong: cardsIncorrect.includes(currentCard.flashCardId)}"
-      class="flashcardDisplay"
-      id="cardBack"
-      v-show="!this.showFront"
-      @click="flipCard"
-    >
-      <h4 class="cardHead">Back</h4>
-      <h1 class="cardText">{{ currentCard.answer }}</h1>
-    </div>
-    <button v-show="previousIndex >= 0" v-on:click.prevent="previousCard">
-      &lt;&lt;Previous Card
-    </button>
-    <button
-      v-show="nextIndex < this.flashcards.length"
-      v-on:click.prevent="nextCard"
-    >
-      Next Card&gt;&gt;
-    </button>
   </div>
 </template>
 
 <script>
 import DeckService from "@/services/DeckService";
+import SessionService from "@/services/SessionService";
 export default {
   data() {
     return {
@@ -47,11 +99,12 @@ export default {
       studySessionInfo: {
         deckId: this.$route.params.deckId,
         userId: this.$store.state.user.id,
-        numberAttempted: 0,
+        attemptedQuiz: 0,
         totalRight: 0,
       },
       cardsCorrect: [],
-      cardsIncorrect: []
+      cardsIncorrect: [],
+      sessionFinished: false,
     };
   },
 
@@ -59,7 +112,6 @@ export default {
     DeckService.getDeckCards(this.$route.params.deckId).then((response) => {
       this.flashcards = response.data;
       this.currentCard = this.flashcards[this.$route.params.cardIndex];
-      console.log("getting cards");
     });
   },
   computed: {
@@ -69,15 +121,30 @@ export default {
     previousIndex() {
       return parseInt(this.$route.params.cardIndex) - 1;
     },
+    percentageCorrect() {
+      if (this.studySessionInfo.attemptedQuiz != 0) {
+        return (
+          this.studySessionInfo.totalRight / this.studySessionInfo.attemptedQuiz
+        );
+      } else {
+        return 0;
+      }
+    },
   },
   methods: {
+    finish() {
+      this.sessionFinished = true;
+      SessionService.createSession(this.studySessionInfo).then((response) => {
+        console.log(response.status);
+      });
+    },
     markRight() {
-      this.studySessionInfo.numberAttempted++;
+      this.studySessionInfo.attemptedQuiz++;
       this.studySessionInfo.totalRight++;
       this.cardsCorrect.push(this.currentCard.flashCardId);
     },
     markWrong() {
-      this.studySessionInfo.numberAttempted++;
+      this.studySessionInfo.attemptedQuiz++;
       this.cardsIncorrect.push(this.currentCard.flashCardId);
     },
     flipCard() {
@@ -103,11 +170,15 @@ export default {
 
 <style>
 .right {
-    background-image: none;
-    background-color: limegreen;
+  background-image: none;
+  background-color: limegreen;
 }
 .wrong {
-    background-image: none;
-    background-color: red;
+  background-image: none;
+  background-color: red;
+}
+.markMsg {
+  display: block;
+  font-size: 33px;
 }
 </style>
