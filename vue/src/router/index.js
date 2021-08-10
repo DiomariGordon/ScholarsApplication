@@ -14,6 +14,7 @@ import DeckFlashcards from '../views/DeckFlashcards'
 import DeckBoard from '../views/DeckBoard'
 import NewCardForm from '../components/NewCardForm'
 import AddFlashcardToDeck from '../components/AddFlashcardToDeck'
+import SessionCurrentCard from '../views/SessionCurrentCard'
 
 Vue.use(Router)
 
@@ -134,6 +135,11 @@ const router = new Router({
       name: "addFlashcardToDeck", 
       component: AddFlashcardToDeck
 
+    },
+    {
+      path: "/sessionThisCard/:id",
+      name: "sessionThisCard",
+      component: SessionCurrentCard
     }
 
   ]
