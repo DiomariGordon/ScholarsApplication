@@ -16,12 +16,14 @@
         v-model="flashcard.question"
         required
       />
+      <div>
       <input class = "field"
         placeholder="Answer"
         type="text"
         v-model="flashcard.answer"
         required
       />
+      </div>
       <input  class = "field" placeholder="Enter keyword" type="text" v-model="keywordToAdd" />
       <button class = "btn" @click.prevent="addNewKeyword">+Keyword</button>
       <div>

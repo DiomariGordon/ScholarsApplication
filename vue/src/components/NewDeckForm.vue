@@ -2,9 +2,13 @@
   <div>
     <!-- <form v-if="showForm"> -->
     <form>
+      <div>
+        <h2>Enter a Deck Name and Description</h2>
+        </div>
       <input class='field' placeholder="Deck Name" type="text" v-model="deck.name" required />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister">
       <!-- <form v-if="showForm"> -->
+       
        
 
       <input class='field'
@@ -14,7 +18,7 @@
         required
       />
 
-      <button class='btn' @click.prevent="addNewDeck">Submit</button>
+     
 
       <div>
         <h2>Click Cards to Add to Deck</h2>
@@ -48,6 +52,14 @@
             <td>{{ param }}</td>
           </tr>
         </table>
+
+        <div>
+        <h2>If All Done, Submit!</h2>
+        </div>
+
+        <div>
+         <button class='btn' @click.prevent="addNewDeck">Submit</button>
+         </div>
       </div>
       <div v-show="deckCreated">{{ deck.name }} created successfully</div>
     </form>
