@@ -13,7 +13,7 @@ export default {
     },
     created() {
         this.thisFlashcard = this.$store.state.flashcards.find((card) =>{
-            return card.flashCardId == this.$route.params.id;
+            return card.flashCardId == this.$route.params.cardId;
         });
     }
 

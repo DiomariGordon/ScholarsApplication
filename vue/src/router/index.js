@@ -137,7 +137,7 @@ const router = new Router({
 
     },
     {
-      path: "/sessionThisCard/:id",
+      path: "/sessionThisCard/:deckId/:cardId",
       name: "sessionThisCard",
       component: SessionCurrentCard
     }
