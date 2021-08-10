@@ -1,11 +1,11 @@
 <template>
   <div>
-      <flash-card-search/>
+      <flash-card-search></flash-card-search>
   </div>
 </template>
 
 <script>
-import FlashCardSearch from '../components/FlashCardSearch.vue'
+import FlashCardSearch from '../components/FlashCardSearch'
 
 export default {
   name: 'card-search',

@@ -8,15 +8,14 @@
       <div>
         <div class="row1">
           <div><a><router-link :to="{name: 'myflashcards'}" class="editCards">Flashcards</router-link></a></div>
-          <div><a><router-link :to="{name: 'deck'}" class="createDeck">Create Decks</router-link></a></div>
-        </div>
-        <div class="row2">
-          <div><a><router-link :to="{name: 'deckBoard'}" class="viewDecks">View Decks</router-link></a></div>
           <div><a><router-link :to="{name: 'searchCard'}" class="viewCards">Search Cards</router-link></a></div>
         </div>
-        <!-- <li><a><router-link>Study Session</router-link></a></li> -->
+        <div class="row2">
+          <div><a><router-link :to="{name: 'deck'}" class="createDeck">Create Decks</router-link></a></div>
+          <div><a><router-link :to="{name: 'deckBoard'}" class="viewDecks">View Decks</router-link></a></div>
+          <div><a><router-link :to="{name: 'session'}" class="newSession">Study Session</router-link></a></div>
+        </div>
       </div>
-      <!-- <img src="../images/fournotes.png"> -->
     </nav>
   </div>
 </template>
@@ -95,68 +94,93 @@ li {
   background-image: url("../images/green.png");
   background-size: 100%;
 }
+.newSession {
+  align-content: center;
+  font-size: 55px;
+  width: 450px;
+  height: 270px;
+  margin: 0 auto;
+  background-image: url("../images/orange.png");
+  background-size: 100%;
+}
 .editCards:link {
   size: 40px;
   padding-top: 200px;
   display: block;
-  color: white;
+  color: black;
   text-decoration: none;
 }
 .createDeck:link {
   size: 40px;
   padding-top: 200px;
   display: block;
-  color: white;
+  color: black;
   text-decoration: none;
 }
 .viewDecks:link {
   size: 40px;
   padding-top: 200px;
   display: block;
-  color: white;
+  color: black;
   text-decoration: none;
 }
 .viewCards:link {
   size: 40px;
   padding-top: 200px;
   display: block;
-  color: white;
+  color: black;
+  text-decoration: none;
+}
+.newSession:link {
+  size: 40px;
+  padding-top: 200px;
+  display: block;
+  color: black;
   text-decoration: none;
 }
 .createDeck:visited {
-  color: white;
+  color: black;
 }
 .editCards:visited {
-  color: white;
+  color: black;
 }
 .viewDecks:visited {
-  color: white;
+  color: black;
 }
 .viewCards:visited {
-  color: white;
+  color: black;
+}
+.newSession:visited {
+  color: black;
 }
 .editCards:hover {
-  color: black;
+  color: cyan;
   padding-left: 5px;
 }
 .createDeck:hover {
-  color: black;
+  color: orangered;
   padding-left: 5px;
 }
 .viewDecks:hover {
-  color: black;
+  color: hotpink;
   padding-left: 5px;
 }
 .viewCards:hover {
-  color: black;
+  color: yellow;
+  padding-left: 5px;
+}
+.newSession:hover {
+  color: red;
   padding-left: 5px;
 }
 .row1 {
-    justify-content: space-between;
-    display: flex;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
 .row2 {
-    justify-content: space-around;
-    display: flex;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 </style>
