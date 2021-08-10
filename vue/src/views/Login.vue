@@ -9,6 +9,7 @@
     <form class="form-signin" @submit.prevent="login">
     
       <div
+        id="invalid"
         class="alert alert-danger"
         role="alert"
         v-if="invalidCredentials"
@@ -126,7 +127,7 @@ export default {
     padding-top: 10px;
     padding-bottom: 10px;
   }
-  div {
+  #invalid {
     color: red;
   }
 
@@ -136,5 +137,15 @@ export default {
   }
   .rLink:visited {
     color: white;
+  }
+  .sr-only {
+    font-size: 16px;
+    font-family: "Love Ya Like A Sister", sans-serif;
+    padding: 0.25em 0.5em;
+  }
+  .btnSubmit {
+    font-family: "Love Ya Like A Sister", sans-serif;
+    color: black;
+    background: linear-gradient(black, white 10%);
   }
 </style>
