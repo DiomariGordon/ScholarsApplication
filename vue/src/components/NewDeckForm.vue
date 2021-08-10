@@ -2,7 +2,7 @@
   <div>
     <!-- <form v-if="showForm"> -->
     <form>
-      <input placeholder="Deck Name" type="text" v-model="deck.name" required />
+      <input class='field' placeholder="Deck Name" type="text" v-model="deck.name" required />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister">
       <!-- <form v-if="showForm"> -->
        
@@ -19,13 +19,13 @@
       <div>
         <h2>Click Cards to Add to Deck</h2>
         <div>
-          <input
+          <input class='field'
             type="text"
             placeholder="Search by Keywords"
             v-model="keywordToAdd"
           />
-          <button v-on:click.prevent="addSearchKeyword">+Keyword</button>
-          <button v-on:click.prevent="clearFilters">
+          <button class='btn' v-on:click.prevent="addSearchKeyword">+Keyword</button>
+          <button class='btn' v-on:click.prevent="clearFilters">
             Reset Search Parameters
           </button>
         </div>
@@ -40,8 +40,8 @@
             {{ card.question }}
           </span>
         </div>
-        <button v-on:click.prevent="addAll">Select All</button>
-        <button v-on:click.prevent="removeAll">Deselect All</button>
+        <button class='btn' v-on:click.prevent="addAll">Select All</button>
+        <button class='btn' v-on:click.prevent="removeAll">Deselect All</button>
         <table class="keywordTable" v-show="this.filters.length != 0">
           <th>Search Parameters</th>
           <tr v-for="param in this.filters" v-bind:key="param.id">
