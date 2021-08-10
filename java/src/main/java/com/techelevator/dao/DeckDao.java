@@ -26,4 +26,6 @@ public interface DeckDao {
 
     Integer[] getCardsByDeckId(int deckId);
 
+    List<FlashCard> getFlashcardsIdByDeckId(Integer deckId);
+
 }

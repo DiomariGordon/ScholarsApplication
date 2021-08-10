@@ -105,6 +105,31 @@ public class JdbcDeckDao implements DeckDao{
         return true;
 
     }
+
+    @Override
+    public List<FlashCard> getFlashcardsIdByDeckId(Integer deckId) {
+        String sql = "Select fc.* from flashcard fc, flashcard_deck fd where fc.flashcard_id = fd.flashcard_id" +
+                " and fd.deck_id = ?";
+        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, deckId);
+        List<FlashCard> flashCards = new ArrayList<>();
+        while(rowSet.next()){
+            FlashCard flashCard = mapRowToFlashCard(rowSet);
+            if(flashCard != null) {
+                flashCards.add(flashCard);
+            }
+        }
+
+        return flashCards;
+    }
+
+    private FlashCard mapRowToFlashCard(SqlRowSet rowSet) {
+        FlashCard flashCard = new FlashCard();
+        flashCard.setFlashCardId(rowSet.getInt("flashcard_id"));
+        flashCard.setQuestion(rowSet.getString("question"));
+        flashCard.setAnswer(rowSet.getString("answer"));
+        return flashCard;
+    }
+
     @Override
     public Integer[] getCardsByDeckId(int deckId) {
         List<Integer> cards = new ArrayList<>();

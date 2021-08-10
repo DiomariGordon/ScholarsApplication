@@ -29,7 +29,8 @@ export default new Vuex.Store({
     token: currentToken || '',
     user: currentUser || {},
     flashcards: [],
-    decks: []
+    decks: [],
+    deckId: 0
   },
   // import to make data persistance between reload
   plugins: [createPersistedState()],
@@ -68,6 +69,9 @@ export default new Vuex.Store({
       this.state.flashcard.question = flash.question;
       this.state.flashcard.answer = flash.answer;
       this.state.flashcard.keywords = flash.keywords;
+    },
+    SET_DECK_ID(state, deckId){
+      this.state.deckId = deckId;
     }
   }
 })

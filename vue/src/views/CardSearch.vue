@@ -1,6 +1,6 @@
 <template>
   <div>
-      <flash-card-search></flash-card-search>
+      <flash-card-search/>
   </div>
 </template>
 

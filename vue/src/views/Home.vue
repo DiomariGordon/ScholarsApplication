@@ -11,7 +11,7 @@
           <div><a><router-link :to="{name: 'deck'}" class="createDeck">Create Decks</router-link></a></div>
         </div>
         <div class="row2">
-          <div><a><router-link :to="{name: 'myDecks'}" class="viewDecks">View Decks</router-link></a></div>
+          <div><a><router-link :to="{name: 'deckBoard'}" class="viewDecks">View Decks</router-link></a></div>
           <div><a><router-link :to="{name: 'searchCard'}" class="viewCards">Search Cards</router-link></a></div>
         </div>
         <!-- <li><a><router-link>Study Session</router-link></a></li> -->
