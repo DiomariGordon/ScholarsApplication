@@ -24,6 +24,7 @@
         v-bind:key="deck.deckId"
         v-bind:id="deck.deckId"
         v-bind:style="{ 'background-color': randomBackgroundColor() }"
+        tag="div"
       >
         {{ deck.name }} 
       </div>
@@ -81,7 +82,7 @@ export default {
   created() {
     DeckService.getMyDecks(this.$store.state.user.id).then((response) => {
       const decks = response.data;
-      //this.$store.commit("SET_DECKS", decks);
+      this.$store.commit("SET_DECKS", decks);
       this.myDecks = decks;
       if (response.status === 200 && response.data.length > 0) {
         this.$store.commit("SET_DECK_ID", response.data[0].deckId);
@@ -102,6 +103,7 @@ export default {
       userId: this.$store.state.user.id,
       errorMsg: "",
       showAddDeck: false,
+      mySelection: [],
       myNewDeck: {
         name: "",
         description: "",
@@ -120,8 +122,17 @@ export default {
       return "ffffff";
     },
     updateDeckId(deckId, event) {
-     // document.getElementById(event.currentTarget.id).style.backgroundColor =
-      //  "green";
+      if (!this.mySelection.includes(deckId)) {
+        this.mySelection.push(deckId);
+        document.getElementById(event.currentTarget.id).style.backgroundColor = "green";
+      } else {
+        const index = this.mySelection.indexOf(deckId);
+        if (index > -1) {
+          this.mySelection.splice(index, 1);
+        }
+         document.getElementById(event.currentTarget.id).style.backgroundColor = "white";
+      }
+      
       console.log(event.currentTarget.id);
       this.$store.commit("SET_DECK_ID", deckId);
     },
@@ -172,6 +183,7 @@ div#sideNav {
   padding-bottom: 20px;
   overflow-x: hidden;
   border-right: solid lightgrey 1px;
+  margin-top: 30px;
 }
 .boards {
   display: flex;

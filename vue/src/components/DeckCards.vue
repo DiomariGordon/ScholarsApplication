@@ -10,6 +10,12 @@
         :to="{ name: 'addFlashcardToDeck'}" 
         >Add New Card</router-link>
 
+         <router-link
+        tag="button"
+        class="btn modifyDeck"
+        :to="{ name: 'modifyDeck'}" 
+        >Edit Deck</router-link>
+
         <!-- <router-link
         tag="button"
         class="btn addCard"
@@ -20,10 +26,10 @@
        
        <div class="body">
          
-       <div   v-for="card in this.getDeckCards" v-bind:key="card.id"  >
+       <div   v-for="card in this.getDeckCards" v-bind:key="card.flashCardId"  >
             <!-- this should display  "flashcard-question"-->
+            <!-- <div class="card" v-bind:id="card.flashCardId" + 'Flashcard' v-on:click="selectCardsForDelete('Flashcard'+ card.flashCardId)">{{ card.question }}</div> -->
             <div class="card">{{ card.question }}</div>
-        
         </div>
        </div>
 
@@ -42,7 +48,8 @@ export default {
         return {
             flashCards: [],
             deckId: 0,
-            errorMsg: ""
+            errorMsg: "",
+            mySelection: []
             // showAddDeck: false,
             // newDeck: {
             //     name: '',
@@ -69,6 +76,24 @@ export default {
         //this.retrieveCards();
     },
     methods:{
+
+    selectCardsForDelete(cardId){
+        if (!this.mySelection.includes(cardId)) {
+        this.mySelection.push(cardId);
+        console.log(this.$refs[cardId]);
+        //this.$refs[cardId].style.backgroundColor = "green";
+        //document.getElementById(event.currentTarget.id).style.backgroundColor = "green";
+      } else {
+        const index = this.mySelection.indexOf(cardId);
+        if (index > -1) {
+          this.mySelection.splice(index, 1);
+        }
+         //document.getElementById(event.currentTarget.id).style.backgroundColor = "white";
+         //this.$refs[cardId].style.backgroundColor = "white";
+         console.log(this.$refs[cardId]);
+      }
+
+    },
             
     retrieveCards(deckId) {
        DeckService
@@ -178,9 +203,4 @@ ul {
   list-style-type: none;
 } 
 
-   
-   
-
-    
-      
 </style>

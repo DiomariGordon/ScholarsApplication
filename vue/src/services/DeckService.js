@@ -15,7 +15,11 @@ addDeck(deck) {
   },
 
   addFlashCardToDeck(id,flashcard) {
-    return axios.post(`decks/${id}/flashCard`, flashcard);
+    return axios.post(`decks/${id}/flashCards`, flashcard);
+  },
+
+  updateDeck(deck) {
+    return axios.put('/deck', deck);
   },
 
 }

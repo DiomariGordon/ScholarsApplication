@@ -114,11 +114,6 @@ export default {
   body {
     background: url(../images/chalkboard.jpg);
   }
-  h1 {
-    font-family: "Homemade Apple", sans-serif;
-    color:white;
-    font-size: 75px;
-  }
   h2 {
     position: relative;
     display: inline-block;
@@ -147,5 +142,13 @@ export default {
     font-family: "Love Ya Like A Sister", sans-serif;
     color: black;
     background: linear-gradient(black, white 10%);
+  }
+
+  .title {
+    font-family: "Homemade Apple", sans-serif;
+    color:white;
+    font-size: 75px;
+    text-align: center;
+    padding-left: 60px;
   }
 </style>

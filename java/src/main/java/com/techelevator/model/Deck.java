@@ -9,23 +9,18 @@ public class Deck {
     private String name;
     private String description;
     private Integer[] cards;
+    private Integer flashCardId;
 
     public Deck() {
     }
 
-    public Deck(Integer deckId, Integer userId, String name, Integer[] cards) {
-        this.deckId = deckId;
-        this.userId = userId;
-        this.name = name;
-        this.cards = cards;
-    }
-
-    public Deck(Integer deckId, Integer userId, String name, String description, Integer[] cards) {
+    public Deck(Integer deckId, Integer userId, String name, String description, Integer[] cards, Integer flashCardId) {
         this.deckId = deckId;
         this.userId = userId;
         this.name = name;
         this.description = description;
         this.cards = cards;
+        this.flashCardId = flashCardId;
     }
 
     public Integer getDeckId() {
@@ -67,8 +62,15 @@ public class Deck {
     public void setCards(Integer[] cards) {
         this.cards = cards;
     }
-}
 
+    public Integer getFlashCardId() {
+        return flashCardId;
+    }
+
+    public void setFlashCardId(Integer flashCardId) {
+        this.flashCardId = flashCardId;
+    }
+}
 
 
 

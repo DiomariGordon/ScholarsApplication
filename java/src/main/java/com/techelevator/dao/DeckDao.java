@@ -1,5 +1,6 @@
 package com.techelevator.dao;
 
+import com.techelevator.Exception.BadRequestException;
 import com.techelevator.model.Deck;
 import com.techelevator.model.DeckUser;
 import com.techelevator.model.FlashCard;
@@ -16,11 +17,13 @@ public interface DeckDao {
 
     boolean updateDeckName(Deck deck);
 
+    boolean updateDeck(Deck deck);
+
     boolean updateDeckContents(FlashCard flashCard);
 
     List<Deck> getDeckByUserId(Integer userId);
 
-    boolean addCardToDeck(Deck deck);
+    boolean addCardToDeck(Deck deck) throws BadRequestException;
 
     Integer getUserIdByDeckId(Integer deckId);
 
@@ -28,4 +31,5 @@ public interface DeckDao {
 
     List<FlashCard> getFlashcardsIdByDeckId(Integer deckId);
 
+//    boolean addFlashcardToDeck(Integer deckId, FlashCard flashCard);
 }

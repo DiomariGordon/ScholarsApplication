@@ -16,6 +16,7 @@ import NewCardForm from '../components/NewCardForm'
 import AddFlashcardToDeck from '../components/AddFlashcardToDeck'
 import SessionCurrentCard from '../views/SessionCurrentCard'
 import NewSession from '../views/NewSession'
+import ModifyThisDeck from '../components/ModifyThisDeck'
 
 Vue.use(Router)
 
@@ -142,6 +143,13 @@ const router = new Router({
       path: "/session/:deckId/:cardIndex",
       name: "sessionThisCard",
       component: SessionCurrentCard
+    },
+
+    
+    {
+      path: "/deck/update",
+      name: "modifyDeck",
+      component: ModifyThisDeck
     }
 
   ]

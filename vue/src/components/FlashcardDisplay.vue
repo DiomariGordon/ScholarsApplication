@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import MyCardsList from './MyCardsList.vue'
+// import MyCardsList from './MyCardsList.vue'
 import NewCardForm from './NewCardForm.vue'
 export default {
   components: { NewCardForm },

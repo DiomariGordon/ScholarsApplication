@@ -18,6 +18,10 @@
                               tag="div"
                           > {{deck.name}}
                           </router-link> -->
+<<<<<<< HEAD
+=======
+
+>>>>>>> fe34ecd985627b956c90454e8e29a87c2f5034fc
         <div>
         <div
           v-on:click="updateDeckId(deck.deckId, $event); startSession(deck.deckId)"
@@ -31,6 +35,10 @@
           {{ deck.name }} 
         </div>
         </div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> fe34ecd985627b956c90454e8e29a87c2f5034fc
         <button
           class="btn addBoard"
           v-if="!showAddDeck"
@@ -63,6 +71,10 @@
             <tr>
               <td>
                 <button class="btn" v-on:click="saveNewDeck()">Save</button>
+<<<<<<< HEAD
+=======
+
+>>>>>>> fe34ecd985627b956c90454e8e29a87c2f5034fc
                 <button class="btn" v-on:click="showAddDeck = !showAddDeck">
                   Cancel
                 </button>
