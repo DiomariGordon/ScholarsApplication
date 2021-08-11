@@ -63,7 +63,9 @@
       </div>
       <div v-show="deckCreated">{{ deck.name }} created successfully</div>
     </form>
-    <div><a><router-link :to="{name: 'deckBoard'}" class="toDecks">Click here to view all decks created</router-link></a></div>
+    <div>
+      <button class="deckButton"><router-link :to="{name: 'deckBoard'}" class="toDecks">View All Decks</router-link></button>
+      </div>
   </div>
 </template>
 
@@ -172,18 +174,27 @@ export default {
   background-image: none;
 }
 .toDecks {
-  display: block;
-  font-family: "Love Ya Like A Sister", sans-serif;
   color:#FFFFFF;
-  font-size: 20px;
-  text-decoration: none;
-  padding-top: 30px;
 }
 .toDecks:link {
   color:#FFFFFF;
+  text-decoration: none;
 }
-.toDecks:hover {
-  color: gold;
+.deckButton {
+  display:inline-block;
+  padding:0.7em 1.7em;
+  margin:0 0.3em 0.3em 0;
+  margin-top: 17px;
+  border-radius:0.2em;
+  box-sizing: border-box;
+  text-decoration:none;
+  font-family: "Love Ya Like A Sister", sans-serif;
+  font-weight:400;
+  color:#FFFFFF;
+  background-color:#3369ff;
+  box-shadow:inset 0 -0.6em 1em -0.35em rgba(0,0,0,0.17),inset 0 0.6em 2em -0.3em rgba(255,255,255,0.15),inset 0 0 0em 0.05em rgba(255,255,255,0.12);
+  text-align:center;
+  position:relative;
 }
 .btn {
   display:inline-block;

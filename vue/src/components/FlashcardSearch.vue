@@ -4,7 +4,9 @@
         <!-- create a search field with the id search-term -->
         <!--<label for="search-term">Search </label> -->
         <div class="title">Type in a keyword to find your card</div>
-        <div><a><router-link :to="{name: 'myflashcards'}" class="toFlashcards">Click here to edit/create flashcards</router-link></a></div>
+        <div>
+        <button class="button"><router-link :to="{name: 'myflashcards'}" class="toFlashcards">Edit/Create Flashcards</router-link></button>
+        </div>
         <input class="search-keyword" placeholder="Enter a Keyword" type="text" id="search-term" v-model= searchKeyword />
         <button  class="flashcard-search"  v-on:click="getCardsByKeyWord">Search</button>
         <div class="status-message" v-show="errorMsg !== ''">{{errorMsg}}</div>
@@ -83,27 +85,32 @@ export default {
         color:#FFFFFF;
         font-size: 40px;
         padding-bottom: 40px;
+        padding-right: 55px;
+        justify-content: center;
     }
     .toFlashcards {
-        display: block;
-        font-family: "Love Ya Like A Sister", sans-serif;
-        color:#FFFFFF;
-        font-size: 20px;
-        text-decoration: none;
-        padding-bottom: 40px;
-    }
-    .toFlashcards {
-        font-family: "Love Ya Like A Sister", sans-serif;
-        color:#FFFFFF;
-        font-size: 20px;
-        text-decoration: none;
-        padding-bottom: 40px;
+        color: white;
     }
     .toFlashcards:link {
-        color:#FFFFFF;
+        color: white;
+        text-decoration: none;
     }
-    .toFlashcards:hover {
-        color: gold;
+    .button {
+        display:inline-block;
+        padding:0.7em 1.7em;
+        margin:0 0.3em 0.3em 0;
+        margin-bottom: 35px;
+        border-radius:0.2em;
+        box-sizing: border-box;
+        text-decoration:none;
+        font-family: "Love Ya Like A Sister", sans-serif;
+        /* font-family:'Roboto',sans-serif; */
+        font-weight:400;
+        color:#FFFFFF;
+        background-color:#3369ff;
+        box-shadow:inset 0 -0.6em 1em -0.35em rgba(0,0,0,0.17),inset 0 0.6em 2em -0.3em rgba(255,255,255,0.15),inset 0 0 0em 0.05em rgba(255,255,255,0.12);
+        text-align:center;
+        position:relative;
     }
 
     .flashcard-search{

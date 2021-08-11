@@ -123,6 +123,7 @@ export default {
 .deckFlexContainer {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   border: 3px solid antiquewhite;
   border-radius: 20px;
   width: 75vw;

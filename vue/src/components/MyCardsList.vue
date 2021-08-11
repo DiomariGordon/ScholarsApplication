@@ -78,18 +78,23 @@ export default {
   margin: 7px;
   padding: 10px;
   border: 1px solid black;
+  width: 250px;
+  height: 125px;
+  align-content: center;
   border-radius: 3px;
   background-image: url("../images/noteCard.jpg");
-  background-size: contain;
+  background-size: cover;
   color: navy;
   font-family: "Monoton", sans-serif;
   text-decoration: none;
-  font-size: 20px;
+  font-size: 40px;
   font-family: "Love Ya Like A Sister", sans-serif;
   cursor: pointer;
+  line-height: 125px;
 }
 .miniCardContainer {
   display: flex;
+  align-items: center;
   flex-wrap: wrap;
   border: 3px solid antiquewhite;
   border-radius: 20px;
