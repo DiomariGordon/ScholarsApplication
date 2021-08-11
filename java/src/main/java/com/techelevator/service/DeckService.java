@@ -28,7 +28,9 @@ public class DeckService {
     public boolean createDeck( Deck deck) throws BadRequestException {
         deckDao.createDeck(deck);
         deckDao.addDeckUser(deck);
+        if(deck.getCards() != null) {
         deckDao.addCardToDeck(deck);
+        }
 
 
 
