@@ -1,6 +1,8 @@
 <template>
   <div>
     <div v-show="!sessionFinished">
+      <h1 class="pageTitle">{{deckInfo.name}}</h1>
+      <h2 class="pageSubTitle">{{deckInfo.description}}</h2>
       <div
         v-show="
           !cardsCorrect.includes(currentCard.flashCardId) &&
@@ -29,7 +31,7 @@
       <div
         v-bind:class="{
           right: cardsCorrect.includes(currentCard.flashCardId),
-          wrong: cardsIncorrect.includes(currentCard.flashCardId),
+          wrong: cardsIncorrect.includes(currentCard.flashCardId)
         }"
         class="flashcardDisplay"
         id="cardFront"
@@ -41,8 +43,8 @@
       </div>
       <div
         v-bind:class="{
-          right: cardsCorrect.includes(currentCard.flashCardId),
-          wrong: cardsIncorrect.includes(currentCard.flashCardId),
+          right: this.cardsCorrect.includes(currentCard.flashCardId),
+          wrong: cardsIncorrect.includes(currentCard.flashCardId)
         }"
         class="flashcardDisplay"
         id="cardBack"
@@ -85,6 +87,7 @@
         You scored {{ studySessionInfo.totalRight }} out of
         {{ studySessionInfo.attemptedQuiz }} attempted.
       </h2>
+      <h1 class="letterGrd">{{letterGrade}}</h1>
     </div>
   </div>
 </template>
@@ -95,6 +98,7 @@ import SessionService from "@/services/SessionService";
 export default {
   data() {
     return {
+      deckInfo: {},
       showFront: true,
       flashcards: [],
       currentCard: {},
@@ -115,6 +119,9 @@ export default {
       this.flashcards = response.data;
       this.currentCard = this.flashcards[this.$route.params.cardIndex];
     });
+    this.deckInfo = this.$store.state.decks.find((deck) =>{
+      return deck.deckId == this.$route.params.deckId;
+    });
   },
   computed: {
     nextIndex() {
@@ -132,6 +139,35 @@ export default {
         return 0;
       }
     },
+    letterGrade() {
+      if(this.percentageCorrect >= 0.97) {
+        return 'A+';
+      } else if(this.percentageCorrect >= 0.94 && this.percentageCorrect < 0.97) {
+        return 'A';
+      } else if(this.percentageCorrect >= 0.9 && this.percentageCorrect < 0.94) {
+        return 'A-';
+      } else if(this.percentageCorrect >= 0.87 && this.percentageCorrect < 0.9) {
+        return 'B+';
+      } else if(this.percentageCorrect >= 0.84 && this.percentageCorrect < 0.87) {
+        return 'B';
+      } else if(this.percentageCorrect >= 0.8 && this.percentageCorrect < 0.84) {
+        return 'B-';
+      } else if(this.percentageCorrect >= 0.77 && this.percentageCorrect < 0.8) {
+        return 'C+';
+      } else if(this.percentageCorrect >= 0.74 && this.percentageCorrect < 0.77) {
+        return 'C';
+      } else if(this.percentageCorrect >= 0.7 && this.percentageCorrect < 0.74) {
+        return 'C-';
+      } else if(this.percentageCorrect >= 0.67 && this.percentageCorrect < 0.7) {
+        return 'D+';
+      } else if(this.percentageCorrect >= 0.64 && this.percentageCorrect < 0.67) {
+        return 'D';
+      } else if(this.percentageCorrect >= 0.6 && this.percentageCorrect < 0.64) {
+        return 'D-';
+      } else {
+        return 'F'
+      }
+      }
   },
   methods: {
     finish() {
@@ -171,17 +207,17 @@ export default {
 </script>
 
 <style>
-.right {
+.flashcardDisplay.right {
   background-image: none;
   background-color: limegreen;
 }
-.wrong {
+.flashcardDisplay.wrong {
   background-image: none;
   background-color: red;
 }
 .markMsg {
   display: block;
-  font-size: 33px;
+  font-size: 39px;
 }
 
 .btn{
@@ -200,4 +236,14 @@ export default {
         text-align:center;
         position:relative;
     }
-</style>
+    .pageTitle {
+      margin: 0px;
+      font-size: 40px;
+    }
+    .pageSubTitle {
+      margin: 0px;
+    }
+    .letterGrd {
+      font-size: 150px;
+    }
+    </style>
