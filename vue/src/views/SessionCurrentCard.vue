@@ -3,6 +3,7 @@
     <div v-show="!sessionFinished">
       <h1 class="pageTitle">{{deckInfo.name}}</h1>
       <h2 class="pageSubTitle">{{deckInfo.description}}</h2>
+      <div class="justALine"></div>
       <div
         v-show="
           !cardsCorrect.includes(currentCard.flashCardId) &&
@@ -245,5 +246,8 @@ export default {
     }
     .letterGrd {
       font-size: 150px;
+    }
+    .justALine {
+      border-top: 2px solid gold;
     }
     </style>

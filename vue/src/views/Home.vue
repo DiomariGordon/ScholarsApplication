@@ -60,45 +60,45 @@ li {
 }
 .editCards {
   align-content: center;
-  font-size: 60px;
-  width: 450px;
-  height: 242px;
+  font-size: 40px;
+  width: 350px;
+  height: 152px;
   margin: 0 auto;
   background-image: url("../images/blue.png");
   background-size: 100%;
 }
 .createDeck {
   align-content: center;
-  font-size: 55px;
-  width: 450px;
-  height: 242px;
+  font-size: 40px;
+  width: 350px;
+  height: 152px;
   margin: 0 auto;
   background-image: url("../images/yellow.png");
   background-size: 100%;
 }
 .viewDecks {
   align-content: center;
-  font-size: 60px;
-  width: 450px;
-  height: 242px;
+  font-size: 40px;
+  width: 350px;
+  height: 152px;
   margin: 0 auto;
   background-image: url("../images/red.png");
   background-size: 100%;
 }
 .viewCards {
   align-content: center;
-  font-size: 55px;
-  width: 450px;
-  height: 242px;
+  font-size: 40px;
+  width: 350px;
+  height: 152px;
   margin: 0 auto;
   background-image: url("../images/green.png");
   background-size: 100%;
 }
 .newSession {
   align-content: center;
-  font-size: 55px;
-  width: 450px;
-  height: 242px;
+  font-size: 40px;
+  width: 350px;
+  height: 152px;
   margin: 0 auto;
   background-image: url("../images/orange.png");
   background-size: 100%;

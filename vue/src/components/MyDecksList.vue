@@ -19,11 +19,12 @@
       <div
         v-on:click="updateDeckId(deck.deckId, $event)"
         :disabled="true"
+        v-bind:class="{selected: mySelection.includes(deck.deckId)}"
         class="board"
         v-for="deck in myDecks"
         v-bind:key="deck.deckId"
         v-bind:id="deck.deckId"
-        v-bind:style="{ 'background-color': randomBackgroundColor() }"
+        
         tag="div"
       >
         {{ deck.name }} 
@@ -85,6 +86,7 @@ export default {
       this.$store.commit("SET_DECKS", decks);
       this.myDecks = decks;
       if (response.status === 200 && response.data.length > 0) {
+        this.mySelection.push(response.data[0].deckId);
         this.$store.commit("SET_DECK_ID", response.data[0].deckId);
         // this.$router.push(`/deckBoard/${response.data[0].deckId}`);
       }
@@ -123,14 +125,9 @@ export default {
     },
     updateDeckId(deckId, event) {
       if (!this.mySelection.includes(deckId)) {
+        this.mySelection = []
         this.mySelection.push(deckId);
-        document.getElementById(event.currentTarget.id).style.backgroundColor = "green";
-      } else {
-        const index = this.mySelection.indexOf(deckId);
-        if (index > -1) {
-          this.mySelection.splice(index, 1);
-        }
-         document.getElementById(event.currentTarget.id).style.backgroundColor = "white";
+      
       }
       
       console.log(event.currentTarget.id);
@@ -192,6 +189,7 @@ div#sideNav {
   align-items: center;
 }
 .board {
+  background-color: white;
   color: black;
   border-radius: 10px;
   padding: 40px;
@@ -227,6 +225,9 @@ div#sideNav {
 } */
 .loading {
   flex: 3;
+}
+.selected {
+  background-color: green;
 }
 /* .addBoard:hover {
   font-weight: bold;

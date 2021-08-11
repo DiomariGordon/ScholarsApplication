@@ -103,6 +103,7 @@ export default {
   margin: 0 auto;
   background-image: url("../images/noteCard.jpg");
   background-size: cover;
+  cursor: pointer;
 }
 .cardText {
   margin: 0 auto;

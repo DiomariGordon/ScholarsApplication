@@ -1,12 +1,8 @@
 <template>
   <div>
-    <div class="review">
-      <div><a><router-link :to="{name: 'myflashcards'}" class="goToCards">Click to here review cards</router-link></a></div>
-      <!-- <div><a><router-link :to="{name: 'deckBoard'}" class="goToDecks">Click to review decks</router-link></a></div> -->
-    </div>
-    <div id="sideNav">
-      <h2><th>My Decks</th></h2>
-      <div class="boards">
+    <h1>Select a deck to begin study session</h1>
+    <div class="deckFlexContainer">
+      
         <!-- <router-link
                               to="home"
                               v-on:click="updateDeckId(deck.deckId, $event)"
@@ -18,59 +14,21 @@
                               tag="div"
                           > {{deck.name}}
                           </router-link> -->
-        <div>
-        <div
+      
+        <span
           v-on:click="updateDeckId(deck.deckId, $event); startSession(deck.deckId)"
           :disabled="true"
-          class="board"
+          class="deckRep"
           v-for="deck in myDecks"
           v-bind:key="deck.deckId"
           v-bind:id="deck.deckId"
-          v-bind:style="{ 'background-color': randomBackgroundColor() }"
         >
           {{ deck.name }} 
-        </div>
-        </div>
-        <button
-          class="btn addBoard"
-          v-if="!showAddDeck"
-          v-on:click="showAddDeck = !showAddDeck"
-        >
-          Add Deck
-        </button>
-        <form v-if="showAddDeck">
-          <table>
-            <tr>
-              <td>
-                Deck Name:
-                <input
-                  type="text"
-                  class="form-control"
-                  v-model="myNewDeck.name"
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                Deck Description:
-                <input
-                  type="text"
-                  class="form-control"
-                  v-model="myNewDeck.description"
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <button class="btn" v-on:click="saveNewDeck()">Save</button>
-                <button class="btn" v-on:click="showAddDeck = !showAddDeck">
-                  Cancel
-                </button>
-              </td>
-            </tr>
-          </table>
-        </form>
-      </div>
+        </span>
+        
+       
+        
+      
     </div>
   </div>
 </template>
@@ -162,86 +120,26 @@ export default {
 };
 </script>
 <style scoped>
-.review {
+.deckFlexContainer {
   display: flex;
-  align-items: center;
-  justify-content: space-evenly;
+  flex-wrap: wrap;
+  border: 3px solid antiquewhite;
+  border-radius: 20px;
+  width: 75vw;
+  margin: 0 auto;
 }
-.goToCards {
-  font-family: "Love Ya Like A Sister", sans-serif;
-  color:#FFFFFF;
-  font-size: 20px;
+.deckRep {
+  margin: 7px;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 3px;
+  background-color: darkturquoise;
+  color:black;
+  font-family: "Monoton", sans-serif;
   text-decoration: none;
-  padding-bottom: 40px;
-}
-.goToCards:link {
-  color:#FFFFFF;
-}
-.goToCards:hover {
-  color: gold;
-}
-/* .goToDecks {
-  font-family: "Love Ya Like A Sister", sans-serif;
-  color:#FFFFFF;
   font-size: 20px;
-  text-decoration: none;
-  padding-bottom: 40px;
-} */
-#sideNav {
-  height: 90%;
-  width: 20%;
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  padding-top: 40px;
-  padding-bottom: 20px;
-  overflow-x: hidden;
-  border-right: solid lightgrey 1px;
-  margin-top: 30px;
-}
-.boards {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-}
-.board {
-  color: black;
-  border-radius: 10px;
-  padding: 40px;
-  flex: 1;
-  margin: 10px;
-  text-align: center;
-  cursor: pointer;
-  width: 60%;
-  font-weight: bold;
-}
-.addBoard {
-  color: #F7FAFC;
-  border-radius: 10px;
-  background-color: #28A745;
-  font-size: 16px;
-  width: 60%;
-  margin: 10px;
-  padding: 20px;
+  font-family: "Love Ya Like A Sister", sans-serif;
   cursor: pointer;
 }
-.form-control {
-  margin-bottom: 10px;
-}
-/* .btn {
-  margin-bottom: 35px;
-} */
-.loading {
-  flex: 3;
-}
-/* .addBoard:hover {
-  font-weight: bold;
-} */
-/* .board:hover:not(.board:focus),
-.board:focus {
-  font-weight: bold;
-  border: solid blue 5px;
-} */
+
 </style>

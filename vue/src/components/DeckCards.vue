@@ -1,86 +1,78 @@
 <template>
   <div>
-        <div class="status-message" v-show="errorMsg !== ''">{{errorMsg}}</div>
-        <h2><th>My FlashCards</th></h2>
-        <div>
-        
-         <router-link
+    <div class="status-message" v-show="errorMsg !== ''">{{ errorMsg }}</div>
+    <h2><th>My FlashCards</th></h2>
+    <div>
+      <router-link
         tag="button"
         class="btn addCard"
-        :to="{ name: 'addFlashcardToDeck'}" 
-        >Add New Card</router-link>
+        :to="{ name: 'addFlashcardToDeck' }"
+        >Add New Card</router-link
+      >
 
-         <router-link
+      <router-link
         tag="button"
         class="btn modifyDeck"
-        :to="{ name: 'modifyDeck'}" 
-        >Edit Deck</router-link>
+        :to="{ name: 'modifyDeck' }"
+        >Edit Deck</router-link
+      >
 
-        <!-- <router-link
+      <!-- <router-link
         tag="button"
         class="btn addCard"
         :to="{ name: 'addFlashcard'}"
         >Add Existing Card</router-link> -->
+    </div>
 
+    <div class="body">
+      <div v-for="card in this.getDeckCards" v-bind:key="card.flashCardId">
+        <!-- this should display  "flashcard-question"-->
+        <!-- <div class="card" v-bind:id="card.flashCardId" + 'Flashcard' v-on:click="selectCardsForDelete('Flashcard'+ card.flashCardId)">{{ card.question }}</div> -->
+        <div class="card">{{ card.question }}</div>
       </div>
-       
-       <div class="body">
-         
-       <div   v-for="card in this.getDeckCards" v-bind:key="card.flashCardId"  >
-            <!-- this should display  "flashcard-question"-->
-            <!-- <div class="card" v-bind:id="card.flashCardId" + 'Flashcard' v-on:click="selectCardsForDelete('Flashcard'+ card.flashCardId)">{{ card.question }}</div> -->
-            <div class="card">{{ card.question }}</div>
-        </div>
-       </div>
-
-    
-
-
- </div>
+    </div>
+  </div>
 </template>
 
 <script>
-import DeckService from '@/services/DeckService'
+import DeckService from "@/services/DeckService";
 export default {
-    name: "my-cards-list",
-    components: {},
-    data() {
-        return {
-            flashCards: [],
-            deckId: 0,
-            errorMsg: "",
-            mySelection: []
-            // showAddDeck: false,
-            // newDeck: {
-            //     name: '',
-            //     description: ''
-            // },
-      
-        }
-    },
+  name: "my-cards-list",
+  components: {},
+  data() {
+    return {
+      flashCards: [],
+      deckId: -1,
+      errorMsg: "",
+      mySelection: [],
+      // showAddDeck: false,
+      // newDeck: {
+      //     name: '',
+      //     description: ''
+      // },
+    };
+  },
 
-    computed: {
-        getDeckCards(){
-            let deckId = this.$store.state.deckId;
-            if(deckId != this.deckId){
-                if(deckId != undefined){
-                    this.retrieveCards(deckId);
-                }
-            }
-            return this.flashCards;
+  computed: {
+    getDeckCards() {
+      let deckId = this.$store.state.deckId;
+      if (deckId != this.deckId) {
+        if (deckId != undefined) {
+          this.retrieveCards(deckId);
         }
+      }
+      return this.flashCards;
     },
-    created(){
-        //this.deckId = this.$store.state.deckId
-        //this.deckId = this.$route.params.id;
-        //this.retrieveCards();
-    },
-    methods:{
-
-    selectCardsForDelete(cardId){
-        if (!this.mySelection.includes(cardId)) {
+  },
+  created() {
+    //this.deckId = this.$store.state.deckId
+    //this.deckId = this.$route.params.id;
+    //this.retrieveCards();
+  },
+  methods: {
+    selectCardsForDelete(cardId) {
+      if (!this.mySelection.includes(cardId)) {
         this.mySelection.push(cardId);
-        console.log(this.$refs[cardId]);
         //this.$refs[cardId].style.backgroundColor = "green";
         //document.getElementById(event.currentTarget.id).style.backgroundColor = "green";
       } else {
@@ -88,95 +80,90 @@ export default {
         if (index > -1) {
           this.mySelection.splice(index, 1);
         }
-         //document.getElementById(event.currentTarget.id).style.backgroundColor = "white";
-         //this.$refs[cardId].style.backgroundColor = "white";
-         console.log(this.$refs[cardId]);
+        //document.getElementById(event.currentTarget.id).style.backgroundColor = "white";
+        //this.$refs[cardId].style.backgroundColor = "white";
+        console.log(this.$refs[cardId]);
       }
-
     },
-            
+
     retrieveCards(deckId) {
-       DeckService
-        .getDeckCards(deckId)
-        .then(response => {
+      DeckService.getDeckCards(deckId)
+        .then((response) => {
           if (response.status === 200) {
-              this.deckId = deckId;
-                this.flashCards = response.data;
-            }  
+            this.deckId = deckId;
+            this.flashCards = response.data;
+          }
         })
-        .catch(error => {
+        .catch((error) => {
           if (error.response && error.response.status === 404) {
             alert(
               "Board cards not available. This Deck may have been deleted or you have entered an invalid Deck ID."
             );
-            
           }
         });
-    }
-
-    } ,
-    
-   
-}
+    },
+  },
+};
 </script>
 
 
 
 <style scoped>
-    /* label {
+/* label {
          display: block; 
     } */
-       
 
-    .flashcard-search{
-        display:inline-block;
-        padding:0.7em 1.7em;
-        margin:0 0.3em 0.3em 0;
-        border-radius:0.2em;
-        box-sizing: border-box;
-        text-decoration:none;
-        font-family:'Roboto',sans-serif;
-        font-weight:400;
-        color:#FFFFFF;
-        background-color:#3369ff;
-        box-shadow:inset 0 -0.6em 1em -0.35em rgba(0,0,0,0.17),inset 0 0.6em 2em -0.3em rgba(255,255,255,0.15),inset 0 0 0em 0.05em rgba(255,255,255,0.12);
-        text-align:center;
-        position:relative;
-    }
+.flashcard-search {
+  display: inline-block;
+  padding: 0.7em 1.7em;
+  margin: 0 0.3em 0.3em 0;
+  border-radius: 0.2em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  color: #ffffff;
+  background-color: #3369ff;
+  box-shadow: inset 0 -0.6em 1em -0.35em rgba(0, 0, 0, 0.17),
+    inset 0 0.6em 2em -0.3em rgba(255, 255, 255, 0.15),
+    inset 0 0 0em 0.05em rgba(255, 255, 255, 0.12);
+  text-align: center;
+  position: relative;
+}
 
-    
-    .search-keyword {
-        height: 30px;
-        width: 300px;
-        background-color: white;
-        display: inline-block;
-        border-radius: 5px;
-    }
+.search-keyword {
+  height: 30px;
+  width: 300px;
+  background-color: white;
+  display: inline-block;
+  border-radius: 5px;
+}
 
-    .body {
-    display: flex;
-    flex-wrap: wrap;
-    /* background: #e2e1e0; */
-    text-align: center;
-    color: black;
-    }
+.body {
+  display: flex;
+  flex-wrap: wrap;
+  /* background: #e2e1e0; */
+  text-align: center;
+  color: black;
+}
 
-    .card {
-        box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-    background: #fff;
-    border-radius: 2px;
-    display: inline-block;
-    margin: 1rem;
-    position: relative;
-    color: black;
-    font-weight: bold;
-    font-family: 'Courier New', Courier, monospace;
-    text-justify: center;
-    padding: 60px;
-    font-size: 20px;
-    }
+.card {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  background-image: url("../images/noteCard.jpg");
+  background-size: cover;
+  border-radius: 4px;
+  display: inline-block;
+  margin: 1rem;
+  position: relative;
+  color: black;
+  font-weight: bold;
+  font-family: "Courier New", Courier, monospace;
+  text-justify: center;
+  padding: 60px;
+  font-size: 20px;
+}
 
-    .card-list {
+.card-list {
   display: grid;
   grid-gap: 1em;
 }
@@ -187,7 +174,7 @@ export default {
 }
 
 body {
-  background: #20262E;
+  background: #20262e;
   padding: 20px;
   font-family: Helvetica;
 }
@@ -201,6 +188,5 @@ body {
 
 ul {
   list-style-type: none;
-} 
-
+}
 </style>
