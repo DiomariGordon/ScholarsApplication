@@ -1,77 +1,79 @@
 <template>
-  <div id="sideNav">
-    <h2><th>My Decks</th></h2>
-    <div class="boards">
-      <!-- <router-link
-                            to="home"
-                            v-on:click="updateDeckId(deck.deckId, $event)"
-                            :disabled=true
-                            class="board"
-                            v-for="deck in myDecks"
-                            v-bind:key="deck.deck_id"
-                            v-bind:style="{ 'background-color': randomBackgroundColor() }"
-                            tag="div"
-                        > {{deck.name}}
-                        </router-link> -->
-
-      <div>
-      <div
-        v-on:click="updateDeckId(deck.deckId, $event); startSession(deck.deckId)"
-        :disabled="true"
-        class="board"
-        v-for="deck in myDecks"
-        v-bind:key="deck.deckId"
-        v-bind:id="deck.deckId"
-        v-bind:style="{ 'background-color': randomBackgroundColor() }"
-      >
-        {{ deck.name }} 
+  <div>
+    <div class="review">
+      <div><a><router-link :to="{name: 'myflashcards'}" class="goToCards">Click to here review cards</router-link></a></div>
+      <!-- <div><a><router-link :to="{name: 'deckBoard'}" class="goToDecks">Click to review decks</router-link></a></div> -->
+    </div>
+    <div id="sideNav">
+      <h2><th>My Decks</th></h2>
+      <div class="boards">
+        <!-- <router-link
+                              to="home"
+                              v-on:click="updateDeckId(deck.deckId, $event)"
+                              :disabled=true
+                              class="board"
+                              v-for="deck in myDecks"
+                              v-bind:key="deck.deck_id"
+                              v-bind:style="{ 'background-color': randomBackgroundColor() }"
+                              tag="div"
+                          > {{deck.name}}
+                          </router-link> -->
+        <div>
+        <div
+          v-on:click="updateDeckId(deck.deckId, $event); startSession(deck.deckId)"
+          :disabled="true"
+          class="board"
+          v-for="deck in myDecks"
+          v-bind:key="deck.deckId"
+          v-bind:id="deck.deckId"
+          v-bind:style="{ 'background-color': randomBackgroundColor() }"
+        >
+          {{ deck.name }} 
+        </div>
+        </div>
+        <button
+          class="btn addBoard"
+          v-if="!showAddDeck"
+          v-on:click="showAddDeck = !showAddDeck"
+        >
+          Add Deck
+        </button>
+        <form v-if="showAddDeck">
+          <table>
+            <tr>
+              <td>
+                Deck Name:
+                <input
+                  type="text"
+                  class="form-control"
+                  v-model="myNewDeck.name"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Deck Description:
+                <input
+                  type="text"
+                  class="form-control"
+                  v-model="myNewDeck.description"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <button class="btn" v-on:click="saveNewDeck()">Save</button>
+                <button class="btn" v-on:click="showAddDeck = !showAddDeck">
+                  Cancel
+                </button>
+              </td>
+            </tr>
+          </table>
+        </form>
       </div>
-      </div>
-
-      <button
-        class="btn addBoard"
-        v-if="!showAddDeck"
-        v-on:click="showAddDeck = !showAddDeck"
-      >
-        Add Deck
-      </button>
-      <form v-if="showAddDeck">
-        <table>
-          <tr>
-            <td>
-              Deck Name:
-              <input
-                type="text"
-                class="form-control"
-                v-model="myNewDeck.name"
-              />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              Deck Description:
-              <input
-                type="text"
-                class="form-control"
-                v-model="myNewDeck.description"
-              />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <button class="btn" v-on:click="saveNewDeck()">Save</button>
-
-              <button class="btn" v-on:click="showAddDeck = !showAddDeck">
-                Cancel
-              </button>
-            </td>
-          </tr>
-        </table>
-      </form>
     </div>
   </div>
 </template>
-
 <script>
 import DeckService from "@/services/DeckService";
 export default {
@@ -159,12 +161,34 @@ export default {
   },
 };
 </script>
-
-
-
 <style scoped>
-div#sideNav {
-  height: 90%;
+.review {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.goToCards {
+  font-family: "Love Ya Like A Sister", sans-serif;
+  color:#FFFFFF;
+  font-size: 20px;
+  text-decoration: none;
+  padding-bottom: 40px;
+}
+.goToCards:link {
+  color:#FFFFFF;
+}
+.goToCards:hover {
+  color: gold;
+}
+/* .goToDecks {
+  font-family: "Love Ya Like A Sister", sans-serif;
+  color:#FFFFFF;
+  font-size: 20px;
+  text-decoration: none;
+  padding-bottom: 40px;
+} */
+#sideNav {
+  height: 100%;
   width: 20%;
   position: fixed;
   z-index: 1;
@@ -174,6 +198,7 @@ div#sideNav {
   padding-bottom: 20px;
   overflow-x: hidden;
   border-right: solid lightgrey 1px;
+  margin-top: 30px;
 }
 .boards {
   display: flex;
@@ -193,9 +218,9 @@ div#sideNav {
   font-weight: bold;
 }
 .addBoard {
-  color: #f7fafc;
+  color: #F7FAFC;
   border-radius: 10px;
-  background-color: #28a745;
+  background-color: #28A745;
   font-size: 16px;
   width: 60%;
   margin: 10px;
@@ -214,12 +239,9 @@ div#sideNav {
 /* .addBoard:hover {
   font-weight: bold;
 } */
-
 /* .board:hover:not(.board:focus),
-
 .board:focus {
   font-weight: bold;
   border: solid blue 5px;
 } */
-
 </style>
