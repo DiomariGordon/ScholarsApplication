@@ -1,5 +1,6 @@
 <template>
   <div id="sideNav">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister">
     <h2><th>My Decks</th></h2>
     <div class="boards">
       <!-- <router-link
@@ -161,7 +162,7 @@ export default {
 
 <style scoped>
 div#sideNav {
-  height: 100%;
+  height: 90%;
   width: 20%;
   position: fixed;
   z-index: 1;
@@ -201,6 +202,13 @@ div#sideNav {
 }
 .form-control {
   margin-bottom: 10px;
+  /* font-family: "Love Ya Like A Sister", sans-serif; */
+   /* display:inline-block;
+        height: 30px;
+        width: 300px;
+        background-color: white;
+        display: inline-block;
+        border-radius: 5px; */
 }
 /* .btn {
   margin-bottom: 35px;
@@ -218,5 +226,15 @@ div#sideNav {
   font-weight: bold;
   border: solid blue 5px;
 } */
+
+/* .field{
+        display:inline-block;
+        height: 30px;
+        width: 300px;
+        background-color: white;
+        display: inline-block;
+        border-radius: 5px;
+    
+    } */
 
 </style>

@@ -164,7 +164,7 @@ export default {
 
 <style scoped>
 div#sideNav {
-  height: 100%;
+  height: 90%;
   width: 20%;
   position: fixed;
   z-index: 1;

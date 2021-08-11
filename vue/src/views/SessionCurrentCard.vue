@@ -8,8 +8,8 @@
         "
       >
         <h2 style="display: block">Mark your progress</h2>
-        <button v-on:click.prevent="markRight">Mark Correct</button>
-        <button v-on:click.prevent="markWrong">Mark Incorrect</button>
+        <button class='btn' v-on:click.prevent="markRight">Mark Correct</button>
+        <button class='btn' v-on:click.prevent="markWrong">Mark Incorrect</button>
       </div>
       <div
         v-show="
@@ -52,10 +52,11 @@
         <h4 class="cardHead">Back</h4>
         <h1 class="cardText">{{ currentCard.answer }}</h1>
       </div>
-      <button v-show="previousIndex >= 0" v-on:click.prevent="previousCard">
+      <button class='btn' v-show="previousIndex >= 0" v-on:click.prevent="previousCard">
         &lt;&lt;Previous Card
       </button>
-      <button
+      <button 
+        class='btn'
         v-show="nextIndex < this.flashcards.length"
         v-on:click.prevent="nextCard"
       >
@@ -63,6 +64,7 @@
       </button>
       <div>
         <button
+          class='btn'
           v-on:click.prevent="finish"
           v-show="studySessionInfo.attemptedQuiz != 0"
         >
@@ -181,4 +183,21 @@ export default {
   display: block;
   font-size: 33px;
 }
+
+.btn{
+        display:inline-block;
+        padding:0.7em 1.7em;
+        margin:0 0.3em 0.3em 0;
+        border-radius:0.25rem;
+        box-sizing: border-box;
+        text-decoration:none;
+        /* font-family:'Roboto',sans-serif; */
+        font-family: "Love Ya Like A Sister", sans-serif;
+        font-weight:400;
+        color:#FFFFFF;
+        background-color:#3369ff;
+        box-shadow:inset 0 -0.6em 1em -0.35em rgba(0,0,0,0.17),inset 0 0.6em 2em -0.3em rgba(255,255,255,0.15),inset 0 0 0em 0.05em rgba(255,255,255,0.12);
+        text-align:center;
+        position:relative;
+    }
 </style>
