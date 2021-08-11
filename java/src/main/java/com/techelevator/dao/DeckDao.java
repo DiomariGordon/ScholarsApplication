@@ -16,6 +16,8 @@ public interface DeckDao {
 
     boolean updateDeckName(Deck deck);
 
+    boolean updateDeck(Deck deck);
+
     boolean updateDeckContents(FlashCard flashCard);
 
     List<Deck> getDeckByUserId(Integer userId);
@@ -28,4 +30,5 @@ public interface DeckDao {
 
     List<FlashCard> getFlashcardsIdByDeckId(Integer deckId);
 
+//    boolean addFlashcardToDeck(Integer deckId, FlashCard flashCard);
 }

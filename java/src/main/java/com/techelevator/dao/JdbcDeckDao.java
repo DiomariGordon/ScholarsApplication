@@ -1,5 +1,6 @@
 package com.techelevator.dao;
 
+import com.techelevator.Exception.BadRequestException;
 import com.techelevator.model.Deck;
 import com.techelevator.model.DeckUser;
 import com.techelevator.model.FlashCard;
@@ -45,7 +46,7 @@ public class JdbcDeckDao implements DeckDao{
         Deck deck = null;
 
 
-        String sql = "SELECT deck_name from deck WHERE deck_id = ? ";
+        String sql = "SELECT deck_id, deck_name, description from deck WHERE deck_id = ? ";
 
         SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, deckId);
         while (rowSet.next()){
@@ -60,6 +61,17 @@ public class JdbcDeckDao implements DeckDao{
         String sql = "UPDATE deck SET deck_name = ? " +
                 " WHERE deck_id = ?";
         jdbcTemplate.update(sql, deck.getName(),
+                deck.getDeckId());
+        return true;
+
+    }
+
+    @Override
+    public boolean updateDeck(Deck deck) {
+
+        String sql = "UPDATE deck SET deck_name = ?, description = ? " +
+                " WHERE deck_id = ?";
+        jdbcTemplate.update(sql, deck.getName(), deck.getDescription(),
                 deck.getDeckId());
         return true;
 
@@ -94,19 +106,42 @@ public class JdbcDeckDao implements DeckDao{
     }
 
 
+
+
+
+
+
     @Override
     public boolean addCardToDeck(Deck deck) {
 
         String sql = "INSERT INTO flashcard_deck( deck_id, flashcard_id)" +
                 "VALUES( ?, ?)RETURNING deck_id ;";
-        if(deck.getCards().length != 0) {
-        for(int i = 0; i < deck.getCards().length; i++) {
-        Integer deckId = jdbcTemplate.queryForObject(sql, Integer.class, deck.getDeckId(), deck.getCards()[i]);
-        }
+        if (deck.getCards().length != 0) {
+            for (int i = 0; i < deck.getCards().length; i++) {
+                Integer deckId = jdbcTemplate.queryForObject(sql, Integer.class, deck.getDeckId(), deck.getCards()[i]);
+            }
         }
         return true;
-
     }
+
+//if(flashCard.getCards().length != 0) {
+//        for(int i = 0; i < deck.getCards().length; i++) {
+//            Integer deckId = jdbcTemplate.queryForObject(sql, Integer.class, flashCard.getDeckId(), flashCard.getCards()[i]);
+//        }
+//    }
+
+
+//    @Override
+//    public boolean addFlashcardToDeck(Integer deckId, FlashCard flashCard) {
+//
+//        String sql = "INSERT INTO flashcard_deck( deck_id, flashcard_id)" +
+//                "VALUES( ?, ?)RETURNING deck_id ;";
+//
+//        return true;
+//
+//    }
+
+
 
     @Override
     public List<FlashCard> getFlashcardsIdByDeckId(Integer deckId) {
@@ -123,6 +158,11 @@ public class JdbcDeckDao implements DeckDao{
 
         return flashCards;
     }
+
+//    @Override
+//    public boolean addFlashcardToDeck(Integer deckId, FlashCard flashCard) {
+//        return false;
+//    }
 
     private FlashCard mapRowToFlashCard(SqlRowSet rowSet) {
         FlashCard flashCard = new FlashCard();

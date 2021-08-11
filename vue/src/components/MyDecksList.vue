@@ -80,11 +80,12 @@ export default {
   created() {
     DeckService.getMyDecks(this.$store.state.user.id).then((response) => {
       const decks = response.data;
-      //this.$store.commit("SET_DECKS", decks);
+      this.$store.commit("SET_DECKS", decks);
       this.myDecks = decks;
       if (response.status === 200 && response.data.length > 0) {
         this.$store.commit("SET_DECK_ID", response.data[0].deckId);
         // this.$router.push(`/deckBoard/${response.data[0].deckId}`);
+        //document.getElementById(response.data[0].deckId).style.backgroundColor = "solid blue 5px";
       }
     });
   },

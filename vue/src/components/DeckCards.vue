@@ -10,6 +10,12 @@
         :to="{ name: 'addFlashcardToDeck'}" 
         >Add New Card</router-link>
 
+         <router-link
+        tag="button"
+        class="btn modifyDeck"
+        :to="{ name: 'modifyDeck'}" 
+        >Edit Deck</router-link>
+
         <!-- <router-link
         tag="button"
         class="btn addCard"

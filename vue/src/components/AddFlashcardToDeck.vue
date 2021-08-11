@@ -46,7 +46,7 @@
 </template>
 
 <script>
-import FlashcardService from "@/services/FlashcardService";
+import DeckService from "@/services/DeckService";
 export default {
   name: "add-flashcard-to-deck",
   components: {},
@@ -66,7 +66,7 @@ export default {
   methods: {
     addNewFlashcardToDeck() {
       this.addNewKeyword();
-      FlashcardService.addCard(this.deckId,this.flashcard).then((response) => {
+      DeckService.addFlashCardToDeck(this.flashcard.deckId,this.flashcard).then((response) => {
         if (response.status === 201 || response.status === 200) {
           this.clearForm();
           location.reload();
