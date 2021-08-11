@@ -11,8 +11,8 @@
         "
       >
         <h2 style="display: block">Mark your progress</h2>
-        <button class='btn' v-on:click.prevent="markRight">Mark Correct</button>
-        <button class='btn' v-on:click.prevent="markWrong">Mark Incorrect</button>
+        <button class='btn-correct' v-on:click.prevent="markRight">Mark Correct</button>
+        <button class='btn-incorrect' v-on:click.prevent="markWrong">Mark Incorrect</button>
       </div>
       <div
         v-show="
@@ -67,13 +67,20 @@
       </button>
       <div>
         <button
-          class='btn'
+          class='btn-style'
           v-on:click.prevent="finish"
           v-show="studySessionInfo.attemptedQuiz != 0"
         >
           Finish Study Session
         </button>
       </div>
+      <div>
+        <button
+        class='btn-style'> 
+        <router-link :to="{name: 'session'}" class='btn-cancel'> Cancel Session</router-link>
+        </button>
+        </div>
+      
     </div>
     <div v-show="sessionFinished">
       <h1 v-show="percentageCorrect == 1">Incredible!</h1>
@@ -89,7 +96,14 @@
         {{ studySessionInfo.attemptedQuiz }} attempted.
       </h2>
       <h1 class="letterGrd">{{letterGrade}}</h1>
+       <div>
+        <button
+        class='btn'> 
+        <router-link :to="{name: 'session'}" class='btn-cancel'> Start New Session </router-link>
+        </button>
+        </div>
     </div>
+   
   </div>
 </template>
 
@@ -249,5 +263,68 @@ export default {
     }
     .justALine {
       border-top: 2px solid gold;
+    }
+
+    .btn-correct{
+        display:inline-block;
+        padding:0.7em 1.7em;
+        margin:0 0.3em 0.3em 0;
+        border-radius:0.25rem;
+        box-sizing: border-box;
+        text-decoration:none;
+        /* font-family:'Roboto',sans-serif; */
+        font-family: "Love Ya Like A Sister", sans-serif;
+        font-weight:400;
+        color:#FFFFFF;
+        background-color: green;
+        box-shadow:inset 0 -0.6em 1em -0.35em rgba(0,0,0,0.17),inset 0 0.6em 2em -0.3em rgba(255,255,255,0.15),inset 0 0 0em 0.05em rgba(255,255,255,0.12);
+        text-align:center;
+        position:relative;
+    }
+
+    .btn-incorrect{
+        display:inline-block;
+        padding:0.7em 1.7em;
+        margin:0 0.3em 0.3em 0;
+        border-radius:0.25rem;
+        box-sizing: border-box;
+        text-decoration:none;
+        /* font-family:'Roboto',sans-serif; */
+        font-family: "Love Ya Like A Sister", sans-serif;
+        font-weight:400;
+        color:#FFFFFF;
+        background-color:red;
+        box-shadow:inset 0 -0.6em 1em -0.35em rgba(0,0,0,0.17),inset 0 0.6em 2em -0.3em rgba(255,255,255,0.15),inset 0 0 0em 0.05em rgba(255,255,255,0.12);
+        text-align:center;
+        position:relative;
+    }
+
+    
+    .btn-cancel {
+        color: white;
+        /* margin-top: 20px; */
+        /* display: inline-block; */
+    }
+    .btn-cancel:link {
+        color: white;
+        text-decoration: none;
+    }
+
+    .btn-style{
+        display:inline-block;
+        padding:0.7em 1.7em;
+        margin:0 0.3em 0.3em 0;
+        margin-top: 17px;
+        border-radius:0.25rem;
+        box-sizing: border-box;
+        text-decoration:none;
+        /* font-family:'Roboto',sans-serif; */
+        font-family: "Love Ya Like A Sister", sans-serif;
+        font-weight:400;
+        color:#FFFFFF;
+        background-color:#3369ff;
+        box-shadow:inset 0 -0.6em 1em -0.35em rgba(0,0,0,0.17),inset 0 0.6em 2em -0.3em rgba(255,255,255,0.15),inset 0 0 0em 0.05em rgba(255,255,255,0.12);
+        text-align:center;
+        position:relative;
     }
     </style>
