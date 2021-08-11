@@ -112,10 +112,13 @@ public class JdbcDeckDao implements DeckDao{
 
 
     @Override
-    public boolean addCardToDeck(Deck deck) {
+    public boolean addCardToDeck(Deck deck) throws BadRequestException {
 
         String sql = "INSERT INTO flashcard_deck( deck_id, flashcard_id)" +
                 "VALUES( ?, ?)RETURNING deck_id ;";
+        if(deck == null){
+            throw new BadRequestException("Null value.");
+        }
         if (deck.getCards().length != 0) {
             for (int i = 0; i < deck.getCards().length; i++) {
                 Integer deckId = jdbcTemplate.queryForObject(sql, Integer.class, deck.getDeckId(), deck.getCards()[i]);

@@ -25,7 +25,7 @@ public class DeckService {
         this.flashCardService = flashCardService;
     }
 
-    public boolean createDeck( Deck deck) {
+    public boolean createDeck( Deck deck) throws BadRequestException {
         deckDao.createDeck(deck);
         deckDao.addDeckUser(deck);
         deckDao.addCardToDeck(deck);

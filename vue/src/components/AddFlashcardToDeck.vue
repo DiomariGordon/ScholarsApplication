@@ -68,6 +68,7 @@ export default {
       this.addNewKeyword();
       DeckService.addFlashCardToDeck(this.flashcard.deckId,this.flashcard).then((response) => {
         if (response.status === 201 || response.status === 200) {
+          this.$router.push("/deckBoard");
           this.clearForm();
           location.reload();
         }
