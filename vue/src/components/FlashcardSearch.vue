@@ -3,6 +3,8 @@
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister">
         <!-- create a search field with the id search-term -->
         <!--<label for="search-term">Search </label> -->
+        <div class="title">Type in a keyword to find your card</div>
+        <div><a><router-link :to="{name: 'myflashcards'}" class="toFlashcards">Click here to edit/create flashcards</router-link></a></div>
         <input class="search-keyword" placeholder="Enter a Keyword" type="text" id="search-term" v-model= searchKeyword />
         <button  class="flashcard-search"  v-on:click="getCardsByKeyWord">Search</button>
         <div class="status-message" v-show="errorMsg !== ''">{{errorMsg}}</div>
@@ -76,6 +78,33 @@ export default {
     #serch-term {
         width: 70%;
     }
+    .title {
+        font-family: "Love Ya Like A Sister", sans-serif;
+        color:#FFFFFF;
+        font-size: 40px;
+        padding-bottom: 40px;
+    }
+    .toFlashcards {
+        display: block;
+        font-family: "Love Ya Like A Sister", sans-serif;
+        color:#FFFFFF;
+        font-size: 20px;
+        text-decoration: none;
+        padding-bottom: 40px;
+    }
+    .toFlashcards {
+        font-family: "Love Ya Like A Sister", sans-serif;
+        color:#FFFFFF;
+        font-size: 20px;
+        text-decoration: none;
+        padding-bottom: 40px;
+    }
+    .toFlashcards:link {
+        color:#FFFFFF;
+    }
+    .toFlashcards:hover {
+        color: gold;
+    }
 
     .flashcard-search{
         display:inline-block;
@@ -104,31 +133,31 @@ export default {
     }
 
     .body {
-    background: #e2e1e0;
-    text-align: center;
-    color: black;
+        background: #e2e1e0;
+        text-align: center;
+        color: black;
     }
 
     .card {
         box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-    /* background: #fff;
-    border-radius: 2px; */
-    display: inline-block;
-    /* margin: 1rem; */
-    position: relative;
-    color: black;
-    font-weight: bold;
-    font-family: 'Courier New', Courier, monospace;
-    text-justify: center;
-    /* padding: 100px; */
-    font-size: 20px;
+        /* background: #fff;
+        border-radius: 2px; */
+        display: inline-block;
+        /* margin: 1rem; */
+        position: relative;
+        color: black;
+        font-weight: bold;
+        font-family: 'Courier New', Courier, monospace;
+        text-justify: center;
+        /* padding: 100px; */
+        font-size: 20px;
 
-    margin: 7px;
-  padding: 20px;
-  border: 1px solid black;
-  border-radius: 3px;
-  background-image: url("../images/noteCard.jpg");
-  background-size: contain;
+        margin: 7px;
+        padding: 20px;
+        border: 1px solid black;
+        border-radius: 3px;
+        background-image: url("../images/noteCard.jpg");
+        background-size: contain;
     }   
       
 </style>

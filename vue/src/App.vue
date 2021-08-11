@@ -17,32 +17,31 @@
     font-size: 25px;
     display: inline-block;
   }
-
+  .home:link {
+    color: turquoise;
+    text-decoration: none;
+  }
   .home:visited {
     color: turquoise;
   }
-
   .logout {
     font-family: "Love Ya Like A Sister", sans-serif;
     font-size: 25px;
     display: inline-block;
   }
-
   .logout:visited {
     color: yellowgreen;
   }
-
   .home:hover {
     color: yellowgreen;
   }
   .logout:link {
     color: yellowgreen;
+    text-decoration: none;
   }
-
   .logout:hover {
     color: turquoise;
   }
-
   .main {
     list-style-type: none;
     align-items: center;

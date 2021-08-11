@@ -182,6 +182,7 @@ div#sideNav {
   padding-bottom: 20px;
   overflow-x: hidden;
   border-right: solid lightgrey 1px;
+  margin-top: 30px;
 }
 .boards {
   display: flex;

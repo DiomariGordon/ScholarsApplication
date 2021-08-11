@@ -80,7 +80,7 @@ export default {
     selectCardsForDelete(cardId){
         if (!this.mySelection.includes(cardId)) {
         this.mySelection.push(cardId);
-        console.log(this.$refs.[cardId]);
+        console.log(this.$refs[cardId]);
         //this.$refs[cardId].style.backgroundColor = "green";
         //document.getElementById(event.currentTarget.id).style.backgroundColor = "green";
       } else {
@@ -90,7 +90,7 @@ export default {
         }
          //document.getElementById(event.currentTarget.id).style.backgroundColor = "white";
          //this.$refs[cardId].style.backgroundColor = "white";
-         console.log(this.$refs.[cardId]);
+         console.log(this.$refs[cardId]);
       }
 
     },
