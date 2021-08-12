@@ -278,7 +278,7 @@ export default {
 }
 .markMsg {
   display: block;
-  font-size: 39px;
+  font-size: 60px;
 }
 
 .btn {
