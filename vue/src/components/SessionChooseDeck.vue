@@ -1,9 +1,8 @@
 <template>
   <div>
-    <h1>Select a deck to begin study session</h1>
+    <h2>Select a deck to begin study session</h2>
     <div class="deckFlexContainer">
-      
-        <!-- <router-link
+      <!-- <router-link
                               to="home"
                               v-on:click="updateDeckId(deck.deckId, $event)"
                               :disabled=true
@@ -14,21 +13,20 @@
                               tag="div"
                           > {{deck.name}}
                           </router-link> -->
-      
-        <span
-          v-on:click="updateDeckId(deck.deckId, $event); startSession(deck.deckId)"
-          :disabled="true"
-          class="deckRep"
-          v-for="deck in myDecks"
-          v-bind:key="deck.deckId"
-          v-bind:id="deck.deckId"
-        >
-          {{ deck.name }} 
-        </span>
-        
-       
-        
-      
+
+      <div
+        v-on:click="
+          updateDeckId(deck.deckId, $event);
+          startSession(deck.deckId);
+        "
+        :disabled="true"
+        class="deckRep"
+        v-for="deck in myDecks"
+        v-bind:key="deck.deckId"
+        v-bind:id="deck.deckId"
+      >
+        {{ deck.name }}
+      </div>
     </div>
   </div>
 </template>
@@ -64,14 +62,14 @@ export default {
       myNewDeck: {
         name: "",
         description: "",
-        userId: 0
+        userId: 0,
       },
     };
   },
   methods: {
-      startSession(deckId) {
-          this.$router.push(`/session/${deckId}/${0}`);
-      },
+    startSession(deckId) {
+      this.$router.push(`/session/${deckId}/${0}`);
+    },
     randomBackgroundColor() {
       return "#" + this.generateHexCode();
     },
@@ -82,7 +80,7 @@ export default {
       return "ffffff";
     },
     updateDeckId(deckId, event) {
-     // document.getElementById(event.currentTarget.id).style.backgroundColor =
+      // document.getElementById(event.currentTarget.id).style.backgroundColor =
       //  "green";
       console.log(event.currentTarget.id);
       this.$store.commit("SET_DECK_ID", deckId);
@@ -119,11 +117,13 @@ export default {
   },
 };
 </script>
-<style scoped>
+
+<style>
 .deckFlexContainer {
   display: flex;
-  flex-wrap: wrap;
+  margin-left: 40px;
   align-items: center;
+  justify-content: center;
   border: 3px solid antiquewhite;
   border-radius: 20px;
   width: 75vw;
@@ -134,13 +134,15 @@ export default {
   padding: 10px;
   border: 1px solid black;
   border-radius: 3px;
-  background-color: darkturquoise;
-  color:black;
+  background-color: turquoise;
+  color: black;
   font-family: "Monoton", sans-serif;
   text-decoration: none;
-  font-size: 20px;
+  font-size: 40px;
   font-family: "Love Ya Like A Sister", sans-serif;
   cursor: pointer;
 }
-
+.deckRep:hover {
+  background-color: yellowgreen;
+}
 </style>

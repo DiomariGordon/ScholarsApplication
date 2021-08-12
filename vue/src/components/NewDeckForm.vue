@@ -2,34 +2,45 @@
   <div>
     <!-- <form v-if="showForm"> -->
     <form>
-      <div>
+      <div class="titleDeck">
         <h2>Enter a Deck Name and Description</h2>
-        </div>
-      <input class='field' placeholder="Deck Name" type="text" v-model="deck.name" required />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister">
-      <!-- <form v-if="showForm"> -->
-       
-       
+      </div>
+      <div class="forms">
+        <input
+          class="field"
+          placeholder="Deck Name"
+          type="text"
+          v-model="deck.name"
+          required
+        />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister"
+        />
+        <!-- <form v-if="showForm"> -->
 
-      <input class='field'
-        placeholder="Deck Description"
-        type="text"
-        v-model="deck.description"
-        required
-      />
-
-     
+        <input
+          class="field"
+          placeholder="Deck Description"
+          type="text"
+          v-model="deck.description"
+          required
+        />
+      </div>
 
       <div>
-        <h2>Click Cards to Add to Deck</h2>
-        <div>
-          <input class='field'
+        <h1 class="clickCards">Click Cards to Add to Deck</h1>
+        <div class="searchKeywords">
+          <input
+            class="field"
             type="text"
             placeholder="Search by Keywords"
             v-model="keywordToAdd"
           />
-          <button class='btn' v-on:click.prevent="addSearchKeyword">+Keyword</button>
-          <button class='btn' v-on:click.prevent="clearFilters">
+          <button class="btn" v-on:click.prevent="addSearchKeyword">
+            +Keyword
+          </button>
+          <button class="btn" v-on:click.prevent="clearFilters">
             Reset Search Parameters
           </button>
         </div>
@@ -44,28 +55,36 @@
             {{ card.question }}
           </span>
         </div>
-        <button class='btn' v-on:click.prevent="addAll">Select All</button>
-        <button class='btn' v-on:click.prevent="removeAll">Deselect All</button>
-        <table class="keywordTable" v-show="this.filters.length != 0">
-          <th>Search Parameters</th>
-          <tr v-for="param in this.filters" v-bind:key="param.id">
-            <td>{{ param }}</td>
-          </tr>
-        </table>
-
-        <div>
-        <h2>If All Done, Submit!</h2>
+        <div class="select">
+          <button class="btn" v-on:click.prevent="addAll">Select All</button>
+          <button class="btn" v-on:click.prevent="removeAll">
+            Deselect All
+          </button>
+          <table class="keywordTable" v-show="this.filters.length != 0">
+            <th>Search Parameters</th>
+            <tr v-for="param in this.filters" v-bind:key="param.id">
+              <td>{{ param }}</td>
+            </tr>
+          </table>
         </div>
 
-        <div>
-         <button class='btn' @click.prevent="addNewDeck">Submit</button>
-         </div>
+        <div class="submit">
+          <h1>If All Done, Submit!</h1>
+        </div>
+
+        <div class="submit-btn">
+          <button class="btn" @click.prevent="addNewDeck">Submit</button>
+        </div>
       </div>
       <div v-show="deckCreated">{{ deck.name }} created successfully</div>
     </form>
     <div>
-      <button class="deckButton"><router-link :to="{name: 'deckBoard'}" class="toDecks">View All Decks</router-link></button>
-      </div>
+      <button class="deckButton">
+        <router-link :to="{ name: 'deckBoard' }" class="toDecks"
+          >View All Decks</router-link
+        >
+      </button>
+    </div>
   </div>
 </template>
 
@@ -169,58 +188,82 @@ export default {
 </script>
 
 <style>
+.titleDeck {
+  margin-bottom: -20px;
+}
 .inDeck {
   background-color: limegreen;
   background-image: none;
 }
 .toDecks {
-  color:#FFFFFF;
+  color: #ffffff;
 }
 .toDecks:link {
-  color:#FFFFFF;
+  color: #ffffff;
   text-decoration: none;
 }
-.deckButton {
-  display:inline-block;
-  padding:0.7em 1.7em;
-  margin:0 0.3em 0.3em 0;
+.forms {
+  margin-bottom: 35px;
+}
+.clickCards {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.searchKeywords {
+  margin-bottom: 25px;
+}
+.select {
   margin-top: 17px;
-  border-radius:0.2em;
+}
+.submit {
+  margin-bottom: 5px;
+}
+.submit-btn {
+  margin-bottom: -2px;
+}
+.deckButton {
+  display: inline-block;
+  padding: 0.7em 1.7em;
+  margin: 0 0.3em 0.3em 0;
+  margin-top: 17px;
+  border-radius: 0.2em;
   box-sizing: border-box;
-  text-decoration:none;
+  text-decoration: none;
   font-family: "Love Ya Like A Sister", sans-serif;
-  font-weight:400;
-  color:#FFFFFF;
-  background-color:#3369ff;
-  box-shadow:inset 0 -0.6em 1em -0.35em rgba(0,0,0,0.17),inset 0 0.6em 2em -0.3em rgba(255,255,255,0.15),inset 0 0 0em 0.05em rgba(255,255,255,0.12);
-  text-align:center;
-  position:relative;
+  font-weight: 400;
+  color: #ffffff;
+  background-color: #3369ff;
+  box-shadow: inset 0 -0.6em 1em -0.35em rgba(0, 0, 0, 0.17),
+    inset 0 0.6em 2em -0.3em rgba(255, 255, 255, 0.15),
+    inset 0 0 0em 0.05em rgba(255, 255, 255, 0.12);
+  text-align: center;
+  position: relative;
 }
 .btn {
-  display:inline-block;
-  padding:0.7em 1.7em;
-  margin:0 0.3em 0.3em 0;
-  border-radius:0.25rem;
+  display: inline-block;
+  padding: 0.7em 1.7em;
+  margin: 0 0.3em 0.3em 0;
+  border-radius: 0.25rem;
   box-sizing: border-box;
-  text-decoration:none;
+  text-decoration: none;
   font-family: "Love Ya Like A Sister", sans-serif;
   /* font-family:'Roboto',sans-serif; */
-  font-weight:400;
-  color:#FFFFFF;
-  background-color:#3369ff;
-  box-shadow:inset 0 -0.6em 1em -0.35em rgba(0,0,0,0.17),inset 0 0.6em 2em -0.3em rgba(255,255,255,0.15),inset 0 0 0em 0.05em rgba(255,255,255,0.12);
-  text-align:center;
-  position:relative;
+  font-weight: 400;
+  color: #ffffff;
+  background-color: #3369ff;
+  box-shadow: inset 0 -0.6em 1em -0.35em rgba(0, 0, 0, 0.17),
+    inset 0 0.6em 2em -0.3em rgba(255, 255, 255, 0.15),
+    inset 0 0 0em 0.05em rgba(255, 255, 255, 0.12);
+  text-align: center;
+  position: relative;
 }
 
-.field{
-  display:inline-block;
+.field {
+  display: inline-block;
   height: 30px;
   width: 300px;
   background-color: white;
   display: inline-block;
   border-radius: 5px;
-    
 }
-
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="status-message" v-show="errorMsg !== ''">{{ errorMsg }}</div>
-    <h2><th>My FlashCards</th></h2>
+    <h2 class="flashcardTitle"><th>My FlashCards</th></h2>
     <div>
       <router-link
         tag="button"
@@ -113,6 +113,9 @@ export default {
          display: block; 
     } */
 
+.flashcardTitle {
+  margin-bottom: 8px;
+}
 .flashcard-search {
   display: inline-block;
   padding: 0.7em 1.7em;
@@ -141,26 +144,30 @@ export default {
 
 .body {
   display: flex;
+  align-items: center;
   flex-wrap: wrap;
-  /* background: #e2e1e0; */
-  text-align: center;
-  color: black;
+  border: 3px solid antiquewhite;
+  border-radius: 20px;
+  width: 75vw;
+  margin: 0 auto;
 }
 
 .card {
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  margin: 7px;
+  padding: 10px;
+  border: 1px solid black;
+  width: 250px;
+  height: 125px;
+  align-content: center;
+  border-radius: 3px;
   background-image: url("../images/noteCard.jpg");
   background-size: cover;
-  border-radius: 4px;
-  display: inline-block;
-  margin: 1rem;
-  position: relative;
-  color: black;
-  font-weight: bold;
-  font-family: "Courier New", Courier, monospace;
-  text-justify: center;
-  padding: 60px;
-  font-size: 20px;
+  color: navy;
+  text-decoration: none;
+  font-size: 40px;
+  font-family: "Love Ya Like A Sister", sans-serif;
+  cursor: pointer;
+  line-height: 125px;
 }
 
 .card-list {

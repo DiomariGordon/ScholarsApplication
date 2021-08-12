@@ -1,19 +1,33 @@
 `<template>
   <div class="home">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta">
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Mukta"
+    />
     <!-- <p>You must be authenticated to see this</p> -->
 
     <nav>
       <div>
-        <div class="row1">
-          <div><a><router-link :to="{name: 'myflashcards'}" class="editCards">Flashcards</router-link></a></div>
-          <div><a><router-link :to="{name: 'searchCard'}" class="viewCards">Search Cards</router-link></a></div>
-        </div>
-        <div class="row2">
-          <div><a><router-link :to="{name: 'deck'}" class="createDeck">Create Decks</router-link></a></div>
-          <div><a><router-link :to="{name: 'deckBoard'}" class="viewDecks">View Decks</router-link></a></div>
-          <div><a><router-link :to="{name: 'session'}" class="newSession">Study Session</router-link></a></div>
+        <div class="grid">
+          <div class="grid-card">
+            <a><router-link :to="{ name: 'myflashcards' }" class="editCards">Flashcards</router-link></a>
+          </div>
+          <div class="grid-deck">
+            <a><router-link :to="{ name: 'deck' }" class="createDeck">Decks</router-link></a>
+          </div>
+          <div class="grid-session">
+            <a><router-link :to="{ name: 'session' }" class="newSession">Study Session</router-link></a>
+          </div>
+          <div class="grid-search">
+            <a><router-link :to="{ name: 'searchCard' }" class="viewCards">Search Cards</router-link></a>
+          </div>
+          <div class="grid-view">
+            <a><router-link :to="{ name: 'deckBoard' }" class="viewDecks">View Decks</router-link></a>
+          </div>
         </div>
       </div>
     </nav>
@@ -24,16 +38,16 @@
 export default {
   name: "home",
   components: {},
-    data() {
-        return {
-            home: {
-                flashcards: '',
-                deck: '',
-                deck_list: '',
-                session: ''
-            }
-        }
-    }
+  data() {
+    return {
+      home: {
+        flashcards: "",
+        deck: "",
+        deck_list: "",
+        session: "",
+      },
+    };
+  },
 };
 </script>
 
@@ -56,52 +70,67 @@ li {
   font-weight: 400;
   text-transform: uppercase;
   border-bottom: 1px solid white;
-  padding-top: 30px
+  padding-top: 30px;
 }
 .editCards {
-  align-content: center;
-  font-size: 60px;
+  font-size: 55px;
   width: 450px;
   height: 242px;
-  margin: 0 auto;
   background-image: url("../images/blue.png");
   background-size: 100%;
 }
+.grid-card {
+  grid-area: flashcards;
+}
 .createDeck {
-  align-content: center;
   font-size: 55px;
   width: 450px;
   height: 242px;
-  margin: 0 auto;
   background-image: url("../images/yellow.png");
   background-size: 100%;
 }
-.viewDecks {
-  align-content: center;
-  font-size: 60px;
+.grid-deck{
+  grid-area: decks;
+}
+.newSession {
+  font-size: 55px;
   width: 450px;
   height: 242px;
-  margin: 0 auto;
+  background-image: url("../images/orange.png");
+  background-size: 100%;
+}
+.grid-session {
+  grid-area: session;
+}
+.viewDecks {
+  font-size: 55px;
+  width: 450px;
+  height: 242px;
   background-image: url("../images/red.png");
   background-size: 100%;
 }
+.grid-view {
+  grid-area: viewDecks;
+}
 .viewCards {
-  align-content: center;
   font-size: 55px;
   width: 450px;
   height: 242px;
-  margin: 0 auto;
   background-image: url("../images/green.png");
   background-size: 100%;
 }
-.newSession {
-  align-content: center;
-  font-size: 55px;
-  width: 450px;
-  height: 242px;
-  margin: 0 auto;
-  background-image: url("../images/orange.png");
-  background-size: 100%;
+.grid-search {
+  grid-area: searchCards;
+}
+.grid {
+  display: grid;
+  align-items: center;  
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 30px;
+  grid-template-areas:
+  "flashcards session decks"
+  ". session ."
+  "searchCards session viewDecks";
 }
 .editCards:link {
   size: 40px;
@@ -155,25 +184,20 @@ li {
 }
 .editCards:hover {
   color: cyan;
-  padding-left: 5px;
 }
 .createDeck:hover {
   color: orangered;
-  padding-left: 5px;
 }
 .viewDecks:hover {
   color: hotpink;
-  padding-left: 5px;
 }
 .viewCards:hover {
   color: yellow;
-  padding-left: 5px;
 }
 .newSession:hover {
   color: red;
-  padding-left: 5px;
 }
-.row1 {
+/* .row1 {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
@@ -182,5 +206,5 @@ li {
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
+} */
 </style>

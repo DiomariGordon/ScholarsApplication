@@ -5,15 +5,14 @@
 </template>
 
 <script>
-import MyDecksList from '../components/MyDecksList.vue'
+import MyDecksList from "../components/MyDecksList.vue";
 export default {
-  name: 'myDecks',
+  name: "myDecks",
   components: {
-    MyDecksList
-    }
-}
+    MyDecksList,
+  },
+};
 </script>
 
 <style>
-
 </style>

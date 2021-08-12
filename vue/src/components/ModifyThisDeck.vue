@@ -1,25 +1,25 @@
 <template>
   <div>
-            <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister"
-            />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister"
+    />
 
-            <h2>Edit This Deck</h2>
+    <h2>Edit This Deck</h2>
 
-            <div>
-                <edit-deck-form
-                :name="deck.name"
-                :deckId="deck.deckId"
-                :description="deck.description"
-                />
-            </div>
+    <div>
+      <edit-deck-form
+        :name="deck.name"
+        :deckId="deck.deckId"
+        :description="deck.description"
+      />
+    </div>
   </div>
 </template>
 
 <script>
 //import DeckService from "@/services/DeckService";
-import EditDeckForm from './EditDeckForm.vue';
+import EditDeckForm from "./EditDeckForm.vue";
 
 export default {
   name: "modifyThisDeck",
@@ -42,9 +42,7 @@ export default {
     this.deck.name = thisDeck.name;
     this.deck.description = thisDeck.description;
   },
-  methods: {
-    
-  },
+  methods: {},
 };
 </script>
 
@@ -74,7 +72,4 @@ export default {
   color: black;
   font-family: "Love Ya Like A Sister", sans-serif;
 }
-
-
-
 </style>

@@ -100,7 +100,7 @@ const router = new Router({
       component: CardSearch
     },
 
-    
+
     {
       path: "/session",
       name: "session",
@@ -121,21 +121,21 @@ const router = new Router({
 
     {
       path: "/deckBoard/:id",
-      name: "deckFlashcards", 
+      name: "deckFlashcards",
       component: DeckFlashcards
 
     },
 
     {
       path: "/addFlashcard",
-      name: "addFlashcard", 
+      name: "addFlashcard",
       component: NewCardForm
 
-     },
+    },
 
     {
       path: "/addFlashcardToDeck",
-      name: "addFlashcardToDeck", 
+      name: "addFlashcardToDeck",
       component: AddFlashcardToDeck
 
     },
@@ -145,7 +145,7 @@ const router = new Router({
       component: SessionCurrentCard
     },
 
-    
+
     {
       path: "/deck/update",
       name: "modifyDeck",

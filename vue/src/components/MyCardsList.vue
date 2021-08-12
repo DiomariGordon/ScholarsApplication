@@ -1,12 +1,24 @@
 <template>
   <div>
     <!-- <div class="mainContainer"> -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister">
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister"
+    />
     <h2>My Flashcards</h2>
-    <div>
-        <input class='field' type="text" placeholder="Search by Keywords" v-model="keywordToAdd">
-        <button class='btn' v-on:click.prevent="addSearchKeyword">+Keyword</button>
-        <button class='btn' v-on:click.prevent="clearFilters">Reset Search Parameters</button>
+    <div class="keywords">
+      <input
+        class="field"
+        type="text"
+        placeholder="Search by Keywords"
+        v-model="keywordToAdd"
+      />
+      <button class="btn" v-on:click.prevent="addSearchKeyword">
+        +Keyword
+      </button>
+      <button class="btn" v-on:click.prevent="clearFilters">
+        Reset Search Parameters
+      </button>
     </div>
     <div class="miniCardContainer">
       <router-link
@@ -19,12 +31,12 @@
       </router-link>
     </div>
     <table class="keywordTable" v-show="this.filters.length != 0">
-        <th>Search Parameters</th>
-        <tr v-for="param in this.filters" v-bind:key="param.id">
-            <td>{{param}}</td>
-        </tr>
+      <th>Search Parameters</th>
+      <tr v-for="param in this.filters" v-bind:key="param.id">
+        <td>{{ param }}</td>
+      </tr>
     </table>
-    </div>
+  </div>
   <!-- </div> -->
 </template>
 
@@ -42,39 +54,42 @@ export default {
   },
   data() {
     return {
-        filters: [],
-        keywordToAdd: ''
-
+      filters: [],
+      keywordToAdd: "",
     };
   },
   computed: {
-      filteredList() {
-          let newList = this.$store.state.flashcards;
-          if(this.filters.length != 0) {
-              for(let i = 0; i < this.filters.length; i++) {
-              newList = newList.filter((card) =>{return card.keywords.includes(this.filters[i]);});
-              }
-
-                  }
-          return newList;
+    filteredList() {
+      let newList = this.$store.state.flashcards;
+      if (this.filters.length != 0) {
+        for (let i = 0; i < this.filters.length; i++) {
+          newList = newList.filter((card) => {
+            return card.keywords.includes(this.filters[i]);
+          });
+        }
       }
+      return newList;
+    },
   },
   methods: {
-      addSearchKeyword() {
-          if(this.keywordToAdd != '' && !this.filters.includes(this.keywordToAdd.toLocaleLowerCase())) {
-              this.filters.push(this.keywordToAdd.toLocaleLowerCase());
-              this.keywordToAdd = '';
-          }
-      },
-      clearFilters() {
-          this.filters = [];
+    addSearchKeyword() {
+      if (
+        this.keywordToAdd != "" &&
+        !this.filters.includes(this.keywordToAdd.toLocaleLowerCase())
+      ) {
+        this.filters.push(this.keywordToAdd.toLocaleLowerCase());
+        this.keywordToAdd = "";
       }
-  }
+    },
+    clearFilters() {
+      this.filters = [];
+    },
+  },
 };
 </script>
 
 <style>
- .miniCard {
+.miniCard {
   margin: 7px;
   padding: 10px;
   border: 1px solid black;
@@ -85,7 +100,6 @@ export default {
   background-image: url("../images/noteCard.jpg");
   background-size: cover;
   color: navy;
-  font-family: "Monoton", sans-serif;
   text-decoration: none;
   font-size: 40px;
   font-family: "Love Ya Like A Sister", sans-serif;
@@ -101,33 +115,40 @@ export default {
   width: 75vw;
   margin: 0 auto;
 }
+h2 {
+  font-size: 40px;
+}
+.keywords {
+  margin-bottom: 22px;
+}
 
-.btn{
-        display:inline-block;
-        padding:0.7em 1.7em;
-        margin:0 0.3em 0.3em 0;
-        border-radius:0.25rem;
-        box-sizing: border-box;
-        text-decoration:none;
-        font-family: "Love Ya Like A Sister", sans-serif;
-        /* font-family:'Roboto',sans-serif; */
-        font-weight:400;
-        color:#FFFFFF;
-        background-color:#3369ff;
-        box-shadow:inset 0 -0.6em 1em -0.35em rgba(0,0,0,0.17),inset 0 0.6em 2em -0.3em rgba(255,255,255,0.15),inset 0 0 0em 0.05em rgba(255,255,255,0.12);
-        text-align:center;
-        position:relative;
-    }
+.btn {
+  display: inline-block;
+  padding: 0.7em 1.7em;
+  margin: 0 0.3em 0.3em 0;
+  border-radius: 0.25rem;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Love Ya Like A Sister", sans-serif;
+  /* font-family:'Roboto',sans-serif; */
+  font-weight: 400;
+  color: #ffffff;
+  background-color: #3369ff;
+  box-shadow: inset 0 -0.6em 1em -0.35em rgba(0, 0, 0, 0.17),
+    inset 0 0.6em 2em -0.3em rgba(255, 255, 255, 0.15),
+    inset 0 0 0em 0.05em rgba(255, 255, 255, 0.12);
+  text-align: center;
+  position: relative;
+}
 
-    .field{
-        display:inline-block;
-        height: 30px;
-        width: 300px;
-        background-color: white;
-        display: inline-block;
-        border-radius: 5px;
-    
-    }
+.field {
+  display: inline-block;
+  height: 30px;
+  width: 300px;
+  background-color: white;
+  display: inline-block;
+  border-radius: 5px;
+}
 
 /*this is change*/
 
@@ -154,5 +175,4 @@ export default {
 .miniCardContainer {
  flex-direction: column;
 } */
-
 </style>

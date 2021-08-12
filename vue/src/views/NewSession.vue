@@ -1,21 +1,18 @@
 <template>
- <div class="container">
-    <session-choose-deck/>
+  <div class="container">
+    <session-choose-deck />
   </div>
-  
 </template>
 
 <script>
-import SessionChooseDeck from '../components/SessionChooseDeck.vue'
+import SessionChooseDeck from "../components/SessionChooseDeck.vue";
 
 export default {
-  components: { 
-      SessionChooseDeck
+  components: {
+    SessionChooseDeck,
   },
-
-}
+};
 </script>
 
 <style>
-
 </style>

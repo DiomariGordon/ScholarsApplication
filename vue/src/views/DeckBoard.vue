@@ -1,30 +1,27 @@
 <template>
- <div class="container">
-    <my-decks-list/>
-    <deck-flashcards class="routerView"/>
+  <div class="container">
+    <my-decks-list />
+    <deck-flashcards class="routerView" />
     <!-- <router-view :key="$route.path" class="routerView" />  -->
   </div>
-  
 </template>
 
 <script>
-import MyDecksList from '../components/MyDecksList.vue'
-import DeckFlashcards from './DeckFlashcards.vue'
+import MyDecksList from "../components/MyDecksList.vue";
+import DeckFlashcards from "./DeckFlashcards.vue";
 export default {
-  components: { 
-      MyDecksList,
-    DeckFlashcards 
+  components: {
+    MyDecksList,
+    DeckFlashcards,
   },
-
-}
+};
 </script>
 
 <style>
-
 body {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',
-    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 .container {
   width: 100%;
@@ -57,5 +54,4 @@ body {
   position: absolute;
   right: 0;
 }
-
 </style>

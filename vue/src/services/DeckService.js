@@ -2,7 +2,7 @@ import axios from 'axios';
 
 
 export default {
-addDeck(deck) {
+  addDeck(deck) {
     return axios.post('/deck', deck);
   },
 
@@ -14,7 +14,7 @@ addDeck(deck) {
     return axios.get(`/flashCards/deck/${deckId}`);
   },
 
-  addFlashCardToDeck(id,flashcard) {
+  addFlashCardToDeck(id, flashcard) {
     return axios.post(`decks/${id}/flashCards`, flashcard);
   },
 

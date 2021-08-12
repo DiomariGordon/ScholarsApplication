@@ -6,17 +6,16 @@
 </template>
 
 <script>
-import NewCardForm from '../components/NewCardForm.vue'
-import MyCardsList from '../components/MyCardsList.vue'
+import NewCardForm from "../components/NewCardForm.vue";
+import MyCardsList from "../components/MyCardsList.vue";
 export default {
-  name: 'myFlashcards',
+  name: "myFlashcards",
   components: {
     NewCardForm,
-    MyCardsList
-    }
-}
+    MyCardsList,
+  },
+};
 </script>
 
 <style>
-
 </style>

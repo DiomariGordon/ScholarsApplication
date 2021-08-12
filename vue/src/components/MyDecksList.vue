@@ -1,6 +1,9 @@
 <template>
   <div id="sideNav">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister">
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister"
+    />
     <h2><th>My Decks</th></h2>
     <div class="boards">
       <!-- <router-link
@@ -16,19 +19,18 @@
                         </router-link> -->
 
       <div>
-      <div
-        v-on:click="updateDeckId(deck.deckId, $event)"
-        :disabled="true"
-        v-bind:class="{selected: mySelection.includes(deck.deckId)}"
-        class="board"
-        v-for="deck in myDecks"
-        v-bind:key="deck.deckId"
-        v-bind:id="deck.deckId"
-        
-        tag="div"
-      >
-        {{ deck.name }} 
-      </div>
+        <div
+          v-on:click="updateDeckId(deck.deckId, $event)"
+          :disabled="true"
+          v-bind:class="{ selected: mySelection.includes(deck.deckId) }"
+          class="board"
+          v-for="deck in myDecks"
+          v-bind:key="deck.deckId"
+          v-bind:id="deck.deckId"
+          tag="div"
+        >
+          {{ deck.name }}
+        </div>
       </div>
 
       <button
@@ -109,7 +111,7 @@ export default {
       myNewDeck: {
         name: "",
         description: "",
-        userId: 0
+        userId: 0,
       },
     };
   },
@@ -125,11 +127,10 @@ export default {
     },
     updateDeckId(deckId, event) {
       if (!this.mySelection.includes(deckId)) {
-        this.mySelection = []
+        this.mySelection = [];
         this.mySelection.push(deckId);
-      
       }
-      
+
       console.log(event.currentTarget.id);
       this.$store.commit("SET_DECK_ID", deckId);
     },
@@ -213,7 +214,7 @@ div#sideNav {
 .form-control {
   margin-bottom: 10px;
   /* font-family: "Love Ya Like A Sister", sans-serif; */
-   /* display:inline-block;
+  /* display:inline-block;
         height: 30px;
         width: 300px;
         background-color: white;
@@ -249,5 +250,4 @@ div#sideNav {
         border-radius: 5px;
     
     } */
-
 </style>

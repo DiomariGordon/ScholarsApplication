@@ -2,7 +2,7 @@ import axios from 'axios';
 
 
 export default {
-addCard(flashcard) {
+  addCard(flashcard) {
     return axios.post('/flashCards', flashcard);
   },
   getMyCards(id) {
@@ -15,7 +15,7 @@ addCard(flashcard) {
     return axios.put('/flashCards/update', flashcard);
   },
   getCardsByKeyWord(id, key) {
-    return axios.get(`/flashCards/search/${id}`, {params : {keyword : key}});
+    return axios.get(`/flashCards/search/${id}`, { params: { keyword: key } });
   }
 
 }
