@@ -148,6 +148,9 @@ body {
   background: url(../images/chalkboard.jpg);
   cursor: url(../images/cursor2.png), none;
 }
+button {
+  cursor: url(../images/cursor2.png), none;
+}
 h2 {
   position: relative;
   display: inline-block;
